@@ -1,5 +1,6 @@
 {
   "name": "designer",
+  "homepage": "https://digitalcredentials.github.io/designer",
   "version": "4.0.0",
   "private": true,
   "dependencies": {
