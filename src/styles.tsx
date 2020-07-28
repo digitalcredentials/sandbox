@@ -9,6 +9,22 @@ const drawerWidth = 240;
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    //paddingLeft: theme.spacing(4),
+  },
+  appMenu: {
+    width: '100%',
+  },
+  navList: {
+    width: drawerWidth,
+  },
+  menuItem: {
+    width: drawerWidth,
+  },
+  menuItemIcon: {
+    color: '#97c05c',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
