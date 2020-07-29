@@ -62,10 +62,6 @@ const ErrorFallback: FC<FallbackProps> = ( { error, componentStack, resetErrorBo
   )
 };
 
-const myErrorHandler = (error: Error, componentStack: string) => {
-  console.error(error);
-}
-
 export interface IEditableVerifiableCredentialPreviewProps extends IVerifiableCredentialPreviewProps {
   document: any;
   setDocument: any
@@ -75,10 +71,10 @@ export const VerifiableCredentialEdit: FC<IEditableVerifiableCredentialPreviewPr
   document, setDocument
 }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [tabIndex, setTabIndex] = React.useState(0);
 
-  const handleChange = (_event: any, newValue: any) => {
-    setValue(newValue);
+  const handleTabSelect = (_event: any, newValue: any) => {
+    setTabIndex(newValue);
   };
 
   const editorOnChange = (data: string) => {
@@ -88,7 +84,7 @@ export const VerifiableCredentialEdit: FC<IEditableVerifiableCredentialPreviewPr
   return (
     <div className={classes.root}>
       <AppBar position="static" color={'primary'}>
-        <Tabs value={value} onChange={handleChange} aria-label="VC Tabs">
+        <Tabs value={tabIndex} onChange={handleTabSelect} aria-label="VC Tabs">
           <Tab label="Source" {...a11yProps(0)} />
           <Tab label="Table" {...a11yProps(1)} />
           <Tab label="Card" {...a11yProps(2)} />
@@ -97,22 +93,22 @@ export const VerifiableCredentialEdit: FC<IEditableVerifiableCredentialPreviewPr
       </AppBar>
 
 
-      <TabPanel value={value} index={0}>
+      <TabPanel value={tabIndex} index={0}>
         <JSONEditor value={JSON.stringify(document, null, 2)}
           onChange={editorOnChange}
         />
       </TabPanel>
-      <TabPanel value={value} index={1}>
-
+      <TabPanel value={tabIndex} index={1}>
+        // TODO: this doesn't work
         <ErrorBoundary fallback={<div>Oh no</div>}>
           <LinkedDataPropertyTable document={document} />
         </ErrorBoundary>
 
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={tabIndex} index={2}>
         <Typography>CredentialCard is coming soon!</Typography>
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel value={tabIndex} index={3}>
         <Typography>QR code is coming soon!</Typography>
       </TabPanel>
     </div>
