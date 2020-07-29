@@ -1,16 +1,15 @@
-import React, { useState, useContext, HTMLAttributes } from "react";
-import clsx from 'clsx';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
-
-import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
-import { useStyles } from './styles';
-import { smallList } from './fixtures';
+import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
+import React, { useState } from "react";
+import { smallList } from '../fixtures';
 import { NavBar } from "./NavBar";
-
+import { useStyles } from '../styles';
+import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
+import { Issue } from './Issue';
 
 function Copyright() {
   return (
@@ -38,7 +37,7 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <VerifiableCredentialEdit document={document} setDocument={setDocument} />
+        <VerifiableCredentialEdit document={document} setDocument={setDocument} />
           <Box pt={4}>
             <Copyright />
           </Box>
@@ -47,3 +46,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+// <Issue document={document} setDocument={setDocument} />

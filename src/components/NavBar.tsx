@@ -1,30 +1,30 @@
-import React, { FC } from "react";
-import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import List from '@material-ui/core/List';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Collapse from '@material-ui/core/Collapse';
-import ExploreIcon from '@material-ui/icons/Explore';
-import IconExpandLess from '@material-ui/icons/ExpandLess';
-import IconExpandMore from '@material-ui/icons/ExpandMore';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import { IEditableVerifiableCredentialPreviewProps } from './VerifiableCredentialEdit';
-import { useStyles } from './styles';
-import { smallList } from './fixtures';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import IconExpandLess from '@material-ui/icons/ExpandLess';
+import IconExpandMore from '@material-ui/icons/ExpandMore';
+import ExploreIcon from '@material-ui/icons/Explore';
+import MenuIcon from '@material-ui/icons/Menu';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import clsx from 'clsx';
+import React, { FC } from "react";
+import { smallList } from '../fixtures';
+import { useStyles } from '../styles';
+import { DocProps } from './VerifiableCredentialEdit';
 
-export const NavBar: FC<IEditableVerifiableCredentialPreviewProps> = ({
+export const NavBar: FC<DocProps> = ({
   document, setDocument
 }) => {
   const classes = useStyles();

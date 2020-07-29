@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Dashboard from './Dashboard';
+import Dashboard from './components/Dashboard';
 import theme from './theme';
 
 ReactDOM.render(

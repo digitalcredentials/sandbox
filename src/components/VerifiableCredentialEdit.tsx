@@ -1,17 +1,14 @@
-import React, { FC } from 'react';
-
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { JSONEditor, LinkedDataPropertyTable } from '@material-did/common';
 import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
+import { makeStyles } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import React, { FC, HTMLAttributes } from 'react';
 
-import {
-  JSONEditor, LinkedDataPropertyTable, IVerifiableCredentialPreviewProps
-} from '@material-did/common';
+
 
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
@@ -51,23 +48,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ErrorFallback: FC<FallbackProps> = ( { error, componentStack, resetErrorBoundary } ) => {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error?.message}</pre>
-      <pre>{componentStack}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
-};
-
-export interface IEditableVerifiableCredentialPreviewProps extends IVerifiableCredentialPreviewProps {
+export interface DocProps extends HTMLAttributes<HTMLDivElement> {
   document: any;
   setDocument: any
 }
 
-export const VerifiableCredentialEdit: FC<IEditableVerifiableCredentialPreviewProps> = ({
+export const VerifiableCredentialEdit: FC<DocProps> = ({
   document, setDocument
 }) => {
   const classes = useStyles();
@@ -99,11 +85,7 @@ export const VerifiableCredentialEdit: FC<IEditableVerifiableCredentialPreviewPr
         />
       </TabPanel>
       <TabPanel value={tabIndex} index={1}>
-        // TODO: this doesn't work
-        <ErrorBoundary fallback={<div>Oh no</div>}>
-          <LinkedDataPropertyTable document={document} />
-        </ErrorBoundary>
-
+        <LinkedDataPropertyTable document={document} />
       </TabPanel>
       <TabPanel value={tabIndex} index={2}>
         <Typography>CredentialCard is coming soon!</Typography>
