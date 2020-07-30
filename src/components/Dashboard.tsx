@@ -11,12 +11,19 @@ import { useStyles } from '../styles';
 import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
 import { Issue } from './Issue';
 
+import {
+  BrowserRouter as Router,
+  Link as RouterLink,
+  Switch,
+  Route
+} from "react-router-dom";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://digitalcredentials.mit.edu/">
+        Digital Credentials Consortium
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -32,19 +39,33 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      <Router>
       <NavBar document={document} setDocument={setDocument} />
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-        <VerifiableCredentialEdit document={document} setDocument={setDocument} />
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/issue">
+              <Issue document={document} setDocument={setDocument} />
+            </Route>
+            <Route path="/">
+              <VerifiableCredentialEdit document={document} setDocument={setDocument} />
+            </Route>
+          </Switch>
           <Box pt={4}>
             <Copyright />
           </Box>
         </Container>
       </main>
+      </Router>
     </div>
   );
 }
 
-// <Issue document={document} setDocument={setDocument} />
+function About() {
+  return <h2>About</h2>;
+}

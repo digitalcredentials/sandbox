@@ -20,9 +20,11 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import clsx from 'clsx';
 import React, { FC } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { smallList } from '../fixtures';
 import { useStyles } from '../styles';
 import { DocProps } from './VerifiableCredentialEdit';
+
 
 export const NavBar: FC<DocProps> = ({
   document, setDocument
@@ -45,7 +47,7 @@ export const NavBar: FC<DocProps> = ({
 
   return (
     <div>
-      <div className={classes.root}>
+      <div >
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
           <Toolbar className={classes.toolbar}>
             <IconButton
@@ -98,7 +100,7 @@ export const NavBar: FC<DocProps> = ({
               <ListSubheader inset>Select a template </ListSubheader>
               {smallList.map((item) => {
                 return (
-                  <ListItem button key={item.name} onClick={e => setDocument(item.document)} className={classes.menuItem}>
+                  <ListItem button key={item.name} component={RouterLink} to="/" onClick={() => setDocument(item.document)} className={classes.menuItem}>
                     <ListItemText primary={item.name} inset />
                   </ListItem>
                 );
@@ -108,12 +110,13 @@ export const NavBar: FC<DocProps> = ({
         </List>
         <Divider />
         <div>
-          <ListItem button key='issue' onClick={e => setDocument('document')} className={classes.menuItem}>
+          <ListItem button key='issue' component={RouterLink} to="/issue" onClick={() => setDocument('document')} className={classes.menuItem}>
             <ListItemIcon className={classes.menuItemIcon}>
               <VpnKeyIcon />
             </ListItemIcon>
             <ListItemText primary='Issue' />
           </ListItem>
+
         </div>
       </Drawer>
     </div>

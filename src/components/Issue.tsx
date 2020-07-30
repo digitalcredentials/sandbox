@@ -40,6 +40,7 @@ export const Issue: FC<DocProps> = ({
       }}
       onSubmit={onSubmit}
     />
+    <h6>howdy</h6>
     </div>
   );
 };
