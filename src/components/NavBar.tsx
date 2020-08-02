@@ -110,7 +110,7 @@ export const NavBar: FC<DocProps> = ({
         </List>
         <Divider />
         <div>
-          <ListItem button key='issue' component={RouterLink} to="/issue" onClick={() => setDocument('document')} className={classes.menuItem}>
+          <ListItem button key='issue' component={RouterLink} to="/issue" className={classes.menuItem}>
             <ListItemIcon className={classes.menuItemIcon}>
               <VpnKeyIcon />
             </ListItemIcon>
