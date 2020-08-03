@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
 import { didDocument, signingPrivateKey } from '../fixtures';
+var bundle = require("./bundle");
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const Issue: FC<DocProps> = ({
+export const Verify: FC<DocProps> = ({
   document, setDocument
 }) => {
   const classes = useStyles();
@@ -41,34 +42,39 @@ export const Issue: FC<DocProps> = ({
 
   const handleSubmit = (event: any) => {
     console.log(event);
+    bundle.e
     //doSign(document, didDocument, signingPrivateKey).then((result) => setSignedDocument(result));
   };
   return (
     <div className={classes.root}>
       <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <Grid container spacing={3} justify="space-around">
+          <Grid container spacing={3} justify="space-around" alignItems="center">
             <Grid item xs={6}>
-              <Typography component="h2" variant="h6" color="primary" gutterBottom>Signing Information</Typography>
-              <TextField
-                id="outlined-multiline-flexible"
-                label="Private Key"
-                multiline
-                style={{ width: 600 }} /* need more space, but fullWidth doesn't propagate */
-                rows={7}
-                defaultValue={JSON.stringify(signingPrivateKey, null, 2)}
-                variant="outlined"
-              />
-              <TextField label="Signing Authority (DID)" value={didDocument.id} style={{ width: 400 }} />
-              <br />
-              <Button variant="contained" color="primary" type="submit" disabled >
-                Sign Credential
-              </Button>
+              <Typography component="h2" variant="h6" color="primary" gutterBottom>DID Document</Typography>
+              <JSONEditor value={JSON.stringify(didDocument, null, 2)} />
             </Grid>
             <Grid item xs={6}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>Credential</Typography>
               <JSONEditor value={JSON.stringify(document, null, 2)}
               />
+            </Grid>
+            <Grid item xs={9}>
+              <TextField
+                id="outlined-multiline-flexible"
+                label="Private Key"
+                multiline
+                style={{ width: 600 }} /* need more space, but fullWidth doesn't propagate */
+                rows={5}
+                defaultValue={JSON.stringify(signingPrivateKey, null, 2)}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={3} alignContent={'center'}>
+            <Typography  color="primary" >Coming soon</Typography>
+              <Button variant="contained" color="primary" type="submit" disabled >
+                Sign Credential
+              </Button>
             </Grid>
             <Grid item xs={12}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>Signed Credential</Typography>
