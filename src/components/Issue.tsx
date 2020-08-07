@@ -8,6 +8,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
 import { didDocument } from '../fixtures';
+import { CircularProgress } from '@material-ui/core';
 const fetch = require('node-fetch');
 
 
@@ -33,8 +34,11 @@ export const Issue: FC<SigningProps> = ({
 }) => {
   const classes = useStyles();
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch('https://sign-and-verify.herokuapp.com/issue/credentials', {
         method: 'POST',
@@ -51,6 +55,8 @@ export const Issue: FC<SigningProps> = ({
       setSignedDocument(signedDocument);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,6 +73,11 @@ export const Issue: FC<SigningProps> = ({
               <Button variant="contained" color="primary" type="submit" >
                 Sign Credential
               </Button>
+              <div>
+              { loading &&
+                <CircularProgress variant="indeterminate" />
+               }
+               </div>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="h6" color="primary" gutterBottom>Credential</Typography>

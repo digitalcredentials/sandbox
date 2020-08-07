@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
 import { didDocument } from '../fixtures';
+import { CircularProgress } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,9 +39,12 @@ export const Verify: FC<VerificationProps> = ({
 }) => {
   const classes = useStyles();
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
+      setLoading(true);
       const response = await fetch('https://sign-and-verify.herokuapp.com/verify/credentials', {
         method: 'POST',
         body: JSON.stringify(signedDocument),
@@ -56,6 +60,8 @@ export const Verify: FC<VerificationProps> = ({
       setVerificationResult(result);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,6 +77,11 @@ export const Verify: FC<VerificationProps> = ({
               <Button variant="contained" color="primary" type="submit" >
                 Verify Signed Credential
               </Button>
+              <div>
+              { loading &&
+                <CircularProgress variant="indeterminate" />
+               }
+               </div>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="h6" color="primary" gutterBottom>Signed Credential</Typography>

@@ -34,7 +34,7 @@ export const NavBar: FC<DocProps> = ({
 
   const [open, setOpen] = React.useState(true);
   const [expanded, setExpanded] = React.useState(true);
-  const [selected, setSelected] = React.useState(1);
+  const [selected, setSelected] = React.useState(0);
 
   const handleDrawerClose = () => {
     setOpen(false);
