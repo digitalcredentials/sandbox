@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Dashboard from './components/Dashboard';
 import theme from './theme';
+const crypto = require('isomorphic-webcrypto')
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

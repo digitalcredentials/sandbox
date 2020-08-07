@@ -12,7 +12,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
-import { didDocument, signingPrivateKey } from '../fixtures';
+import { didDocument } from '../fixtures';
+const fetch = require('node-fetch');
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -39,10 +41,26 @@ export const Issue: FC<DocProps> = ({
 
   const [signedDocument, setSignedDocument] = useState(undefined);
 
-  const handleSubmit = (event: any) => {
-    console.log(event);
-    //doSign(document, didDocument, signingPrivateKey).then((result) => setSignedDocument(result));
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('https://sign-and-verify.herokuapp.com/issue/credentials', {
+        method: 'POST',
+        body: JSON.stringify(document),
+        headers: { 
+          'Content-Type': 'application/json',
+          Accept: "application/json" }
+      });
+      if (response.status !== 201) {
+        throw new Error(response.statusText);
+       }
+      const signedDocument = await response.json();
+      setSignedDocument(signedDocument);
+    } catch (error) { 
+      console.log(error);
+    }
   };
+
   return (
     <div className={classes.root}>
       <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
@@ -50,18 +68,9 @@ export const Issue: FC<DocProps> = ({
           <Grid container spacing={3} justify="space-around">
             <Grid item xs={6}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>Signing Information</Typography>
-              <TextField
-                id="outlined-multiline-flexible"
-                label="Private Key"
-                multiline
-                style={{ width: 600 }} /* need more space, but fullWidth doesn't propagate */
-                rows={7}
-                defaultValue={JSON.stringify(signingPrivateKey, null, 2)}
-                variant="outlined"
-              />
-              <TextField label="Signing Authority (DID)" value={didDocument.id} style={{ width: 400 }} />
+              <TextField label="Assertion Method" value={didDocument.publicKey[0].id} style={{ width: 500 }} />
               <br />
-              <Button variant="contained" color="primary" type="submit" disabled >
+              <Button variant="contained" color="primary" type="submit" >
                 Sign Credential
               </Button>
             </Grid>

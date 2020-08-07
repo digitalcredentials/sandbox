@@ -12,7 +12,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
-import { didDocument, signingPrivateKey } from '../fixtures';
+import { didDocument } from '../fixtures';
 var bundle = require("./bundle");
 
 
@@ -66,7 +66,7 @@ export const Verify: FC<DocProps> = ({
                 multiline
                 style={{ width: 600 }} /* need more space, but fullWidth doesn't propagate */
                 rows={5}
-                defaultValue={JSON.stringify(signingPrivateKey, null, 2)}
+                defaultValue={JSON.stringify({}, null, 2)}
                 variant="outlined"
               />
             </Grid>

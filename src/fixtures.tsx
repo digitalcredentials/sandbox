@@ -19,10 +19,3 @@ export const smallList = [
 ];
 
 export const didDocument = didDoc;
-export const signingPrivateKey = {
-  "kid": "",
-  "kty": "",
-  "crv": "",
-  "x": "",
-  "d": ""
-};
