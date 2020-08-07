@@ -18,12 +18,13 @@ import ExploreIcon from '@material-ui/icons/Explore';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import CheckIcon from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import React, { FC } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { smallList } from '../fixtures';
 import { useStyles } from '../styles';
-import { DocProps } from './VerifiableCredentialEdit';
+import { DocProps } from './Props';
 
 
 export const NavBar: FC<DocProps> = ({
@@ -33,6 +34,7 @@ export const NavBar: FC<DocProps> = ({
 
   const [open, setOpen] = React.useState(true);
   const [expanded, setExpanded] = React.useState(true);
+  const [selected, setSelected] = React.useState(1);
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -43,7 +45,17 @@ export const NavBar: FC<DocProps> = ({
 
   const handleExpanded = () => {
     setExpanded(!expanded);
+    updateSelected(0);
   };
+
+  const updateSelected = (selectedIndex: number) => {
+    setSelected(selectedIndex);
+  };
+
+  const updateSample = (sample: any) => {
+    updateSelected(0);
+    setDocument(sample);
+  }
 
   return (
     <div>
@@ -60,7 +72,7 @@ export const NavBar: FC<DocProps> = ({
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              DCC Credential Designer
+              DCC Credential Playground
         </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -86,7 +98,7 @@ export const NavBar: FC<DocProps> = ({
         <Divider />
 
         <List component="nav" className={classes.appMenu} disablePadding>
-          <ListItem button onClick={handleExpanded} className={classes.menuItem}>
+          <ListItem button onClick={handleExpanded} className={classes.menuItem} selected={selected===0}>
             <ListItemIcon className={classes.menuItemIcon}>
               <ExploreIcon />
             </ListItemIcon>
@@ -96,11 +108,10 @@ export const NavBar: FC<DocProps> = ({
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Divider />
             <List component="div" disablePadding>
-
               <ListSubheader inset>Select a template </ListSubheader>
               {smallList.map((item) => {
                 return (
-                  <ListItem button key={item.name} component={RouterLink} to="/" onClick={() => setDocument(item.document)} className={classes.menuItem}>
+                  <ListItem button key={item.name} component={RouterLink} to="/" onClick={() => updateSample(item.document)} className={classes.menuItem}>
                     <ListItemText primary={item.name} inset />
                   </ListItem>
                 );
@@ -110,13 +121,18 @@ export const NavBar: FC<DocProps> = ({
         </List>
         <Divider />
         <div>
-          <ListItem button key='issue' component={RouterLink} to="/issue" className={classes.menuItem}>
+          <ListItem button key='issue' component={RouterLink} to="/issue" className={classes.menuItem} onClick={() => updateSelected(1)} selected={selected === 1}>
             <ListItemIcon className={classes.menuItemIcon}>
               <VpnKeyIcon />
             </ListItemIcon>
             <ListItemText primary='Issue' />
           </ListItem>
-
+          <ListItem button key='verify' component={RouterLink} to="/verify" className={classes.menuItem} onClick={() => updateSelected(2)} selected={selected === 2}>
+            <ListItemIcon className={classes.menuItemIcon}>
+              <CheckIcon />
+            </ListItemIcon>
+            <ListItemText primary='Verify' />
+          </ListItem>
         </div>
       </Drawer>
     </div>

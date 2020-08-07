@@ -10,6 +10,7 @@ import { NavBar } from "./NavBar";
 import { useStyles } from '../styles';
 import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
 import { Issue } from './Issue';
+import { Verify } from './Verify';
 
 import {
   BrowserRouter as Router,
@@ -35,12 +36,28 @@ export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [document, setDocument] = useState(smallList[0].document);
+  const [signedDocument, setSignedDocument] = useState({});
+  const [verificationResult, setVerificationResult] = useState({});
+
+  const doSetDocument = (doc: any) => {
+    setDocument(doc);
+    setSignedDocument({});
+  }
+
+  const doSetSignedDocument = (signedDoc: any) => {
+    setSignedDocument(signedDoc);
+    setVerificationResult({});
+  }
+
+  const doSetVerificationResult = (verificationRes: any) => {
+    setVerificationResult(verificationRes);
+  }
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <Router>
-      <NavBar document={document} setDocument={setDocument} />
+      <NavBar document={document} setDocument={doSetDocument} />
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -50,10 +67,13 @@ export default function Dashboard() {
               <About />
             </Route>
             <Route path="/issue">
-              <Issue document={document} setDocument={setDocument} />
+              <Issue document={document} setDocument={doSetDocument} signedDocument={signedDocument} setSignedDocument={doSetSignedDocument} />
+            </Route>
+            <Route path="/verify">
+              <Verify signedDocument={signedDocument} setSignedDocument={doSetSignedDocument} verificationResult={verificationResult} setVerificationResult={doSetVerificationResult}  />
             </Route>
             <Route path="/">
-              <VerifiableCredentialEdit document={document} setDocument={setDocument} />
+              <VerifiableCredentialEdit document={document} setDocument={doSetDocument} />
             </Route>
           </Switch>
           <Box pt={4}>

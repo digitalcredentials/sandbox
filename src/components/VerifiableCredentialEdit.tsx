@@ -6,7 +6,8 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC } from 'react';
+import { DocProps } from './Props';
 
 
 
@@ -48,10 +49,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export interface DocProps extends HTMLAttributes<HTMLDivElement> {
-  document: any;
-  setDocument: any
-}
+
 
 export const VerifiableCredentialEdit: FC<DocProps> = ({
   document, setDocument
