@@ -1,9 +1,7 @@
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    {
-      "@vocab": "https://digitalcredentials.github.io"
-    }
+    "https://www.w3.org/2018/credentials/examples/v1"
   ],
   "id": "urn:uuid:76540e30-e5df-11e9-85e2-7d52a8586afc",
   "type": [

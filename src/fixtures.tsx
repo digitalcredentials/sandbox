@@ -5,17 +5,17 @@ import didDoc from './samples/didDoc.json';
 
 export const smallList = [
   {
-    name: 'Open Badge',
-    document: openBadge
-  },
-  {
     name: 'Degree',
     document: degree
   },
   {
     name: 'Open Skills Assertion',
     document: openSkillsAssertion
-  }
+  },
+  {
+    name: 'Open Badge',
+    document: openBadge
+  },
 ];
 
 export const didDocument = didDoc;
