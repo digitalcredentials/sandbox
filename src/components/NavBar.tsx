@@ -18,6 +18,7 @@ import ExploreIcon from '@material-ui/icons/Explore';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CheckIcon from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import React, { FC } from "react";
@@ -132,6 +133,12 @@ export const NavBar: FC<DocProps> = ({
               <CheckIcon />
             </ListItemIcon>
             <ListItemText primary='Verify' />
+          </ListItem>
+          <ListItem button key='request' component={RouterLink} to="/request" className={classes.menuItem} onClick={() => updateSelected(3)} selected={selected === 3}>
+            <ListItemIcon className={classes.menuItemIcon}>
+              <AddCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary='Request' />
           </ListItem>
         </div>
       </Drawer>

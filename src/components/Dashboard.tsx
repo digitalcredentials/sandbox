@@ -3,7 +3,6 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
 import React, { useState } from "react";
 import { smallList } from '../fixtures';
 import { NavBar } from "./NavBar";
@@ -11,10 +10,10 @@ import { useStyles } from '../styles';
 import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
 import { Issue } from './Issue';
 import { Verify } from './Verify';
+import { Request } from './Request';
 
 import {
   BrowserRouter as Router,
-  Link as RouterLink,
   Switch,
   Route
 } from "react-router-dom";
@@ -34,7 +33,7 @@ function Copyright() {
 
 export default function Dashboard() {
   const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [document, setDocument] = useState(smallList[0].document);
   const [signedDocument, setSignedDocument] = useState({});
   const [verificationResult, setVerificationResult] = useState({});
@@ -71,6 +70,9 @@ export default function Dashboard() {
             </Route>
             <Route path="/verify">
               <Verify signedDocument={signedDocument} setSignedDocument={doSetSignedDocument} verificationResult={verificationResult} setVerificationResult={doSetVerificationResult}  />
+            </Route>
+            <Route path="/request">
+              <Request />
             </Route>
             <Route path="/">
               <VerifiableCredentialEdit document={document} setDocument={doSetDocument} />

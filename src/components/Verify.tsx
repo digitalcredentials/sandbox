@@ -1,15 +1,9 @@
 import React, { FC, useState } from 'react';
-
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { VerificationProps } from './Props';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { JSONEditor } from '@material-did/common';
 import { didDocument } from '../fixtures';
