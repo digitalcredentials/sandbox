@@ -1,6 +1,6 @@
 {
-  "name": "designer",
-  "homepage": "https://digitalcredentials.github.io/designer",
+  "name": "playground",
+  "homepage": "https://digitalcredentials.github.io/playground",
   "version": "4.0.0",
   "private": true,
   "dependencies": {

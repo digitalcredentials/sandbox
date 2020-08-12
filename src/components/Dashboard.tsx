@@ -55,7 +55,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Router basename="/designer">
+      <Router basename="/playground">
       <NavBar document={document} setDocument={doSetDocument} />
 
       <main className={classes.content}>
