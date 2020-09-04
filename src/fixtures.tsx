@@ -1,12 +1,13 @@
 import degree from './samples/degree.json';
 import openBadge from './samples/openBadge.json';
 import openSkillsAssertion from './samples/openSkillsAssertion.json';
+import courseCertificate from './samples/courseCertificate.json';
 import didDoc from './samples/didDoc.json';
 
 export const smallList = [
   {
-    name: 'Degree',
-    document: degree
+    name: 'Course Certificate',
+    document: courseCertificate
   },
   {
     name: 'Open Skills Assertion',
@@ -16,6 +17,10 @@ export const smallList = [
     name: 'Open Badge',
     document: openBadge
   },
+  {
+    name: 'Degree',
+    document: degree
+  }
 ];
 
 export const didDocument = didDoc;

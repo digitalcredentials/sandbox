@@ -1,27 +1,27 @@
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://www.w3.org/2018/credentials/examples/v1"
+    "https://w3c-ccg.github.io/vc-ed/contexts/v1/context.json"
   ],
-  "id": "urn:uuid:76540e30-e5df-11e9-85e2-7d52a8586afc",
+  "id": "https://example.com/assertions/1001",
   "type": [
     "VerifiableCredential",
     "Assertion"
   ],
   "issuer": {
-    "id": "did:example:edx.com"
+    "id": "did:web:edx.com"
   },
   "issuanceDate": "2020-03-10T04:24:12.164Z",
   "credentialSubject": {
-    "id": "did:example:matthew’s_did",
-    "obi:holds": {
+    "id": "did:web:matthew’s_did",
+    "hasAchieved": {
       "id": "https://example.com/badgeclasses/123",
       "type": "BadgeClass",
-      "name": "EdX MITx Supply Chain Management MicroMasters Certificate",
+      "name": "EdX MITx Supply Chain Management MicroMasters Badge",
       "image": "data:image/png;base64,...",
-      "description": "This record authenticates that EdX MITx has conferred the MicroMasters Certificate to Matthew Tracker.",
+      "description": "Awarded on completion of EdX MITx Supply Chain Management MicroMasters program",
       "criteria": {
-        "narrative": "???"
+        "narrative": "To earn this badge, the student must complete all coursework and assessment criteria for the EdX MITx Supply Chain Management MicroMasters Program"
       }
     }
   }
