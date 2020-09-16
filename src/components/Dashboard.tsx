@@ -1,32 +1,28 @@
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
-import { smallList } from '../fixtures';
+import { smallList } from "../fixtures";
 import { NavBar } from "./NavBar";
-import { useStyles } from '../styles';
-import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
-import { Issue } from './Issue';
-import { Verify } from './Verify';
-import { Request } from './Request';
+import { useStyles } from "../styles";
+import { VerifiableCredentialEdit } from "./VerifiableCredentialEdit";
+import { Issue } from "./Issue";
+import { Verify } from "./Verify";
+import { Request } from "./Request";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://digitalcredentials.mit.edu/">
         Digital Credentials Consortium
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -41,48 +37,61 @@ export default function Dashboard() {
   const doSetDocument = (doc: any) => {
     setDocument(doc);
     setSignedDocument({});
-  }
+  };
 
   const doSetSignedDocument = (signedDoc: any) => {
     setSignedDocument(signedDoc);
     setVerificationResult({});
-  }
+  };
 
   const doSetVerificationResult = (verificationRes: any) => {
     setVerificationResult(verificationRes);
-  }
+  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <Router basename="/playground">
-      <NavBar document={document} setDocument={doSetDocument} />
+        <NavBar document={document} setDocument={doSetDocument} />
 
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/issue">
-              <Issue document={document} setDocument={doSetDocument} signedDocument={signedDocument} setSignedDocument={doSetSignedDocument} />
-            </Route>
-            <Route path="/verify">
-              <Verify signedDocument={signedDocument} setSignedDocument={doSetSignedDocument} verificationResult={verificationResult} setVerificationResult={doSetVerificationResult}  />
-            </Route>
-            <Route path="/request">
-              <Request />
-            </Route>
-            <Route path="/">
-              <VerifiableCredentialEdit document={document} setDocument={doSetDocument} />
-            </Route>
-          </Switch>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/issue">
+                <Issue
+                  document={document}
+                  setDocument={doSetDocument}
+                  signedDocument={signedDocument}
+                  setSignedDocument={doSetSignedDocument}
+                />
+              </Route>
+              <Route path="/verify">
+                <Verify
+                  signedDocument={signedDocument}
+                  setSignedDocument={doSetSignedDocument}
+                  verificationResult={verificationResult}
+                  setVerificationResult={doSetVerificationResult}
+                />
+              </Route>
+              <Route path="/request">
+                <Request />
+              </Route>
+              <Route path="/">
+                <VerifiableCredentialEdit
+                  document={document}
+                  setDocument={doSetDocument}
+                />
+              </Route>
+            </Switch>
+            <Box pt={4}>
+              <Copyright />
+            </Box>
+          </Container>
+        </main>
       </Router>
     </div>
   );
