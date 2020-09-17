@@ -52,7 +52,7 @@ export default function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <Router basename="/playground">
-        <NavBar document={document} setDocument={doSetDocument} />
+        <NavBar setDocument={doSetDocument} />
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />

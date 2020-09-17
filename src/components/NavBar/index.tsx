@@ -5,7 +5,6 @@ import NavSidebar from "./NavSidebar";
 import Drawer from "./Drawer";
 
 type PropsType = {
-  document: any;
   setDocument: (document: any) => void;
 };
 
@@ -13,7 +12,7 @@ const Container = styled.div`
   font-family: Segoe UI;
 `;
 
-export const NavBar = ({ document, setDocument }: PropsType) => {
+export const NavBar = ({ setDocument }: PropsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawerClose = useCallback(() => {

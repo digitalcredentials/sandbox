@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 import { smallList } from "../../fixtures";
@@ -15,7 +15,7 @@ type StylePropsType = {
 };
 
 const Container = styled.div`
-  display: ${({ isOpen }: StylePropsType) => (isOpen ? "unset" : "none")};
+  visibility: ${({ isOpen }: StylePropsType) => (isOpen ? "unset" : "hidden")};
   position: absolute;
   z-index: 5;
   overflow: hidden;
@@ -23,15 +23,20 @@ const Container = styled.div`
   left: ${NAV_SIZE.SIDE_NAV_WIGHT};
   right: 0;
   bottom: 0;
-  background: rgba(51, 51, 51, 0.7);
+  background: ${({ isOpen }: StylePropsType) =>
+    isOpen ? "rgba(51, 51, 51, 0.7)" : "rgba(51, 51, 51, 0)"};
+  transition: all 0.5s ease-in;
 `;
 
 const InfoModal = styled.div`
   position: relative;
+  transform: ${({ isOpen }: StylePropsType) =>
+    isOpen ? "translateX(0%);" : "translateX(-100%)"};
   width: 257px;
   height: 100%;
   padding: 30px;
   background-color: ${COLORS.BLUE_CHALK};
+  transition: all 0.3s ease-in;
 `;
 
 const Title = styled.h3`
@@ -73,6 +78,8 @@ const MenuItem = styled.div`
 
 const SvgIcon = styled.span`
   position: absolute;
+  transform: ${({ isOpen }: StylePropsType) =>
+    isOpen ? "rotate(0deg)" : "rotate(180deg)"};
   right: 10px;
   top: 15px;
   display: block;
@@ -80,14 +87,19 @@ const SvgIcon = styled.span`
   padding: 20px 25px;
   border-radius: 100%;
   cursor: pointer;
+  transition: all 0.5s ease-in;
 `;
 
 const Drawer = ({ setDocument, isOpen, handleDrawerClose }: PropsType) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <Container isOpen={isOpen}>
-      <InfoModal>
-        <SvgIcon className="icon-arrow" onClick={handleDrawerClose} />
+      <InfoModal isOpen={isOpen}>
+        <SvgIcon
+          className="icon-arrow"
+          onClick={handleDrawerClose}
+          isOpen={isOpen}
+        />
         <Title>Design</Title>
         <Subtitle>Select a template</Subtitle>
         <MenuItemContainer>
