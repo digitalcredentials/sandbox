@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: Source Code Pro;
+  src: url(../fonts/SourceCodePro-Regular.ttf);
+}
+
+@font-face {
   font-family: "icons";
   src: url(../fonts/icons.ttf?nm4dd6) format("truetype");
   font-weight: normal;
