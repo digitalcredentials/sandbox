@@ -16,6 +16,7 @@ type StylePropsType = {
 
 const Container = styled.div`
   visibility: ${({ isOpen }: StylePropsType) => (isOpen ? "unset" : "hidden")};
+  display: flex;
   position: absolute;
   z-index: 5;
   overflow: hidden;
@@ -90,6 +91,11 @@ const SvgIcon = styled.span`
   transition: all 0.5s ease-in;
 `;
 
+const ClosingArea = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 const Drawer = ({ setDocument, isOpen, handleDrawerClose }: PropsType) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
@@ -120,6 +126,7 @@ const Drawer = ({ setDocument, isOpen, handleDrawerClose }: PropsType) => {
           })}
         </MenuItemContainer>
       </InfoModal>
+      <ClosingArea onClick={handleDrawerClose} />
     </Container>
   );
 };
