@@ -8,3 +8,5 @@ export const NAV_SIDEBAR_ICONS = [
   { icon: "icon-correct", link: "/verify" },
   { icon: "icon-qr-code", link: "/request" },
 ];
+
+export const MAIN_PAGE_TABS = ["source", "table", "card", "qr code"];
