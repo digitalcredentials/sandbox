@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 type PropsType = {
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
+  isOpen: boolean;
+};
+
+type StylePropsType = {
+  isOpen?: boolean;
 };
 
 const Container = styled.div`
@@ -48,10 +53,28 @@ const SvgIcon = styled.span`
 `;
 
 const SvgContainer = styled.div`
+  position: relative;
   margin-bottom: 50px;
 `;
 
-const NavSidebar = ({ handleDrawerOpen, handleDrawerClose }: PropsType) => {
+const SideArrow = styled.span`
+  display: block;
+  font-size: 20px;
+  position: absolute;
+  transform: rotate(180deg);
+  right: 5px;
+  top: 30px;
+  color: ${COLORS.LAVENDER_PINK};
+  pointer-events: none;
+  opacity: ${({ isOpen }: StylePropsType) => (isOpen ? "0" : "0.9")};
+  transition: all 0.3s ease-in-out;
+`;
+
+const NavSidebar = ({
+  handleDrawerOpen,
+  handleDrawerClose,
+  isOpen,
+}: PropsType) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <Container>
@@ -66,6 +89,9 @@ const NavSidebar = ({ handleDrawerOpen, handleDrawerClose }: PropsType) => {
         };
         return (
           <SvgContainer key={`NavSidebar-${item.icon}`}>
+            {activeTab === 0 && index === 0 && (
+              <SideArrow className="icon-arrow" isOpen={isOpen} />
+            )}
             <StyledLink to={item.link}>
               <SvgIcon
                 className={

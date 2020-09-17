@@ -29,6 +29,7 @@ export const NavBar = ({ setDocument }: PropsType) => {
       <NavSidebar
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
+        isOpen={isOpen}
       />
       <Drawer
         setDocument={setDocument}
