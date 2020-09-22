@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";

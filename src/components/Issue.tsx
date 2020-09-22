@@ -8,8 +8,6 @@ import styled from "styled-components";
 import { CircularProgress } from "@material-ui/core";
 import { SignedDocumentRequest } from "./../api/index";
 
-const fetch = require("node-fetch");
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

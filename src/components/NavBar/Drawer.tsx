@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
+import styled from "styled-components";
+import { NAV_SIZE } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 import { smallList } from "../../fixtures";
 
