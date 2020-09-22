@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
-import COLORS from "../../utils/colors";
+import React from 'react';
+import styled from 'styled-components';
+import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from '../../utils/constants';
+import COLORS from '../../utils/colors';
 
 const Container = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ const Container = styled.div`
   left: 0;
   right: 0;
   height: ${NAV_SIZE.TOP_NAV_HEIGHT};
+  z-index: 9;
   color: ${COLORS.WHITE};
   background-color: ${COLORS.METEORITE};
 `;
@@ -53,16 +54,16 @@ const TopNavPanel = () => {
     <Container>
       <TopNavLeftSide>
         <OpenMenuContainer>
-          <SvgIcon className="icon-open-menu" style={{ padding: "10px" }} />
+          <SvgIcon className="icon-open-menu" style={{ padding: '10px' }} />
         </OpenMenuContainer>
         <NavTitle>DCC Credebtial Playground</NavTitle>
       </TopNavLeftSide>
       <TopNavRightSide>
-        {TOP_NAV_PANEL_ICONS.map((item) => (
+        {TOP_NAV_PANEL_ICONS.map(item => (
           <SvgIcon
             key={`TopNavPanel-${item}`}
             className={item}
-            style={{ paddingRight: "50px" }}
+            style={{ paddingRight: '50px' }}
           />
         ))}
       </TopNavRightSide>

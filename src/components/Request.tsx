@@ -1,40 +1,46 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
+import COLORS from '../utils/colors';
 
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 var QRCode = require('qrcode.react');
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
+const Title = styled.div`
+  font: 50px Segoe UI;
+  color: ${COLORS.METEORITE};
+  text-align: center;
+  margin: 1em;
+`;
+
+const ContainerQRCode = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 534px;
+  height: 534px;
+  left: 693px;
+  top: 332px;
+  text-align: center;
+  background: #f5f5f5;
+  box-shadow: -20px 20px 40px rgba(196, 196, 196, 0.2),
+    20px -20px 40px rgba(196, 196, 196, 0.2),
+    -20px -20px 40px rgba(255, 255, 255, 0.9),
+    20px 20px 50px rgba(196, 196, 196, 0.9);
+  border-radius: 30px;
+`;
 
 export const Request: FC = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <Typography variant="h4" color="primary" gutterBottom>Request Credential Demonstration (test only)</Typography>
-      <div>
-        <QRCode value="http://127.0.0.1:5000/request/credentials" />
-      </div>
-    </div >
+    <Container>
+      <Title>Request Credential Demonstration (test only)</Title>
+      <ContainerQRCode>
+        <QRCode value="http://127.0.0.1:5000/request/credentials" size={400} />
+      </ContainerQRCode>
+    </Container>
   );
 };
-
-
-
-

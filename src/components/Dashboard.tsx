@@ -1,28 +1,28 @@
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
-import { smallList } from "../fixtures";
-import { NavBar } from "./NavBar";
-import { useStyles } from "../styles";
-import { VerifiableCredentialEdit } from "./VerifiableCredentialEdit";
-import { Issue } from "./Issue";
-import { Verify } from "./Verify";
-import { Request } from "./Request";
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
+import { smallList } from '../fixtures';
+import { NavBar } from './NavBar';
+import { useStyles } from '../styles';
+import { VerifiableCredentialEdit } from './VerifiableCredentialEdit';
+import { Issue } from './Issue';
+import { Verify } from './Verify';
+import { Request } from './Request';
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="https://digitalcredentials.mit.edu/">
         Digital Credentials Consortium
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }

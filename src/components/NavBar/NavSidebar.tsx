@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
-import COLORS from "../../utils/colors";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { NAV_SIZE, NAV_SIDEBAR_ICONS } from '../../utils/constants';
+import COLORS from '../../utils/colors';
+import { Link } from 'react-router-dom';
 
 type PropsType = {
   handleDrawerOpen: () => void;
@@ -24,7 +24,7 @@ const Container = styled.div`
   bottom: 0;
   padding-top: 55px;
   width: ${NAV_SIZE.SIDE_NAV_WIGHT};
-  background-color: ${COLORS.CORNFLOWER_BLUE};
+  background-color: ${COLORS.BARBERRY};
 `;
 
 const StyledLink = styled(Link)`
@@ -40,12 +40,12 @@ const SvgIcon = styled.span`
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   &.active {
-    color: ${COLORS.LAVENDER_PINK};
+    color: ${COLORS.WHITE};
     border-radius: 20px;
-    box-shadow: -10px 10px 20px rgba(106, 84, 190, 0.2),
-      10px -10px 20px rgba(106, 84, 190, 0.2),
-      -10px -10px 20px rgba(158, 126, 255, 0.9),
-      10px 10px 25px rgba(106, 84, 190, 0.9);
+    box-shadow: -10px 10px 20px rgba(174, 186, 25, 0.2),
+      10px -10px 20px rgba(174, 186, 25, 0.2),
+      -10px -10px 20px rgba(255, 255, 37, 0.9),
+      10px 10px 25px rgba(174, 186, 25, 0.9);
   }
   &:hover {
     color: ${COLORS.LAVENDER_PINK};
@@ -64,9 +64,9 @@ const SideArrow = styled.span`
   transform: rotate(180deg);
   right: 5px;
   top: 30px;
-  color: ${COLORS.LAVENDER_PINK};
+  color: ${COLORS.WHITE};
   pointer-events: none;
-  opacity: ${({ isOpen }: StylePropsType) => (isOpen ? "0" : "0.9")};
+  opacity: ${({ isOpen }: StylePropsType) => (isOpen ? '0' : '0.9')};
   transition: all 0.3s ease-in-out;
 `;
 
