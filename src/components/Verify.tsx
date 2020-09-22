@@ -1,15 +1,12 @@
-import React, { FC, useState } from 'react';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import { VerificationProps } from './Props';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { JSONEditor } from '@material-did/common';
-import { didDocument } from '../fixtures';
-import { CircularProgress } from '@material-ui/core';
-import styled from 'styled-components';
-import COLORS from '../utils/colors';
-import { VerifyDocumentRequest } from '../api';
+import React, { FC, useState } from "react";
+import TextField from "@material-ui/core/TextField";
+import { VerificationProps } from "./Props";
+import { JSONEditor } from "@material-did/common";
+import { didDocument } from "../fixtures";
+import { CircularProgress } from "@material-ui/core";
+import styled from "styled-components";
+import COLORS from "../utils/colors";
+import { VerifyDocumentRequest } from "../api";
 
 const Container = styled.div`
   display: flex;
@@ -54,7 +51,7 @@ const Button = styled.button`
   border-radius: 10px;
   color: ${COLORS.METEORITE};
   margin-top: 2em;
-  background: #f8f8f8;
+  background: ${COLORS.ALABASTER};
   box-shadow: -10px 10px 20px rgba(211, 211, 211, 0.2),
     10px -10px 20px rgba(211, 211, 211, 0.2),
     -10px -10px 20px rgba(255, 255, 255, 0.9),
@@ -69,7 +66,7 @@ const ContainerCredential = styled.div`
 
 const ContainerEditor = styled.div`
   overflow: hidden;
-  border: 10px solid #4827a7;
+  border: 10px solid ${COLORS.DAISY_BUSH};
   border-radius: 20px;
   height: 500px;
 `;
@@ -125,7 +122,7 @@ export const Verify: FC<VerificationProps> = ({
           value={
             verificationResult
               ? JSON.stringify(verificationResult, null, 2)
-              : '{}'
+              : "{}"
           }
         />
       </ContainerEditor>

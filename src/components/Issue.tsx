@@ -1,14 +1,14 @@
-import React, { FC, useState } from 'react';
-import COLORS from '../utils/colors';
-import TextField from '@material-ui/core/TextField';
-import { SigningProps } from './Props';
-import { JSONEditor } from '@material-did/common';
-import { didDocument } from '../fixtures';
-import styled from 'styled-components';
-import { CircularProgress } from '@material-ui/core';
-import { SignedDocumentRequest } from './../api/index';
+import React, { FC, useState } from "react";
+import COLORS from "../utils/colors";
+import TextField from "@material-ui/core/TextField";
+import { SigningProps } from "./Props";
+import { JSONEditor } from "@material-did/common";
+import { didDocument } from "../fixtures";
+import styled from "styled-components";
+import { CircularProgress } from "@material-ui/core";
+import { SignedDocumentRequest } from "./../api/index";
 
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const Button = styled.button`
   border-radius: 10px;
   color: ${COLORS.METEORITE};
   margin-top: 2em;
-  background: #f8f8f8;
+  background: ${COLORS.ALABASTER};
   box-shadow: -10px 10px 20px rgba(211, 211, 211, 0.2),
     10px -10px 20px rgba(211, 211, 211, 0.2),
     -10px -10px 20px rgba(255, 255, 255, 0.9),
@@ -68,7 +68,7 @@ const ContainerCredential = styled.div`
 
 const ContainerEditor = styled.div`
   overflow: hidden;
-  border: 10px solid #4827a7;
+  border: 10px solid ${COLORS.DAISY_BUSH};
   border-radius: 20px;
   height: 500px;
 `;
@@ -123,7 +123,7 @@ export const Issue: FC<SigningProps> = ({
       <ContainerEditor>
         <JSONEditor
           value={
-            signedDocument ? JSON.stringify(signedDocument, null, 2) : '{}'
+            signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"
           }
         />
       </ContainerEditor>

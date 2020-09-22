@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import COLORS from '../utils/colors';
+import React, { FC } from "react";
+import styled from "styled-components";
+import COLORS from "../utils/colors";
 
-var QRCode = require('qrcode.react');
+const QRCode = require("qrcode.react");
 
 const Container = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const ContainerQRCode = styled.div`
   left: 693px;
   top: 332px;
   text-align: center;
-  background: #f5f5f5;
+  background: ${COLORS.WILD_SAND};
   box-shadow: -20px 20px 40px rgba(196, 196, 196, 0.2),
     20px -20px 40px rgba(196, 196, 196, 0.2),
     -20px -20px 40px rgba(255, 255, 255, 0.9),
