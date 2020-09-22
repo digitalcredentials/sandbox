@@ -98,6 +98,12 @@ const ClosingArea = styled.div`
 
 const Drawer = ({ setDocument, isOpen, handleDrawerClose }: PropsType) => {
   const [activeTab, setActiveTab] = useState(0);
+
+  const updateSample = (index: number, document: any) => {
+    setActiveTab(index);
+    setDocument(document);
+    handleDrawerClose();
+  };
   return (
     <Container isOpen={isOpen}>
       <InfoModal isOpen={isOpen}>
@@ -110,15 +116,11 @@ const Drawer = ({ setDocument, isOpen, handleDrawerClose }: PropsType) => {
         <Subtitle>Select a template</Subtitle>
         <MenuItemContainer>
           {smallList.map((item, index) => {
-            const updateSample = () => {
-              setActiveTab(index);
-              setDocument(item.document);
-            };
             return (
               <MenuItem
                 key={item.name}
                 className={index === activeTab ? "active" : ""}
-                onClick={updateSample}
+                onClick={() => updateSample(index, item.document)}
               >
                 {item.name}
               </MenuItem>

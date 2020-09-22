@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { NAV_SIZE, NAV_SIDEBAR_ICONS } from '../../utils/constants';
-import COLORS from '../../utils/colors';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
+import COLORS from "../../utils/colors";
+import { Link, useLocation } from "react-router-dom";
 
 type PropsType = {
   handleDrawerOpen: () => void;
@@ -66,7 +66,7 @@ const SideArrow = styled.span`
   top: 30px;
   color: ${COLORS.WHITE};
   pointer-events: none;
-  opacity: ${({ isOpen }: StylePropsType) => (isOpen ? '0' : '0.9')};
+  opacity: ${({ isOpen }: StylePropsType) => (isOpen ? "0" : "0.9")};
   transition: all 0.3s ease-in-out;
 `;
 
@@ -75,29 +75,30 @@ const NavSidebar = ({
   handleDrawerClose,
   isOpen,
 }: PropsType) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const currentUrl = useLocation().pathname;
+
+  const sidebarTabHandle = (index: number) => {
+    if (currentUrl === "/" && index === 0) {
+      handleDrawerOpen();
+    } else {
+      handleDrawerClose();
+    }
+  };
+
   return (
     <Container>
       {NAV_SIDEBAR_ICONS.map((item, index) => {
-        const sidebarTabHandle = () => {
-          if (activeTab === 0 && index === 0) {
-            handleDrawerOpen();
-          } else {
-            handleDrawerClose();
-            setActiveTab(index);
-          }
-        };
         return (
           <SvgContainer key={`NavSidebar-${item.icon}`}>
-            {activeTab === 0 && index === 0 && (
+            {currentUrl === "/" && item.link === "/" && (
               <SideArrow className="icon-arrow" isOpen={isOpen} />
             )}
             <StyledLink to={item.link}>
               <SvgIcon
                 className={
-                  index === activeTab ? `${item.icon} active` : item.icon
+                  item.link === currentUrl ? `${item.icon} active` : item.icon
                 }
-                onClick={sidebarTabHandle}
+                onClick={() => sidebarTabHandle(index)}
               />
             </StyledLink>
           </SvgContainer>
