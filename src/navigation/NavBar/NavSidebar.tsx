@@ -18,7 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: ${NAV_SIZE.TOP_NAV_HEIGHT};
   left: 0;
   bottom: 0;

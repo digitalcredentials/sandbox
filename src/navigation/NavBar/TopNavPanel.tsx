@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from '../../utils/constants';
-import COLORS from '../../utils/colors';
+import React from "react";
+import styled from "styled-components";
+import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
+import COLORS from "../../utils/colors";
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -21,12 +21,13 @@ const TopNavLeftSide = styled.div`
   align-items: center;
 `;
 
-const TopNavRightSide = styled(TopNavLeftSide)``;
+// const TopNavRightSide = styled(TopNavLeftSide)``;
 
 const SvgIcon = styled.span`
   display: block;
   font-size: 40px;
-  cursor: pointer;
+  color: ${COLORS.BARBERRY};
+  filter: drop-shadow(0px 4px 4px rgba(1, 1, 1, 0.4));
   &.active {
     color: ${COLORS.LAVENDER_PINK};
   }
@@ -54,19 +55,20 @@ const TopNavPanel = () => {
     <Container>
       <TopNavLeftSide>
         <OpenMenuContainer>
-          <SvgIcon className="icon-open-menu" style={{ padding: '10px' }} />
+          <SvgIcon className="icon-open-menu" style={{ padding: "10px" }} />
         </OpenMenuContainer>
         <NavTitle>DCC Credebtial Playground</NavTitle>
       </TopNavLeftSide>
+      {/*
       <TopNavRightSide>
-        {TOP_NAV_PANEL_ICONS.map(item => (
+        {TOP_NAV_PANEL_ICONS.map((item) => (
           <SvgIcon
             key={`TopNavPanel-${item}`}
             className={item}
-            style={{ paddingRight: '50px' }}
+            style={{ paddingRight: "50px" }}
           />
         ))}
-      </TopNavRightSide>
+      </TopNavRightSide> */}
     </Container>
   );
 };

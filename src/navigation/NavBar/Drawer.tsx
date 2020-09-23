@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { NAV_SIZE } from "../../utils/constants";
 import COLORS from "../../utils/colors";
-import { smallList } from "../../fixtures";
+import { smallList } from "../../utils/fixtures";
 
 type PropsType = {
   setDocument: (document: any) => void;
