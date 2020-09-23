@@ -23,7 +23,7 @@ export const smallList = [
     document: degree,
   },
   {
-    name: "Credential Engine Example",
+    name: "Credential Engine",
     document: credentialEngine,
   },
 ];
