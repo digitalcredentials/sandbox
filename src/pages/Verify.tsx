@@ -47,7 +47,7 @@ export const Verify: FC<VerificationProps> = ({
 
   return (
     <Container>
-      <Title>Verification Demonstration</Title>
+      <Title>Verify Credential</Title>
       <Content>
         <CredentialForm handleSubmit={handleSubmit} loading={loading} />
         <Credential

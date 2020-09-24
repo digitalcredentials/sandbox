@@ -22,7 +22,7 @@ const ContainerDidDoc = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 1.6em;
+  font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 20px;
 `;

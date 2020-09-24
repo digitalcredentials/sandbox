@@ -15,15 +15,15 @@ const Container = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 1.6em;
+  font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 20px;
 `;
 
 const ContainerEditor = styled.div`
   overflow: hidden;
-  border: 10px solid ${COLORS.DAISY_BUSH};
-  border-radius: 20px;
+  border: 3px solid ${COLORS.DAISY_BUSH};
+  border-radius: 10px;
   height: 500px;
 `;
 
