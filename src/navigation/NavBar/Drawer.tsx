@@ -49,7 +49,6 @@ const Title = styled.h3`
 `;
 
 const Subtitle = styled.div`
-  font-style: italic;
   font-weight: normal;
   font-size: 13px;
   line-height: 17px;

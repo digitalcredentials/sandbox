@@ -37,7 +37,7 @@ const ContainerQRCode = styled.div`
 export const Request: FC = () => {
   return (
     <Container>
-      <Title>Request Credential Demonstration (test only)</Title>
+      <Title>Request Credential Demonstration</Title>
       <ContainerQRCode>
         <QRCode value="http://127.0.0.1:5000/request/credentials" size={400} />
       </ContainerQRCode>

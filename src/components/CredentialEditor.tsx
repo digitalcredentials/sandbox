@@ -9,7 +9,6 @@ type PropsType = {
 };
 
 const SubTitle = styled.div`
-  font-style: italic;
   font-size: 1.6em;
   font-weight: bold;
   margin-bottom: 20px;

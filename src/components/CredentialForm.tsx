@@ -22,7 +22,6 @@ const ContainerDidDoc = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-style: italic;
   font-size: 1.6em;
   font-weight: bold;
   margin-bottom: 20px;
@@ -45,7 +44,7 @@ const Button = styled.button`
 export const CredentialForm = ({ loading, handleSubmit }: PropsType) => {
   return (
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <SubTitle> Assertion Method</SubTitle>
+      <SubTitle>Assertion Method</SubTitle>
       <ContainerDidDoc>
         <TextField value={didDocument.publicKey[0].id} style={{ width: 400 }} />
       </ContainerDidDoc>

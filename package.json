@@ -13,7 +13,7 @@
     "base64url": "^3.0.1",
     "canonicalize": "^1.0.1",
     "install": "^0.13.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "npm": "^6.14.7",
     "qrcode.react": "^1.0.0",
     "react": "latest",
@@ -57,7 +57,7 @@
     "install-peers": "^1.0.3",
     "moment": "^2.26.0",
     "ramda": "^0.27.0",
-    "tsdx": "^0.13.2",
+    "tsdx": "^0.14.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.7"
   },
