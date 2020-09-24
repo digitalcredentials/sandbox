@@ -26,16 +26,16 @@ const Tab = styled.div`
   border-radius: 20px;
   margin-right: 5%;
   cursor: pointer;
-  ${BUTTON_INSET_BOX_SHADOW}
+  ${BUTTON_BOX_SHADOW}
   transition: all 0.5s ease-in-out;
   &:last-child {
     margin-right: 0;
   }
   &:hover {
-    ${BUTTON_BOX_SHADOW}
+    ${BUTTON_INSET_BOX_SHADOW}
   }
   &.active {
-    ${BUTTON_BOX_SHADOW}
+    ${BUTTON_INSET_BOX_SHADOW}
   }
 `;
 

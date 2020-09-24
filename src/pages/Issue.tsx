@@ -46,7 +46,7 @@ export const Issue: FC<SigningProps> = ({
 
   return (
     <Container>
-      <Title>Issuing Demonstration</Title>
+      <Title>Issue Credential</Title>
       <Content>
         <CredentialForm handleSubmit={handleSubmit} loading={loading} />
         <Credential

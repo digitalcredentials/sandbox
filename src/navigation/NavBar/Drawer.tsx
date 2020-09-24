@@ -36,7 +36,7 @@ const InfoModal = styled.div`
   width: 257px;
   height: 100%;
   padding: 30px;
-  background-color: ${COLORS.BLUE_CHALK};
+  background-color: ${COLORS.MELROSE};
   transition: all 0.3s ease-in;
 `;
 

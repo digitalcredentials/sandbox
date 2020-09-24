@@ -24,7 +24,7 @@ const Container = styled.div`
   bottom: 0;
   padding-top: 55px;
   width: ${NAV_SIZE.SIDE_NAV_WIGHT};
-  background-color: ${COLORS.BARBERRY};
+  background-color: ${COLORS.ATLANTIS};
 `;
 
 const StyledLink = styled(Link)`
@@ -48,7 +48,7 @@ const SvgIcon = styled.span`
       10px 10px 25px rgba(174, 186, 25, 0.9);
   }
   &:hover {
-    color: ${COLORS.LAVENDER_PINK};
+    color: ${COLORS.BLUE_RIBBON};
   }
 `;
 

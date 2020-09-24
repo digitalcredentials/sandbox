@@ -26,10 +26,10 @@ const TopNavLeftSide = styled.div`
 const SvgIcon = styled.span`
   display: block;
   font-size: 40px;
-  color: ${COLORS.BARBERRY};
+  color: ${COLORS.ATLANTIS};
   filter: drop-shadow(0px 4px 4px rgba(1, 1, 1, 0.4));
   &.active {
-    color: ${COLORS.LAVENDER_PINK};
+    color: ${COLORS.BLUE_RIBBON};
   }
 `;
 
@@ -39,7 +39,7 @@ const OpenMenuContainer = styled.div`
   align-items: center;
   width: ${NAV_SIZE.SIDE_NAV_WIGHT};
   height: 100%;
-  color: ${COLORS.LAVENDER_PINK};
+  color: ${COLORS.BLUE_RIBBON};
 `;
 
 const NavTitle = styled.h1`

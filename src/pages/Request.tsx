@@ -21,8 +21,8 @@ const ContainerQRCode = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 534px;
-  height: 534px;
+  width: 434px;
+  height: 434px;
   left: 693px;
   top: 332px;
   text-align: center;
@@ -37,9 +37,9 @@ const ContainerQRCode = styled.div`
 export const Request: FC = () => {
   return (
     <Container>
-      <Title>Request Credential Demonstration</Title>
+      <Title>Request Credential</Title>
       <ContainerQRCode>
-        <QRCode value="http://127.0.0.1:5000/request/credentials" size={400} />
+        <QRCode value="http://127.0.0.1:5000/request/credentials" size={300} />
       </ContainerQRCode>
     </Container>
   );
