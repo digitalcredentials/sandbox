@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
   border-radius: 20px;
-  background-color: ${COLORS.METEORITE};
+  background-color: ${COLORS.DAISY_BUSH};
   padding: 40px 70px;
 `;
 

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
 import { MAIN_PAGE_TABS } from "../utils/constants";
+import { BUTTON_BOX_SHADOW, BUTTON_INSET_BOX_SHADOW } from "../utils/constants";
 
 type PropsType = {
   tabIndex: number;
@@ -19,22 +20,22 @@ const Tab = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
-  color: ${COLORS.CORNFLOWER_BLUE};
-  background-color: ${COLORS.WHITE};
+  color: ${COLORS.WHITE};
+  background-color: ${COLORS.DAISY_BUSH};
   padding: 21px 0;
   border-radius: 20px;
   margin-right: 5%;
   cursor: pointer;
+  ${BUTTON_INSET_BOX_SHADOW}
   transition: all 0.5s ease-in-out;
   &:last-child {
     margin-right: 0;
   }
   &:hover {
-    color: ${COLORS.LAVENDER_PINK};
+    ${BUTTON_BOX_SHADOW}
   }
   &.active {
-    color: ${COLORS.LAVENDER_PINK};
-    background-color: ${COLORS.CORNFLOWER_BLUE};
+    ${BUTTON_BOX_SHADOW}
   }
 `;
 

@@ -13,7 +13,7 @@ const Container = styled.div`
   height: ${NAV_SIZE.TOP_NAV_HEIGHT};
   z-index: 9;
   color: ${COLORS.WHITE};
-  background-color: ${COLORS.METEORITE};
+  background-color: ${COLORS.DAISY_BUSH};
 `;
 
 const TopNavLeftSide = styled.div`
