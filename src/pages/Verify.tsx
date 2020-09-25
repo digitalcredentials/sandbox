@@ -20,7 +20,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2em;
+  font-size: 1.6em;
 `;
 
 export const Verify: FC<VerificationProps> = ({
@@ -49,7 +49,7 @@ export const Verify: FC<VerificationProps> = ({
     <Container>
       <Title>Verify Credential</Title>
       <Content>
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} />
+        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Verify Credential'} />
         <Credential
           subTitle="Signed Credential"
           value={JSON.stringify(signedDocument, null, 2)}

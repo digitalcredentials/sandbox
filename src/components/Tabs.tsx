@@ -13,7 +13,7 @@ const TabsContainer = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 `;
 
 const Tab = styled.div`
@@ -22,8 +22,8 @@ const Tab = styled.div`
   justify-content: center;
   color: ${COLORS.WHITE};
   background-color: ${COLORS.DAISY_BUSH};
-  padding: 21px 0;
-  border-radius: 20px;
+  padding: 18px 0;
+  border-radius: 15px;
   margin-right: 5%;
   cursor: pointer;
   ${BUTTON_BOX_SHADOW}
@@ -42,8 +42,8 @@ const Tab = styled.div`
 const TabText = styled.span`
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 20px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 `;

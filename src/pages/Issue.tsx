@@ -20,7 +20,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2em;
+  font-size: 1.6em;
 `;
 
 export const Issue: FC<SigningProps> = ({
@@ -48,7 +48,7 @@ export const Issue: FC<SigningProps> = ({
     <Container>
       <Title>Issue Credential</Title>
       <Content>
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} />
+        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} />
         <Credential
           subTitle="Credential"
           value={JSON.stringify(document, null, 2)}
