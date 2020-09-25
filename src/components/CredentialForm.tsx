@@ -8,6 +8,7 @@ import COLORS from "../utils/colors";
 type PropsType = {
   handleSubmit: (event: any) => void;
   loading: boolean;
+  buttonText: string;
 };
 
 const Form = styled.form`
@@ -41,14 +42,14 @@ const Button = styled.button`
     10px 10px 25px rgba(211, 211, 211, 0.9);
 `;
 
-export const CredentialForm = ({ loading, handleSubmit }: PropsType) => {
+export const CredentialForm = ({ loading, handleSubmit, buttonText }: PropsType) => {
   return (
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
       <SubTitle>Assertion Method</SubTitle>
       <ContainerDidDoc>
         <TextField value={didDocument.publicKey[0].id} style={{ width: 400 }} />
       </ContainerDidDoc>
-      <Button type="submit">Sign credential</Button>
+  <Button type="submit">{buttonText}</Button>
       <div>{loading && <CircularProgress variant="indeterminate" />}</div>
     </Form>
   );

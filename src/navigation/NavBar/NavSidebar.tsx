@@ -32,10 +32,11 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+// Left icon sizes
 const SvgIcon = styled.span`
   color: ${COLORS.WHITE};
   display: block;
-  font-size: 40px;
+  font-size: 35px;
   padding: 20px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;

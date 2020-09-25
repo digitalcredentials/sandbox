@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  font: 50px Segoe UI;
+  font: 40px Segoe UI;
   color: ${COLORS.METEORITE};
   text-align: center;
   margin: 1em;
@@ -21,8 +21,8 @@ const ContainerQRCode = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 434px;
-  height: 434px;
+  width: 260px;
+  height: 260px;
   left: 693px;
   top: 332px;
   text-align: center;
@@ -39,7 +39,7 @@ export const Request: FC = () => {
     <Container>
       <Title>Request Credential</Title>
       <ContainerQRCode>
-        <QRCode value="http://127.0.0.1:5000/request/credentials" size={300} />
+        <QRCode value="http://127.0.0.1:5000/request/credentials" size={200} />
       </ContainerQRCode>
     </Container>
   );
