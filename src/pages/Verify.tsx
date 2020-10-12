@@ -34,7 +34,7 @@ export const Verify: FC<VerificationProps> = ({
     try {
       setLoading(true);
       const response = await VerifyDocumentRequest(
-        JSON.stringify(signedDocument)
+        signedDocument
       );
       const result = response.data;
       setVerificationResult(result);

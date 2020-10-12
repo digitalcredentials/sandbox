@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { CircularProgress } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import { didDocument } from "../utils/fixtures";
 import COLORS from "../utils/colors";
+import { Config, getConfig } from "../utils/config";
+
+const CONFIG = getConfig();
 
 type PropsType = {
   handleSubmit: (event: any) => void;
@@ -47,7 +49,7 @@ export const CredentialForm = ({ loading, handleSubmit, buttonText }: PropsType)
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
       <SubTitle>Assertion Method</SubTitle>
       <ContainerDidDoc>
-        <TextField value={didDocument.publicKey[0].id} style={{ width: 400 }} />
+        <TextField value={CONFIG.signingKeyId} style={{ width: 400 }} />
       </ContainerDidDoc>
   <Button type="submit">{buttonText}</Button>
       <div>{loading && <CircularProgress variant="indeterminate" />}</div>

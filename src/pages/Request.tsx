@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
-
+import { getConfig } from "../utils/config";
 const QRCode = require("qrcode.react");
+const CONFIG = getConfig()
+const requestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/credentials`
 
 const Container = styled.div`
   display: flex;
@@ -39,7 +41,7 @@ export const Request: FC = () => {
     <Container>
       <Title>Request Credential</Title>
       <ContainerQRCode>
-        <QRCode value="http://127.0.0.1:5000/request/credentials" size={200} />
+        <QRCode value={requestEndpoint} size={200} />
       </ContainerQRCode>
     </Container>
   );

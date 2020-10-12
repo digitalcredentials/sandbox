@@ -34,7 +34,7 @@ export const Issue: FC<SigningProps> = ({
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await SignedDocumentRequest(JSON.stringify(document));
+      const response = await SignedDocumentRequest(document);
       const signedDocument = response.data;
       setSignedDocument(signedDocument);
     } catch (error) {
