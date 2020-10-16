@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from "react";
-import { JSONEditor, LinkedDataPropertyTable } from "@material-did/common";
+import { JSONEditor, LinkedDataPropertyTable, CredentialCard } from "@material-did/common";
 import { DocProps } from "../components/Props";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
@@ -50,7 +50,7 @@ export const VerifiableCredentialEdit: FC<DocProps> = ({
       onChange={editorOnChange}
     />,
     <LinkedDataPropertyTable document={document} />,
-    <InfoMessage>CredentialCard is coming soon!</InfoMessage>,
+    <CredentialCard verifiableCredential={document} />,
     <InfoMessage>QR code is coming soon!</InfoMessage>,
   ];
 
