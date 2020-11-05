@@ -18,6 +18,8 @@ export const Dashboard = () => {
   const [document, setDocument] = useState(smallList[0].document);
   const [signedDocument, setSignedDocument] = useState({});
   const [verificationResult, setVerificationResult] = useState({});
+  const [demoCredential, setDemoCredential] = useState({});
+  const [subjectDid, setSubjectDid] = useState('did:example:1234');
 
   const doSetDocument = (doc: any) => {
     setDocument(doc);
@@ -31,6 +33,14 @@ export const Dashboard = () => {
 
   const doSetVerificationResult = (verificationRes: any) => {
     setVerificationResult(verificationRes);
+  };
+
+  const doSetDemoCredential = (demoCredential: any) => {
+    setDemoCredential(demoCredential);
+  };
+
+  const doSetSubjectDid = (subjectDid: any) => {
+    setSubjectDid(subjectDid);
   };
 
   return (
@@ -55,7 +65,7 @@ export const Dashboard = () => {
             />
           </Route>
           <Route path="/request">
-            <Request />
+            <Request subjectDid={subjectDid} setSubjectDid={doSetSubjectDid} demoCredential={demoCredential} setDemoCredential={doSetDemoCredential} />
           </Route>
           <Route path="/">
             <VerifiableCredentialEdit

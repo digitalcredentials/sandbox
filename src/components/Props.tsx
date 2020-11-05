@@ -18,3 +18,14 @@ export interface VerificationProps extends HTMLAttributes<HTMLDivElement> {
   verificationResult: any;
   setVerificationResult: (verificationResult: any) => void;
 }
+
+export interface RequestProps extends HTMLAttributes<HTMLDivElement> {
+  subjectDid: string;
+  setSubjectDid: (subjectDid: string) => void;
+  demoCredential: any;
+  setDemoCredential: (demoCredential: any) => void;
+}
+
+export interface GridProps extends HTMLAttributes<HTMLDivElement> {
+  size: number;
+}

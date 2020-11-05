@@ -22,7 +22,8 @@
     "react-native": "^0.63.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "latest",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "styled-components-grid": "^2.2.2"
   },
   "scripts": {
     "predeploy": "npm run build",

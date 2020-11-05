@@ -4,6 +4,9 @@ import styled from "styled-components";
 import COLORS from "../utils/colors";
 import { VerifyDocumentRequest } from "../api";
 import { Credential, CredentialEditor, CredentialForm } from "../components";
+import { getConfig } from "../utils/config";
+
+const CONFIG = getConfig();
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +52,7 @@ export const Verify: FC<VerificationProps> = ({
     <Container>
       <Title>Verify Credential</Title>
       <Content>
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Verify Credential'} />
+        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Verify Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
         <Credential
           subTitle="Signed Credential"
           value={JSON.stringify(signedDocument, null, 2)}

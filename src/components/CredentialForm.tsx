@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CircularProgress } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import COLORS from "../utils/colors";
-import { Config, getConfig } from "../utils/config";
+import { getConfig } from "../utils/config";
 
 const CONFIG = getConfig();
 
@@ -11,6 +11,9 @@ type PropsType = {
   handleSubmit: (event: any) => void;
   loading: boolean;
   buttonText: string;
+  subtitleText: string;
+  initialValue: string;
+  valueChangeHandler?: (value: string) => void;
 };
 
 const Form = styled.form`
@@ -44,14 +47,23 @@ const Button = styled.button`
     10px 10px 25px rgba(211, 211, 211, 0.9);
 `;
 
-export const CredentialForm = ({ loading, handleSubmit, buttonText }: PropsType) => {
+
+export const CredentialForm = ({ loading, handleSubmit, buttonText, subtitleText, initialValue, valueChangeHandler }: PropsType) => {
+
+  const handleChange = (event: any) => {
+    const { target: { name, value } } = event;
+    if (valueChangeHandler) {
+      valueChangeHandler!(value);
+    }
+  }
+
   return (
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <SubTitle>Assertion Method</SubTitle>
+      <SubTitle>{subtitleText}</SubTitle>
       <ContainerDidDoc>
-        <TextField value={CONFIG.signingKeyId} style={{ width: 400 }} />
+        <TextField value={initialValue} style={{ width: 400 }} onChange={handleChange} />
       </ContainerDidDoc>
-  <Button type="submit">{buttonText}</Button>
+      <Button type="submit">{buttonText}</Button>
       <div>{loading && <CircularProgress variant="indeterminate" />}</div>
     </Form>
   );

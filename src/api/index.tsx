@@ -25,3 +25,9 @@ export const VerifyDocumentRequest = (source: string) => {
     options: {'verificationMethod': CONFIG.signingKeyId}
   });
 };
+
+export const DemoCredentialRequest = (holder: string) => {
+  return instance.post(`request/democredential/nodidproof`, {
+    'holder': holder
+  });
+};

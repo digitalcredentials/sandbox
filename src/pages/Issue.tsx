@@ -4,6 +4,9 @@ import { SigningProps } from "../components/Props";
 import styled from "styled-components";
 import { SignedDocumentRequest } from "../api/index";
 import { Credential, CredentialEditor, CredentialForm } from "../components";
+import { getConfig } from "../utils/config";
+
+const CONFIG = getConfig();
 
 const Container = styled.div`
   display: flex;
@@ -48,7 +51,7 @@ export const Issue: FC<SigningProps> = ({
     <Container>
       <Title>Issue Credential</Title>
       <Content>
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} />
+        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
         <Credential
           subTitle="Credential"
           value={JSON.stringify(document, null, 2)}
