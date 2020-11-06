@@ -1,30 +1,11 @@
 import React, { FC, useState } from "react";
-import COLORS from "../utils/colors";
 import { SigningProps } from "../components/Props";
-import styled from "styled-components";
 import { SignedDocumentRequest } from "../api/index";
 import { Credential, CredentialEditor, CredentialForm } from "../components";
 import { getConfig } from "../utils/config";
+import { Title, Content, Container } from  "../utils/styles";
 
 const CONFIG = getConfig();
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-family: Segoe UI;
-  font-size: 25px;
-  color: ${COLORS.METEORITE};
-  margin-top: 20px;
-`;
-
-const Content = styled.div`
-  display: flex;
-  margin-top: 20px;
-`;
-
-const Title = styled.div`
-  font-size: 1.6em;
-`;
 
 export const Issue: FC<SigningProps> = ({
   document,

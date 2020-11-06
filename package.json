@@ -8,6 +8,7 @@
     "@material-did/core": "0.0.0-unstable.9",
     "@material-ui/core": "latest",
     "@types/styled-components": "^5.1.4",
+    "@types/uuid": "^8.3.0",
     "acorn": "^7.4.1",
     "axios": "^0.20.0",
     "base64url": "^3.0.1",
@@ -23,7 +24,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "latest",
     "styled-components": "^5.2.0",
-    "styled-components-grid": "^2.2.2"
+    "styled-components-grid": "^2.2.2",
+    "uuid": "^8.3.1"
   },
   "scripts": {
     "predeploy": "npm run build",
