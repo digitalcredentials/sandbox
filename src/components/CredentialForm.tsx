@@ -34,7 +34,7 @@ export const CredentialForm = ({ loading, handleSubmit, buttonText, subtitleText
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
     if (valueChangeHandler) {
-      valueChangeHandler!(value);
+      valueChangeHandler(value);
     }
   }
 
