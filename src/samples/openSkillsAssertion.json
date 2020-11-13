@@ -2,6 +2,7 @@
   "@context":[
     "https://www.w3.org/2018/credentials/v1",
     "https://credreg.net/ctdlasn/schema/context/json",
+    "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json",
     "https://w3c-ccg.github.io/vc-ed-models/contexts/v1/context.json"
   ],
   "id":"https://example.com/assertions/1001",
@@ -15,7 +16,7 @@
   "issuanceDate":"2020-03-10T04:24:12.164Z",
   "credentialSubject":{
     "id":"https://example.com/profiles/bob",
-    "hasAchieved":{
+    "hasCredential":{
     "id":"https://credentialengineregistry.org/resources/ce-5d4e4f72-9e96-4ab4-a1d1-d82d518d8eb4",
       "type":"ceasn:Competency",
       "competencyText":"Demonstrate critical and creative thinking."

@@ -1,6 +1,8 @@
 {
   "@context": [
       "https://www.w3.org/2018/credentials/v1",
+      "https://www.w3.org/2018/credentials/examples/v1",
+      "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json",
       "https://w3c-ccg.github.io/vc-ed-models/contexts/v1/context.json"
   ],
   "id": "https://example.org/path/to/credential",
@@ -22,7 +24,7 @@
       "type": "Person",
       "id": "did:example:learner",
       "name": "Sample Learner",
-      "hasAchieved": {
+      "hasCredential": {
           "type": [
               "EducationalOccupationalCredential"
           ],
