@@ -20,9 +20,19 @@
     "name": "Percy",
 
     "hasCredential": {
-      "type": ["EducationalOccupationalCredential", "CourseCompletionCredential"],
-      "name": "DCC Sample Course Completion Credential",
-      "description": "<p>Learn stuff about requesting a DCC credential.</p>"
+      "type": ["EducationalOccupationalCredential", "ProgramCompletionCredential"],
+      "name": "DCC Sample Program Completion Credential",
+      "description": "<p>Learn stuff about requesting a DCC credential.</p>",
+
+      "awardedOnCompletionOf": {
+        "type": "EducationalOccupationalProgram",
+        "identifier": "program-v1:Sample",
+        "name": "Successful completion of sample request program",
+        "description": "<p>Learn stuff about DCC credential issuance</p>",
+        "numberOfCredits": { "value": "1" },
+        "startDate": "",
+        "endDate": ""
+      }
     }
   }
 }
