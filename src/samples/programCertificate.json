@@ -21,14 +21,14 @@
 
     "hasCredential": {
       "type": ["EducationalOccupationalCredential", "ProgramCompletionCredential"],
-      "name": "DCC Sample Program Completion Credential",
-      "description": "<p>Learn stuff about requesting a DCC credential.</p>",
+      "name": "DCC Program Completion Credential",
+      "description": "Awarded on completion of the digital credential program",
 
       "awardedOnCompletionOf": {
         "type": "EducationalOccupationalProgram",
         "identifier": "program-v1:Sample",
-        "name": "Successful completion of sample request program",
-        "description": "<p>Learn stuff about DCC credential issuance</p>",
+        "name": "Digital Credential Program",
+        "description": "Educational program teaching how work with digital credentials",
         "numberOfCredits": { "value": "1" },
         "startDate": "",
         "endDate": ""

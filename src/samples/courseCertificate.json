@@ -6,7 +6,10 @@
     "https://w3id.org/dcc/v1"
   ],
   "id": "https://digitalcredentials.github.io/samples/certificate/1fe91f0f-4c64-48c8-bfc8-7132f75776fe/",
-  "type": ["VerifiableCredential", "LearningCredential"],
+  "type": [
+    "VerifiableCredential",
+    "LearningCredential"
+  ],
   "issuer": {
     "type": "Issuer",
     "id": "did:web:digitalcredentials.github.io",
@@ -18,11 +21,21 @@
     "type": "Person",
     "id": "did:example:456",
     "name": "Percy",
-
     "hasCredential": {
       "type": ["EducationalOccupationalCredential", "CourseCompletionCredential"],
       "name": "DCC Sample Course Completion Credential",
-      "description": "<p>Learn stuff about requesting a DCC credential.</p>"
+      "description": "Learn stuff about requesting a DCC credential.",
+      "awardedOnCompletionOf": {
+        "type": ["Course", "Event"],
+        "courseCode": "course-v1:dcc01",
+        "name": "DCC credential course",
+        "description": "A simple course teaching how to work with DCC credentials",
+        "numberOfCredits": {
+          "value": "2.4"
+        },
+        "startDate": "2020-09-01T00:00:00.000Z",
+        "endDate": "2020-10-07T00:00:00.000Z"
+      }
     }
   }
 }
