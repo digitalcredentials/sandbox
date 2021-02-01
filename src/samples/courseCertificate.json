@@ -26,15 +26,18 @@
       "name": "DCC Sample Course Completion Credential",
       "description": "Learn stuff about requesting a DCC credential.",
       "awardedOnCompletionOf": {
-        "type": ["Course", "Event"],
+        "type": ["Course"],
         "courseCode": "course-v1:dcc01",
         "name": "DCC credential course",
         "description": "A simple course teaching how to work with DCC credentials",
         "numberOfCredits": {
           "value": "2.4"
         },
-        "startDate": "2020-09-01T00:00:00.000Z",
-        "endDate": "2020-10-07T00:00:00.000Z"
+        "hasCourseInstance": {
+          "type": "CourseInstance",
+          "startDate": "2020-09-01T00:00:00.000Z",
+          "endDate": "2020-10-07T00:00:00.000Z"
+        }
       }
     }
   }
