@@ -15,7 +15,7 @@ const QRCode = require("qrcode.react");
 
 const CONFIG = getConfig();
 
-const DefaultAppPrefix = 'dcc';
+const DefaultAppPrefix = 'dccrequest';
 const DefaultAppPath = 'request';
 const DefaultDeepLinkPrefix = `${DefaultAppPrefix}:${DefaultAppPath}`;
 const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/democredential/nodidproof`
