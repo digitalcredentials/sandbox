@@ -11,7 +11,7 @@ let CONFIG: null | Config = null;
 export function parseConfig(): Config {
   return Object.freeze({
     signAndVerifyEndpoint: process.env.SIGN_AND_VERIFY_ENDPOINT ? process.env.SIGN_AND_VERIFY_ENDPOINT  : 'https://sign-and-verify.herokuapp.com',
-    signingKeyId: didDocument.publicKey[0].id
+    signingKeyId: didDocument.assertionMethod[0].id
   });
 }
 

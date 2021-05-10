@@ -13,19 +13,7 @@ export const smallList = [
   {
     name: "Course Certificate",
     document: courseCertificate,
-  },
-  {
-    name: "Open Skills Assertion",
-    document: openSkillsAssertion,
-  },
-  {
-    name: "Open Badge",
-    document: openBadge,
-  },
-  {
-    name: "Credential Engine",
-    document: credentialEngine,
-  },
+  }
 ];
 
 export const didDocument = didDoc;
