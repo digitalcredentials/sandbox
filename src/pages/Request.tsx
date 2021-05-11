@@ -18,7 +18,7 @@ const CONFIG = getConfig();
 const DefaultAppPrefix = 'dccrequest';
 const DefaultAppPath = 'request';
 const DefaultDeepLinkPrefix = `${DefaultAppPrefix}:${DefaultAppPath}`;
-const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/democredential/nodidproof`
+const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/democredential`
 
 const ContainerQRCode = styled.div`
   display: flex;
