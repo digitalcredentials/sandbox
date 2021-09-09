@@ -48,7 +48,7 @@ export const Request: FC<RequestProps> = ({
   const [challenge, setChallenge] = useState(uuidv4());
   const [requestEndpoint, setRequestEndpoint] = useState(DefaultRequestEndpoint);
   const [deepLinkPrefix, setDeepLinkPrefix] = useState(DefaultDeepLinkPrefix);
-  const [deepLink, setDeepLink] = useState(`${DefaultDeepLinkPrefix}?request_url=${DefaultRequestEndpoint}&challenge=${challenge}`);
+  const [deepLink, setDeepLink] = useState(`${DefaultDeepLinkPrefix}?vc_request_url=${DefaultRequestEndpoint}&challenge=${challenge}`);
 
   function handleChange(fn: any): (event: any) => void {
     return function (event: any) {
@@ -87,13 +87,13 @@ export const Request: FC<RequestProps> = ({
         <div>
         <Typography style={{ width: 600 }} >
           Deep Link URL: <br />
-          <a href={`${deepLinkPrefix}?request_url=${requestEndpoint}&challenge=${challenge}`} >
-            {`${deepLinkPrefix}?request_url=${requestEndpoint}&challenge=${challenge}`}
+          <a href={`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&challenge=${challenge}`} >
+            {`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&challenge=${challenge}`}
           </a><br /> <br />
-        Deep Link QR Code: <br />
+          Deep Link QR Code: <br />
         </Typography>
         <ContainerQRCode>
-          <QRCode value={`{deepLinkPrefix}?request_url=${requestEndpoint}&challenge=${challenge}`} size={200} />
+          <QRCode value={`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&challenge=${challenge}`} size={200} />
         </ContainerQRCode>
         </div>
       </Content>
