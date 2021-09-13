@@ -1,15 +1,12 @@
 import React, { FC, useState } from "react";
-import styled from "styled-components";
-import COLORS from "../utils/colors";
 import { getConfig } from "../utils/config";
 import { DemoCredentialRequest } from "../api";
 import { RequestProps } from "../components/Props";
 import { Credential, CredentialForm } from "../components";
-import { Title, Content, Container } from "../utils/styles";
+import { Title, Content, Container, ContainerQRCode } from "../utils/styles";
 import { v4 as uuidv4 } from 'uuid';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-
 
 const QRCode = require("qrcode.react");
 
@@ -19,24 +16,6 @@ const DefaultAppPrefix = 'dccrequest';
 const DefaultAppPath = 'request';
 const DefaultDeepLinkPrefix = `${DefaultAppPrefix}:${DefaultAppPath}`;
 const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/democredential`
-
-const ContainerQRCode = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 260px;
-  height: 260px;
-  left: 693px;
-  top: 332px;
-  text-align: center;
-  background: ${COLORS.WILD_SAND};
-  box-shadow: -20px 20px 40px rgba(196, 196, 196, 0.2),
-    20px -20px 40px rgba(196, 196, 196, 0.2),
-    -20px -20px 40px rgba(255, 255, 255, 0.9),
-    20px 20px 50px rgba(196, 196, 196, 0.9);
-  border-radius: 30px;
-  margin-top: 30px;
-`;
 
 export const Request: FC<RequestProps> = ({
   subjectDid,

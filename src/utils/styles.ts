@@ -39,3 +39,21 @@ export const Button = styled.button`
     -10px -10px 20px rgba(255, 255, 255, 0.9),
     10px 10px 25px rgba(211, 211, 211, 0.9);
 `;
+
+export const ContainerQRCode = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  height: 260px;
+  left: 693px;
+  top: 332px;
+  text-align: center;
+  background: ${COLORS.WILD_SAND};
+  box-shadow: -20px 20px 40px rgba(196, 196, 196, 0.2),
+    20px -20px 40px rgba(196, 196, 196, 0.2),
+    -20px -20px 40px rgba(255, 255, 255, 0.9),
+    20px 20px 50px rgba(196, 196, 196, 0.9);
+  border-radius: 30px;
+  margin-top: 30px;
+`;
