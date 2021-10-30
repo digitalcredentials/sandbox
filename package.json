@@ -4,6 +4,7 @@
   "version": "4.0.0",
   "private": true,
   "dependencies": {
+    "@digitalbazaar/vpqr": "^2.1.0",
     "@material-did/common": "0.0.0-unstable.9",
     "@material-did/core": "0.0.0-unstable.9",
     "@material-ui/core": "latest",

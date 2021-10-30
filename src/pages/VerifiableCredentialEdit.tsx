@@ -1,8 +1,10 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import { JSONEditor, LinkedDataPropertyTable, CredentialCard } from "@material-did/common";
+import { ContainerQRCode } from "../utils/styles";
 import { DocProps } from "../components/Props";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
+import { encodeToQrCodeUrl } from "../utils/codecs";
 import { Tabs } from "../components";
 
 const Container = styled.div`
@@ -20,16 +22,16 @@ const MainContent = styled.div`
   border-radius: 20px;
 `;
 
-const InfoMessage = styled.div`
-  background-color: ${COLORS.WHITE};
-  padding: 15px;
-`;
-
 export const VerifiableCredentialEdit: FC<DocProps> = ({
   document,
   setDocument,
 }) => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [qrCodeUrl, setQrCodeUrl] = useState('');
+
+  useEffect(() => {
+    updateQrCodeUrl(document);
+  }, [document]);
 
   const handleTabSelect = useCallback(
     (newValue: number) => {
@@ -38,9 +40,16 @@ export const VerifiableCredentialEdit: FC<DocProps> = ({
     [setTabIndex]
   );
 
-  const editorOnChange = (data: string) => {
+  const updateQrCodeUrl = async (document: any) => {
+    const qrCodeUrl = await encodeToQrCodeUrl(document);
+    setQrCodeUrl(qrCodeUrl);
+  };
+
+  const editorOnChange = async (data: string) => {
     try {
-      setDocument(JSON.parse(data));
+      const dataJson = JSON.parse(data);
+      setDocument(dataJson);
+      await updateQrCodeUrl(dataJson);
     } catch (error) {}
   };
 
@@ -51,7 +60,11 @@ export const VerifiableCredentialEdit: FC<DocProps> = ({
     />,
     <LinkedDataPropertyTable document={document} />,
     <CredentialCard verifiableCredential={document} />,
-    <InfoMessage>QR code is coming soon!</InfoMessage>,
+    <ContainerQRCode>
+      {/* TODO: Using img element instead of QRCode
+      from qrcode.react due to code overflow */}
+      <img src={qrCodeUrl} alt="QR Code" width="200" />
+    </ContainerQRCode>,
   ];
 
   return (
