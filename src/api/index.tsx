@@ -26,6 +26,13 @@ export const VerifyDocumentRequest = (source: string) => {
   });
 };
 
+export const ProvePresentationRequest = (source: any) => {
+  return instance.post(`/prove/presentations`, {
+    presentation: source, 
+    options: {'verificationMethod': CONFIG.signingKeyId}
+  });
+};
+
 export const DemoCredentialRequest = (holder: string) => {
   return instance.post(`request/democredential/nodidproof`, {
     'holder': holder

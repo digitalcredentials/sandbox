@@ -2,9 +2,11 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import { JSONEditor, LinkedDataPropertyTable, CredentialCard } from "@material-did/common";
 import { ContainerQRCode } from "../utils/styles";
 import { DocProps } from "../components/Props";
+// TODO: this will become relevant when we host sign-and-verify instance
+// import { ProvePresentationRequest } from "../api/index";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
-import { encodeToQrCodeUrl } from "../utils/codecs";
+import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { Tabs } from "../components";
 
 const Container = styled.div`
@@ -41,7 +43,10 @@ export const VerifiableCredentialEdit: FC<DocProps> = ({
   );
 
   const updateQrCodeUrl = async (document: any) => {
-    const qrCodeUrl = await encodeToQrCodeUrl(document);
+    const vpUnsigned = encodeToVpUnsigned(document);
+    // TODO: this will become relevant when we host sign-and-verify instance
+    // const vpSigned = await ProvePresentationRequest(vpUnsigned);
+    const qrCodeUrl = await encodeToQrCodeUrl(vpUnsigned);
     setQrCodeUrl(qrCodeUrl);
   };
 
