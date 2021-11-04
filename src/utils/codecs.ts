@@ -7,6 +7,9 @@ const didContext = require('@digitalcredentials/did-context');
 const ed25519 = require('ed25519-signature-2020-context');
 import { CONTEXT_URL_V1, CONTEXT_V1 } from 'dcc-context';
 
+const W3C_CONTEXT_URL_2018_V1 = 'https://www.w3.org/2018/credentials/v1';
+const W3C_CONTEXT_VP_TYPE_2018_V1 = 'VerifiablePresentation';
+
 const getCustomLoader = () => {
   const customLoaderProto = documentLoaderFactory.pluginFactory
   .build({
@@ -27,6 +30,14 @@ const documentLoader = customLoaderProto.buildDocumentLoader();
 
 export const encodeToQrCodeUrl = async (vp: any) => {
   const { imageDataUrl } = await vpqr.toQrCode({vp, documentLoader});
+
   return imageDataUrl;
 };
 
+export const encodeToVpUnsigned = (vc: any) => {
+  return {
+    "@context": W3C_CONTEXT_URL_2018_V1,
+    "type": W3C_CONTEXT_VP_TYPE_2018_V1,
+    "verifiableCredential": vc
+  };
+};
