@@ -29,7 +29,7 @@ export const VerifyDocumentRequest = (source: string) => {
 export const ProvePresentationRequest = (source: any) => {
   return instance.post(`/prove/presentations`, {
     presentation: source, 
-    options: {'verificationMethod': CONFIG.signingKeyId}
+    options: {'verificationMethod': CONFIG.signingKeyId, 'challenge': CONFIG.presentationChallenge}
   });
 };
 
