@@ -8,7 +8,7 @@
   "type": ["VerifiableCredential", "LearningCredential"],
   "issuer": {
     "type": "Issuer",
-    "id": "did:web:digitalcredentials.github.io",
+    "id": "did:key:z6MkhVTX9BF3NGYX6cc7jWpbNnR7cAjH8LUffabZP8Qu4ysC",
     "name": "Sample Issuer",
     "url": "https://digitalcredentials.github.io/samples/"
   },
