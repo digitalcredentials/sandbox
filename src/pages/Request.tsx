@@ -4,7 +4,6 @@ import { DemoCredentialRequest } from "../api";
 import { RequestProps } from "../components/Props";
 import { Credential, CredentialForm } from "../components";
 import { Title, Content, Container, ContainerQRCode } from "../utils/styles";
-import { v4 as uuidv4 } from 'uuid';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
@@ -14,9 +13,10 @@ const CONFIG = getConfig();
 
 const DefaultAppPrefix = 'dccrequest';
 const DefaultAppPath = 'request';
-const DefaultDeepLinkPrefix = `${DefaultAppPrefix}:${DefaultAppPath}`;
+const DefaultDeepLinkPrefix = `${DefaultAppPrefix}://${DefaultAppPath}`;
 const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/credential`;
-const DefaultIssuerOidcLink = CONFIG.signAndVerifyEndpoint;
+const DefaultIssuerOidcLink = CONFIG.issuerOidcLink;
+const DefaultPresentationChallenge = CONFIG.presentationChallenge;
 
 export const Request: FC<RequestProps> = ({
   subjectDid,
@@ -25,7 +25,7 @@ export const Request: FC<RequestProps> = ({
   setDemoCredential,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [challenge, setChallenge] = useState(uuidv4());
+  const [challenge, setChallenge] = useState(DefaultPresentationChallenge);
   const [requestEndpoint, setRequestEndpoint] = useState(DefaultRequestEndpoint);
   const [issuerOidcLink, setIssuerOidcLink] = useState(DefaultIssuerOidcLink);
   const [deepLinkPrefix, setDeepLinkPrefix] = useState(DefaultDeepLinkPrefix);
@@ -75,7 +75,7 @@ export const Request: FC<RequestProps> = ({
           Deep Link QR Code: <br />
         </Typography>
         <ContainerQRCode>
-          <QRCode value={`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&issuer=${issuerOidcLink}&challenge=${challenge}`} size={200} />
+          <QRCode value={`${deepLinkPrefix}?vc_request_url=${encodeURIComponent(requestEndpoint)}&issuer=${encodeURIComponent(issuerOidcLink)}&challenge=${challenge}`} size={200} />
         </ContainerQRCode>
         </div>
       </Content>
