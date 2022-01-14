@@ -1,6 +1,7 @@
 import { didDocument } from "./fixtures";
 
 export type Config = {
+  issuerOidcLink: string;
   signAndVerifyEndpoint: string;
   signingKeyId: string;
   presentationChallenge: string;
@@ -12,8 +13,9 @@ let CONFIG: null | Config = null;
 export function parseConfig(): Config {
   return Object.freeze({
     signAndVerifyEndpoint: process.env.SIGN_AND_VERIFY_ENDPOINT ? process.env.SIGN_AND_VERIFY_ENDPOINT  : 'https://kezike-sign-and-verify.herokuapp.com',
+    issuerOidcLink: process.env.ISSUER_OIDC_LINK ? process.env.ISSUER_OIDC_LINK  : 'https://kezike-oidc-provider.herokuapp.com',
     signingKeyId: didDocument.assertionMethod[0].id,
-    presentationChallenge: 'dcc-pg-123'
+    presentationChallenge: 'ke12345678-0001'
   });
 }
 
