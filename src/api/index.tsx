@@ -5,7 +5,7 @@ import { getConfig } from "../utils/config";
 const CONFIG = getConfig()
 
 const instance = axios.create({
-  baseURL: CONFIG.signAndVerifyEndpoint,
+  baseURL: CONFIG.signAndVerifyApiUrl,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -15,21 +15,21 @@ const instance = axios.create({
 export const SignedDocumentRequest = (source: string) => {
   return instance.post(`issue/credentials`, {
     credential: source, 
-    options: {'verificationMethod': CONFIG.signingKeyId}
+    options: { 'verificationMethod': CONFIG.signingKeyId }
   });
 };
 
 export const VerifyDocumentRequest = (source: string) => {
   return instance.post(`verify/credentials`, {
     verifiableCredential: source, 
-    options: {'verificationMethod': CONFIG.signingKeyId}
+    options: { 'verificationMethod': CONFIG.signingKeyId }
   });
 };
 
 export const ProvePresentationRequest = (source: any) => {
   return instance.post(`/prove/presentations`, {
     presentation: source, 
-    options: {'verificationMethod': CONFIG.signingKeyId, 'challenge': CONFIG.presentationChallenge}
+    options: { 'verificationMethod': CONFIG.signingKeyId, 'challenge': CONFIG.provePresentationChallenge }
   });
 };
 
