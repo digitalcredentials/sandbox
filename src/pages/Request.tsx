@@ -14,9 +14,9 @@ const CONFIG = getConfig();
 const DefaultAppPrefix = 'dccrequest';
 const DefaultAppPath = 'request';
 const DefaultDeepLinkPrefix = `${DefaultAppPrefix}://${DefaultAppPath}`;
-const DefaultRequestEndpoint = `${CONFIG.signAndVerifyEndpoint}/request/credential`;
-const DefaultIssuerOidcLink = CONFIG.issuerOidcLink;
-const DefaultPresentationChallenge = CONFIG.presentationChallenge;
+const DefaultRequestEndpoint = `${CONFIG.signAndVerifyApiUrl}/request/credential`;
+const DefaultOidcConfigUrl = CONFIG.oidcConfigUrl;
+const DefaultChallenge = CONFIG.requestCredentialChallenge;
 
 export const Request: FC<RequestProps> = ({
   subjectDid,
@@ -25,11 +25,11 @@ export const Request: FC<RequestProps> = ({
   setDemoCredential,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [challenge, setChallenge] = useState(DefaultPresentationChallenge);
+  const [challenge, setChallenge] = useState(DefaultChallenge);
   const [requestEndpoint, setRequestEndpoint] = useState(DefaultRequestEndpoint);
-  const [issuerOidcLink, setIssuerOidcLink] = useState(DefaultIssuerOidcLink);
+  const [oidcConfigUrl, setOidcConfigUrl] = useState(DefaultOidcConfigUrl);
   const [deepLinkPrefix, setDeepLinkPrefix] = useState(DefaultDeepLinkPrefix);
-  const [deepLink, setDeepLink] = useState(`${DefaultDeepLinkPrefix}?vc_request_url=${DefaultRequestEndpoint}&issuer=${issuerOidcLink}&challenge=${challenge}`);
+  const [deepLink, setDeepLink] = useState(`${DefaultDeepLinkPrefix}?vc_request_url=${DefaultRequestEndpoint}&issuer=${oidcConfigUrl}&challenge=${challenge}`);
 
   function handleChange(fn: any): (event: any) => void {
     return function (event: any) {
@@ -62,20 +62,20 @@ export const Request: FC<RequestProps> = ({
             This is the format of the post-authentication deep link into the DCC mobile app. Update the fields below to update the links.
           </Typography>
           <TextField label='Deep Link Prefix' value={deepLinkPrefix} style={{ width: 400 }} onChange={handleChange(setDeepLinkPrefix)} /><br />
-          <TextField label='Issuer' value={issuerOidcLink} style={{ width: 500 }} onChange={handleChange(setIssuerOidcLink)} /><br />
+          <TextField label='Issuer' value={oidcConfigUrl} style={{ width: 500 }} onChange={handleChange(setOidcConfigUrl)} /><br />
           <TextField label='Challenge' value={challenge} style={{ width: 400 }} onChange={handleChange(setChallenge)} /><br />
           <TextField label='Request Endpoint' value={requestEndpoint} style={{ width: 500 }} onChange={handleChange(setRequestEndpoint)} /><br />
         </div>
         <div>
         <Typography style={{ width: 600 }} >
           Deep Link URL: <br />
-          <a href={`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&issuer=${issuerOidcLink}&challenge=${challenge}`} >
-            {`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&issuer=${issuerOidcLink}&challenge=${challenge}`}
+          <a href={`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&issuer=${oidcConfigUrl}&challenge=${challenge}`} >
+            {`${deepLinkPrefix}?vc_request_url=${requestEndpoint}&issuer=${oidcConfigUrl}&challenge=${challenge}`}
           </a><br /> <br />
           Deep Link QR Code: <br />
         </Typography>
         <ContainerQRCode>
-          <QRCode value={`${deepLinkPrefix}?vc_request_url=${encodeURIComponent(requestEndpoint)}&issuer=${encodeURIComponent(issuerOidcLink)}&challenge=${challenge}`} size={200} />
+          <QRCode value={`${deepLinkPrefix}?vc_request_url=${encodeURIComponent(requestEndpoint)}&issuer=${encodeURIComponent(oidcConfigUrl)}&challenge=${challenge}`} size={200} />
         </ContainerQRCode>
         </div>
       </Content>

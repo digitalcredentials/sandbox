@@ -1,21 +1,22 @@
 import { didDocument } from "./fixtures";
 
 export type Config = {
-  issuerOidcLink: string;
-  signAndVerifyEndpoint: string;
   signingKeyId: string;
-  presentationChallenge: string;
+  oidcConfigUrl: string;
+  signAndVerifyApiUrl: string;
+  provePresentationChallenge: string;
+  requestCredentialChallenge: string;
 }
-
 
 let CONFIG: null | Config = null;
 
 export function parseConfig(): Config {
   return Object.freeze({
-    signAndVerifyEndpoint: process.env.SIGN_AND_VERIFY_ENDPOINT ? process.env.SIGN_AND_VERIFY_ENDPOINT  : 'https://kezike-sign-and-verify.herokuapp.com',
-    issuerOidcLink: process.env.ISSUER_OIDC_LINK ? process.env.ISSUER_OIDC_LINK  : 'https://kezike-oidc-provider.herokuapp.com',
     signingKeyId: didDocument.assertionMethod[0].id,
-    presentationChallenge: 'ke12345678-0001'
+    oidcConfigUrl: process.env.OIDC_CONFIG_URL ? process.env.OIDC_CONFIG_URL  : 'https://kezike-oidc-provider.herokuapp.com',
+    signAndVerifyApiUrl: process.env.SIGN_AND_VERIFY_API_URL ? process.env.SIGN_AND_VERIFY_API_URL  : 'https://kezike-sign-and-verify.herokuapp.com',
+    provePresentationChallenge: process.env.PROVE_PRESENTATION_CHALLENGE ? process.env.PROVE_PRESENTATION_CHALLENGE : 'dcc-pg-123',
+    requestCredentialChallenge: process.env.REQUEST_CREDENTIAL_CHALLENGE ? process.env.REQUEST_CREDENTIAL_CHALLENGE : 'ke12345678-0001'
   });
 }
 
