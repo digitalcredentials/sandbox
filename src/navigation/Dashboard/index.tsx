@@ -6,8 +6,11 @@ import { VerifiableCredentialEdit, Issue, Verify, Request } from "../../pages";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
+import { getConfig } from "../../utils/config";
 import { NAV_SIZE } from "../../utils/constants";
 import Copyright from "./Copyright";
+
+const CONFIG = getConfig();
 
 const Container = styled.div`
   margin: calc(${NAV_SIZE.TOP_NAV_HEIGHT} + 40px) 8% 0
@@ -19,7 +22,7 @@ export const Dashboard = () => {
   const [signedDocument, setSignedDocument] = useState({});
   const [verificationResult, setVerificationResult] = useState({});
   const [demoCredential, setDemoCredential] = useState({});
-  const [subjectDid, setSubjectDid] = useState('did:example:1234');
+  const [subjectDid, setSubjectDid] = useState(CONFIG.subjectDIDSeed);
 
   const doSetDocument = (doc: any) => {
     setDocument(doc);

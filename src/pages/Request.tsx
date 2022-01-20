@@ -38,11 +38,10 @@ export const Request: FC<RequestProps> = ({
     }
   }
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  const handleSubmit = async (token: string) => {
     try {
       setLoading(true);
-      const response = await DemoCredentialRequest(subjectDid);
+      const response = await DemoCredentialRequest(subjectDid, token, requestEndpoint, challenge);
       const result = response.data;
       setDemoCredential(result);
     } catch (error) {
@@ -79,13 +78,8 @@ export const Request: FC<RequestProps> = ({
         </ContainerQRCode>
         </div>
       </Content>
-      <Typography style={{ width: 600 }} >
-        The stuff below simulates what the mobile app sends to the credential request endpoint (from the deep link above). This specific request doesn't generate a signed presentation; it just includes the subject/holder DID in the correct place.
-        We'll update this to generate a signed presentation when sign-and-verify is released as a node module.
-      </Typography>
-      <br />
       <Content>
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Request Demo Credential'} subtitleText='Subject DID' initialValue={subjectDid} valueChangeHandler={setSubjectDid} />
+        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Request Demo Credential'} subtitleText='Subject DID Seed' initialValue={subjectDid} valueChangeHandler={setSubjectDid} oauth={oidcConfigUrl} />
         <Credential
           subTitle="Demo Credential"
           value={JSON.stringify(demoCredential, null, 2)}

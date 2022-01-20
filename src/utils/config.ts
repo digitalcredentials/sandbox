@@ -6,6 +6,7 @@ export type Config = {
   signAndVerifyApiUrl: string;
   provePresentationChallenge: string;
   requestCredentialChallenge: string;
+  subjectDIDSeed: string;
 }
 
 let CONFIG: null | Config = null;
@@ -16,7 +17,8 @@ export function parseConfig(): Config {
     oidcConfigUrl: process.env.OIDC_CONFIG_URL ? process.env.OIDC_CONFIG_URL  : 'https://kezike-oidc-provider.herokuapp.com',
     signAndVerifyApiUrl: process.env.SIGN_AND_VERIFY_API_URL ? process.env.SIGN_AND_VERIFY_API_URL  : 'https://kezike-sign-and-verify.herokuapp.com',
     provePresentationChallenge: process.env.PROVE_PRESENTATION_CHALLENGE ? process.env.PROVE_PRESENTATION_CHALLENGE : 'dcc-pg-123',
-    requestCredentialChallenge: process.env.REQUEST_CREDENTIAL_CHALLENGE ? process.env.REQUEST_CREDENTIAL_CHALLENGE : 'ke12345678-0001'
+    requestCredentialChallenge: process.env.REQUEST_CREDENTIAL_CHALLENGE ? process.env.REQUEST_CREDENTIAL_CHALLENGE : 'ke12345678-0001',
+    subjectDIDSeed: process.env.SUBJECT_DID_SEED ? process.env.SUBJECT_DID_SEED : 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
   });
 }
 

@@ -6,6 +6,8 @@
   "dependencies": {
     "@digitalbazaar/vpqr": "^2.1.0",
     "@digitalcredentials/did-context": "^1.0.0",
+    "@digitalcredentials/did-method-key": "^2.0.3",
+    "@digitalcredentials/sign-and-verify-core": "^1.0.0",
     "@material-did/common": "0.0.0-unstable.9",
     "@material-did/core": "0.0.0-unstable.9",
     "@material-ui/core": "latest",
@@ -28,6 +30,7 @@
     "react-native": "^0.63.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
+    "react-simple-oauth2-login": "^0.5.3",
     "styled-components": "^5.2.1",
     "styled-components-grid": "^2.2.2",
     "uuid": "^8.3.1"
