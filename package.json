@@ -25,7 +25,7 @@
     "qrcode.react": "^1.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-native": "^0.63.3",
+    "react-native": "^0.64.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
     "styled-components": "^5.2.1",
