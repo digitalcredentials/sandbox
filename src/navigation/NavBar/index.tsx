@@ -4,6 +4,9 @@ import TopNavPanel from "./TopNavPanel";
 import NavSidebar from "./NavSidebar";
 import Drawer from "./Drawer";
 
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+
 type PropsType = {
   setDocument: (document: any) => void;
 };
@@ -24,9 +27,14 @@ export const NavBar = ({ setDocument }: PropsType) => {
   }, [setIsOpen]);
 
   return (
+
     <Container>
       <TopNavPanel />
-      <NavSidebar
+      {/* <Tabs variant="fullWidth" value="1" centered>
+        <Tab label="Issue" value="1" />
+        <Tab label="Verify" value="2" />
+      </Tabs> */}
+      {/* <NavSidebar
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
         isOpen={isOpen}
@@ -35,7 +43,8 @@ export const NavBar = ({ setDocument }: PropsType) => {
         setDocument={setDocument}
         isOpen={isOpen}
         handleDrawerClose={handleDrawerClose}
-      />
+      /> */}
     </Container>
+
   );
 };

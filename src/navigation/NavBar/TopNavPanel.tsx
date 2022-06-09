@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 
+import {Tab, Tabs, Link} from "@material-ui/core";
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -14,6 +16,16 @@ const Container = styled.div`
   z-index: 9;
   color: ${COLORS.WHITE};
   background-color: ${COLORS.DAISY_BUSH};
+`;
+
+const ToggleBar = styled.div`
+  position: fixed;
+  top:${NAV_SIZE.TOP_NAV_HEIGHT};
+  left:0;
+  justify-content: center;
+  background-color: ${COLORS.WHITE};
+  width: 100%;
+  z-index: 100;
 `;
 
 const TopNavLeftSide = styled.div`
@@ -52,6 +64,7 @@ const NavTitle = styled.h1`
 
 const TopNavPanel = () => {
   return (
+    <div>
     <Container>
       <TopNavLeftSide>
         <OpenMenuContainer>
@@ -69,7 +82,15 @@ const TopNavPanel = () => {
           />
         ))}
       </TopNavRightSide> */}
+      
     </Container>
+    <ToggleBar>
+    <Tabs variant="fullWidth" value="1" centered>
+        <Tab label="Issue" value="1" />
+        <Tab label="Verify" value="2" />
+      </Tabs>
+      </ToggleBar>
+    </div>
   );
 };
 

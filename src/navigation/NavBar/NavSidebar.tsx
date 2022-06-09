@@ -79,11 +79,11 @@ const NavSidebar = ({
   const currentUrl = useLocation().pathname;
 
   const sidebarTabHandle = (index: number) => {
-    if (currentUrl === "/" && index === 0) {
-      handleDrawerOpen();
-    } else {
-      handleDrawerClose();
-    }
+    // if (currentUrl === "/" && index === 0) {
+    //   handleDrawerOpen();
+    // } else {
+    //   handleDrawerClose();
+    // }
   };
 
   return (
