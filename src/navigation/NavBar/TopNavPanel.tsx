@@ -84,12 +84,6 @@ const TopNavPanel = () => {
       </TopNavRightSide> */}
       
     </Container>
-    <ToggleBar>
-    <Tabs variant="fullWidth" value="1" centered>
-        <Tab label="Issue" value="1" />
-        <Tab label="Verify" value="2" />
-      </Tabs>
-      </ToggleBar>
     </div>
   );
 };
