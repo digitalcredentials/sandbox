@@ -4,6 +4,9 @@ import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 import { Link, useLocation } from "react-router-dom";
 
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+
 type PropsType = {
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
@@ -87,25 +90,38 @@ const NavSidebar = ({
   };
 
   return (
-    <Container>
+    // <Container>
+    //   {NAV_SIDEBAR_ICONS.map((item, index) => {
+    //     return (
+    //       <SvgContainer key={`NavSidebar-${item.icon}`}>
+    //         {currentUrl === "/" && item.link === "/" && (
+    //           <SideArrow className="icon-arrow" isOpen={isOpen} />
+    //         )}
+    //         <StyledLink to={item.link}>
+    //           <SvgIcon
+    //             className={
+    //               item.link === currentUrl ? `${item.icon} active` : item.icon
+    //             }
+    //             onClick={() => sidebarTabHandle(index)}
+    //           />
+    //         </StyledLink>
+    //       </SvgContainer>
+    //     );
+    //   })}
+    // </Container>
+    <Tabs variant="fullWidth" value={currentUrl} centered>
       {NAV_SIDEBAR_ICONS.map((item, index) => {
         return (
-          <SvgContainer key={`NavSidebar-${item.icon}`}>
-            {currentUrl === "/" && item.link === "/" && (
-              <SideArrow className="icon-arrow" isOpen={isOpen} />
-            )}
-            <StyledLink to={item.link}>
-              <SvgIcon
-                className={
-                  item.link === currentUrl ? `${item.icon} active` : item.icon
-                }
-                onClick={() => sidebarTabHandle(index)}
-              />
-            </StyledLink>
-          </SvgContainer>
+          <Tab
+            label={item.label}
+            value={item.link}
+            component={Link}
+            to={item.link}
+            key={index}
+          />
         );
       })}
-    </Container>
+    </Tabs>
   );
 };
 
