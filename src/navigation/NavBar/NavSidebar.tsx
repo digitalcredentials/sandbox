@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
+import PhoneIcon from "@material-ui/icons/Phone";
 
 type PropsType = {
   handleDrawerOpen: () => void;

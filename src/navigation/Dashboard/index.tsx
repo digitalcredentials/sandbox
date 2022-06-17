@@ -48,14 +48,6 @@ export const Dashboard = () => {
       <Router basename="/playground">
         <NavBar setDocument={doSetDocument} />
         <Switch>
-          <Route path="/">
-            <Issue
-              document={document}
-              setDocument={doSetDocument}
-              signedDocument={signedDocument}
-              setSignedDocument={doSetSignedDocument}
-            />
-          </Route>
           <Route path="/verify">
             <Verify
               signedDocument={signedDocument}
@@ -66,6 +58,14 @@ export const Dashboard = () => {
           </Route>
           <Route path="/request">
             <Request subjectDid={subjectDid} setSubjectDid={doSetSubjectDid} demoCredential={demoCredential} setDemoCredential={doSetDemoCredential} />
+          </Route>
+          <Route path="/">
+            <Issue
+              document={document}
+              setDocument={doSetDocument}
+              signedDocument={signedDocument}
+              setSignedDocument={doSetSignedDocument}
+            />
           </Route>
           {/* <Route path="/">
             <VerifiableCredentialEdit
