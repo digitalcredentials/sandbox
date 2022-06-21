@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { SigningProps } from "../components/Props";
 import { SignedDocumentRequest } from "../api/index";
-import { Credential, CredentialEditor, CredentialForm } from "../components";
+import { Credential, CredentialEditor, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, Content, Container } from  "../utils/styles";
 
@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
 
-const CONFIG = getConfig();
+const CONFIG = getConfig(); 
 
 export const Issue: FC<SigningProps> = ({
   document,
@@ -58,7 +58,7 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
 
-        <CredentialForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
+        <IssueForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
         {/* <Credential
           subTitle="Credential"
           value={JSON.stringify(document, null, 2)}

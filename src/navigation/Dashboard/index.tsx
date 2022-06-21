@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
-import { VerifiableCredentialEdit, Issue, Verify, Request } from "../../pages";
+import { VerifiableCredentialEdit, Issue, Verify, About } from "../../pages";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
@@ -56,8 +56,13 @@ export const Dashboard = () => {
               setVerificationResult={doSetVerificationResult}
             />
           </Route>
-          <Route path="/request">
-            <Request subjectDid={subjectDid} setSubjectDid={doSetSubjectDid} demoCredential={demoCredential} setDemoCredential={doSetDemoCredential} />
+          <Route path="/about">
+            <About
+              signedDocument={signedDocument}
+              setSignedDocument={doSetSignedDocument}
+              verificationResult={verificationResult}
+              setVerificationResult={doSetVerificationResult}
+            />
           </Route>
           <Route path="/">
             <Issue
@@ -67,12 +72,6 @@ export const Dashboard = () => {
               setSignedDocument={doSetSignedDocument}
             />
           </Route>
-          {/* <Route path="/">
-            <VerifiableCredentialEdit
-              document={document}
-              setDocument={doSetDocument}
-            />
-          </Route> */}
         </Switch>
         <Box pt={4}>
           <Copyright />

@@ -7,7 +7,7 @@ import { Title, Content, Container } from  "../utils/styles";
 
 const CONFIG = getConfig();
 
-export const Verify: FC<VerificationProps> = ({
+export const About: FC<VerificationProps> = ({
   signedDocument,
   verificationResult,
   setVerificationResult, 
