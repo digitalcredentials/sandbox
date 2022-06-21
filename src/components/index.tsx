@@ -1,5 +1,6 @@
 export * from "./Credential";
 export * from "./CredentialEditor";
-export * from "./CredentialForm";
+export * from "./IssueForm";
+export * from "./VerifyForm";
 export * from "./Props";
 export * from "./Tabs";
