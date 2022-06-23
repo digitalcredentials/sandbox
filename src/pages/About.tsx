@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { VerificationProps } from "../components/Props";
 import { VerifyDocumentRequest } from "../api";
-import { Credential, CredentialViewer, VerifyForm } from "../components";
+import { Credential, VerifyForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, Content, Container } from  "../utils/styles";
 
@@ -39,7 +39,7 @@ export const About: FC<VerificationProps> = ({
           value={JSON.stringify(signedDocument, null, 2)}
         />
       </Content>
-      <CredentialViewer
+      <Credential
         subTitle="Verification Result"
         value={
           verificationResult

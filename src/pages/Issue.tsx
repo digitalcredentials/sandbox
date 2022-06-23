@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { SigningProps } from "../components/Props";
 import { SignedDocumentRequest } from "../api/index";
-import { Credential, CredentialViewer, IssueForm } from "../components";
+import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, Content, Container } from  "../utils/styles";
 
@@ -65,7 +65,7 @@ export const Issue: FC<SigningProps> = ({
         /> */}
       </Content>
       <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
-      <CredentialViewer
+      <Credential
         subTitle="Signed Credential"
         value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
       />
