@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
-import { VerifiableCredentialEdit, Issue, Verify, About } from "../../pages";
+import { Issue, Verify, About } from "../../pages";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
