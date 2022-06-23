@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import TopNavPanel from "./TopNavPanel";
-import NavSidebar from "./NavSidebar";
+import NavTabs from "./NavTabs";
 import Drawer from "./Drawer";
 
 type PropsType = {
@@ -27,11 +27,7 @@ export const NavBar = ({ setDocument }: PropsType) => {
 
     <Container>
       <TopNavPanel />
-      <NavSidebar
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
-        isOpen={isOpen}
-      />
+      <NavTabs />
       <Drawer
         setDocument={setDocument}
         isOpen={isOpen}
