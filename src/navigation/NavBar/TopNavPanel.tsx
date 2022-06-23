@@ -70,7 +70,7 @@ const TopNavPanel = () => {
         <OpenMenuContainer>
           <SvgIcon className="icon-open-menu" style={{ padding: "10px" }} />
         </OpenMenuContainer>
-        <NavTitle>DCC Credential Playground</NavTitle>
+        <NavTitle>DCC Developer Sandbox</NavTitle>
       </TopNavLeftSide>
       {/*
       <TopNavRightSide>
