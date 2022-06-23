@@ -21,7 +21,7 @@ const ContainerEditor = styled.div`
   height: 500px;
 `;
 
-export const CredentialEditor = ({ subTitle, value }: PropsType) => {
+export const CredentialViewer = ({ subTitle, value }: PropsType) => {
   return (
     <>
       <SubTitle>{subTitle}</SubTitle>
