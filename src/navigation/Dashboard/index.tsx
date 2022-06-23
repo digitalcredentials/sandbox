@@ -11,7 +11,7 @@ import Copyright from "./Copyright";
 
 const Container = styled.div`
   margin: calc(${NAV_SIZE.TOP_NAV_HEIGHT} + 40px) 8% 0
-    calc(${NAV_SIZE.SIDE_NAV_WIGHT} + 8%);
+    calc( 8%);
 `;
 
 export const Dashboard = () => {
