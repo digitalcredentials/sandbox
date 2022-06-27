@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { SigningProps } from "../components/Props";
 import { SignedDocumentRequest } from "../api/index";
+import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, Content, Container } from  "../utils/styles";
@@ -9,6 +10,7 @@ import { JSONEditor } from "@material-did/common";
 import Button from "@material-ui/core/Button";
 import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
+import {IssueParams} from "../api/local";
 
 const CONFIG = getConfig(); 
 
@@ -20,13 +22,36 @@ export const Issue: FC<SigningProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [options, setOptions] = useState(
+    {
+      randomDid: true,
+      didSeed: "",
+      didMethod: "did:key",
+      serializationType: "JSON-LD",
+      keySuite: "Ed25519Signature2020",
+    }
+  );
 
+  // Deprecated submit function that called external sign function
+  // const handleSubmit = async (event: any) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     const response = await SignedDocumentRequest(document);
+  //     const signedDocument = response.data;
+  //     setSignedDocument(signedDocument);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await SignedDocumentRequest(document);
-      const signedDocument = response.data;
+      const signedDocument = await SignCredential(document, options);
       setSignedDocument(signedDocument);
     } catch (error) {
       console.log(error);
@@ -34,7 +59,7 @@ export const Issue: FC<SigningProps> = ({
       setLoading(false);
     }
   };
-  
+
   const editorOnChange = async (data: string) => {
     try {
       const dataJson = JSON.parse(data);
@@ -58,7 +83,7 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
 
-        <IssueForm handleSubmit={handleSubmit} loading={loading} buttonText={'Sign Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
+        <IssueForm handleSubmit={handleSubmit} loading={loading} initialValue={options}/>
         {/* <Credential
           subTitle="Credential"
           value={JSON.stringify(document, null, 2)}
