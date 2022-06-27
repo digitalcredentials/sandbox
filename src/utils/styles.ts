@@ -3,12 +3,11 @@ import COLORS from "./colors";
 
 
 export const Title = styled.div`
-font-size: 1.6em;
+font-size: 1.5em;
 `;
 
 export const SubTitle = styled.div`
-font-size: 1.1em;
-font-weight: bold;
+font-size: 0.9em;
 margin-bottom: 20px;
 `;
 
