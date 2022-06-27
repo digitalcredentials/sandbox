@@ -12,16 +12,15 @@ import {
  } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import COLORS from "../utils/colors";
-import { getConfig } from "../utils/config";
+import { getConfig } from "../utils/config" ;
+import {IssueParams} from "../api/local";
 
 const CONFIG = getConfig();
 
 type PropsType = {
   handleSubmit: (event: any) => void;
   loading: boolean;
-  buttonText: string;
-  subtitleText: string;
-  initialValue: string;
+  initialValue: IssueParams;
   valueChangeHandler?: (value: string) => void;
 };
 
@@ -37,7 +36,7 @@ const ContainerDidDoc = styled.div`
 `;
 
 
-export const IssueForm = ({ loading, handleSubmit, buttonText, subtitleText, initialValue, valueChangeHandler }: PropsType) => {
+export const IssueForm = ({ loading, handleSubmit, initialValue, valueChangeHandler }: PropsType) => {
 
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
