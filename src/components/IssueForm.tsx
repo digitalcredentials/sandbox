@@ -21,7 +21,7 @@ type PropsType = {
   handleSubmit: (event: any) => void;
   loading: boolean;
   initialValue: IssueParams;
-  valueChangeHandler?: (value: string) => void;
+  valueChangeHandler?: (name: string, value: any) => void;
 };
 
 const Form = styled.form`
@@ -41,7 +41,7 @@ export const IssueForm = ({ loading, handleSubmit, initialValue, valueChangeHand
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
     if (valueChangeHandler) {
-      valueChangeHandler(value);
+      valueChangeHandler(name, value);
     }
   }
 
@@ -51,39 +51,42 @@ export const IssueForm = ({ loading, handleSubmit, initialValue, valueChangeHand
         {/* DID selection */}
         <FormLabel id="demo-radio-buttons-group-label">Sign With:</FormLabel>
         <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="auto"
-          name="radio-buttons-group"
+          defaultValue={initialValue.randomDid ? "true" : "false"}
+          name="randomDid"
+          onChange={handleChange}
         >
-          <FormControlLabel value="auto" control={<Radio />} label="New Random DID" />
-          <FormControlLabel value="manual" control={<Radio />} label="Existing DID" />
-          <TextField id="standard-basic" label="<paste secret key seed or mnemonic>" variant="standard" />
+          <FormControlLabel value="true" control={<Radio />} label="New Random DID" />
+          <FormControlLabel value="false" control={<Radio />} label="Existing DID" />
+          <TextField name="didSeed" id="standard-basic" label="Secret key seed" variant="standard" onChange={handleChange} />
         </RadioGroup>
         
         {/* Serialization Parameters */}
-        <FormGroup row={true}>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="VC Serialization"
-            defaultValue={1}
-            onChange={handleChange}
-          >
-            <MenuItem value={1}>JSON-LD</MenuItem>
-            <MenuItem value={2}>JWT</MenuItem>
-          </Select>
+        <Select
+          name="didMethod"
+          defaultValue={initialValue.didMethod}
+          onChange={handleChange}
+        >
+          <MenuItem value={"did:key"}>did:key</MenuItem>
+          <MenuItem value={"null"}>null</MenuItem>
+        </Select>
+        
+        <Select
+          name="serializationType"
+          defaultValue={initialValue.serializationType}
+          onChange={handleChange}
+        >
+          <MenuItem value={"JSON-LD"}>JSON-LD</MenuItem>
+          <MenuItem value={"null"}>null</MenuItem>
+        </Select>
 
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Key Suite"
-            defaultValue={1}
-            onChange={handleChange}
-          >
-            <MenuItem value={1}>Ed25519Signature2020</MenuItem>
-            <MenuItem value={2}>Jose2020</MenuItem>
-          </Select>
-        </FormGroup>
+        <Select
+          name="keySuite"
+          defaultValue={initialValue.keySuite}
+          onChange={handleChange}
+        >
+          <MenuItem value={"Ed25519Signature2020"}>Ed25519Signature2020</MenuItem>
+          <MenuItem value={"null"}>null</MenuItem>
+        </Select>
       </FormControl>
     </Form>
   );

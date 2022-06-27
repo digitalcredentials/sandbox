@@ -4,7 +4,7 @@ import { SignedDocumentRequest } from "../api/index";
 import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
-import { Title, Content, Container } from  "../utils/styles";
+import { Title, SubTitle, Content, Container } from  "../utils/styles";
 
 import { JSONEditor } from "@material-did/common";
 import Button from "@material-ui/core/Button";
@@ -46,6 +46,28 @@ export const Issue: FC<SigningProps> = ({
   //     setLoading(false);
   //   }
   // };
+
+  const optionsOnChange = async (name: string, value: any) => {
+    switch(name){
+      case "randomDid":
+        const newVal = (value == "true");
+        console.log(newVal);
+        setOptions({...options, randomDid: value == "true"});
+        break;
+      case "didSeed":
+        setOptions({...options, didSeed: value});
+        break;
+      case "didMethod":
+        setOptions({...options, didMethod: value});
+        break;
+      case "serializationType":
+        setOptions({...options, serializationType: value});
+        break;
+      case "keySuite":
+        setOptions({...options, keySuite: value});
+        break;
+    }
+  }
   
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -76,18 +98,15 @@ export const Issue: FC<SigningProps> = ({
 
   return (
     <Container>
-      {/* <Title>Issue Credential</Title> */}
+      <Title>Unsigned Credentials</Title>
+      <SubTitle>Enter your credential below</SubTitle>
       <Content>
         <JSONEditor
           value={JSON.stringify(document, null, 2)}
           onChange={editorOnChange}
         />
 
-        <IssueForm handleSubmit={handleSubmit} loading={loading} initialValue={options}/>
-        {/* <Credential
-          subTitle="Credential"
-          value={JSON.stringify(document, null, 2)}
-        /> */}
+        <IssueForm handleSubmit={handleSubmit} loading={loading} initialValue={options} valueChangeHandler={optionsOnChange}/>
       </Content>
       <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
       <Credential
