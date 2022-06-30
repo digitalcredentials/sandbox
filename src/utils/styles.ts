@@ -3,7 +3,7 @@ import COLORS from "./colors";
 
 
 export const Title = styled.div`
-font-size: 1.5em;
+font-size: 1.3em;
 `;
 
 export const SubTitle = styled.div`

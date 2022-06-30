@@ -1,16 +1,16 @@
 import React, { FC, useState } from "react";
 import { SigningProps } from "../components/Props";
-import { SignedDocumentRequest } from "../api/index";
 import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, SubTitle, Content, Container } from  "../utils/styles";
-
 import { JSONEditor } from "@material-did/common";
 import Button from "@material-ui/core/Button";
-import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
-import { ProvePresentationRequest } from "../api/index";
 import {IssueParams} from "../api/local";
+
+// import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
+// import { ProvePresentationRequest } from "../api/index";
+// import { SignedDocumentRequest } from "../api/index";
 
 const CONFIG = getConfig(); 
 
@@ -21,8 +21,8 @@ export const Issue: FC<SigningProps> = ({
   setSignedDocument,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [qrCodeUrl, setQrCodeUrl] = useState('');
-  const [options, setOptions] = useState(
+  // const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [options, setOptions] = useState<IssueParams>(
     {
       randomDid: true,
       didSeed: "",
@@ -47,28 +47,7 @@ export const Issue: FC<SigningProps> = ({
   //   }
   // };
 
-  const optionsOnChange = async (name: string, value: any) => {
-    switch(name){
-      case "randomDid":
-        const newVal = (value == "true");
-        console.log(newVal);
-        setOptions({...options, randomDid: value == "true"});
-        break;
-      case "didSeed":
-        setOptions({...options, didSeed: value});
-        break;
-      case "didMethod":
-        setOptions({...options, didMethod: value});
-        break;
-      case "serializationType":
-        setOptions({...options, serializationType: value});
-        break;
-      case "keySuite":
-        setOptions({...options, keySuite: value});
-        break;
-    }
-  }
-  
+  // Call local signing function on submit
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
@@ -89,24 +68,25 @@ export const Issue: FC<SigningProps> = ({
     } catch (error) {}
   };
 
-  const updateQrCodeUrl = async (document: any) => {
-    const vpUnsigned = encodeToVpUnsigned(document);
-    const vpSigned = (await ProvePresentationRequest(vpUnsigned)).data;
-    const qrCodeUrl = await encodeToQrCodeUrl(vpSigned);
-    setQrCodeUrl(qrCodeUrl);
-  };
+  // Deprecated code for encoding QR code
+  // const updateQrCodeUrl = async (document: any) => {
+  //   const vpUnsigned = encodeToVpUnsigned(document);
+  //   const vpSigned = (await ProvePresentationRequest(vpUnsigned)).data;
+  //   const qrCodeUrl = await encodeToQrCodeUrl(vpSigned);
+  //   setQrCodeUrl(qrCodeUrl);
+  // };
 
   return (
     <Container>
-      <Title>Unsigned Credentials</Title>
-      <SubTitle>Enter your credential below</SubTitle>
+      {/* <Title>Issue Credential</Title> */}
+      <SubTitle>Enter your unsigned credential below to issue</SubTitle>
       <Content>
         <JSONEditor
           value={JSON.stringify(document, null, 2)}
           onChange={editorOnChange}
         />
 
-        <IssueForm handleSubmit={handleSubmit} loading={loading} initialValue={options} valueChangeHandler={optionsOnChange}/>
+        <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
       </Content>
       <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
       <Credential

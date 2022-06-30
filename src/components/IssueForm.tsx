@@ -9,6 +9,7 @@ import {
   FormGroup,
   Select,
   MenuItem,
+  Box,
  } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import COLORS from "../utils/colors";
@@ -20,9 +21,10 @@ const CONFIG = getConfig();
 type PropsType = {
   handleSubmit: (event: any) => void;
   loading: boolean;
-  initialValue: IssueParams;
-  valueChangeHandler?: (name: string, value: any) => void;
+  formState: IssueParams;
+  setOptions: (options: IssueParams) => void;
 };
+
 
 const Form = styled.form`
   flex-grow: 1 1 auto;
@@ -36,58 +38,89 @@ const ContainerDidDoc = styled.div`
 `;
 
 
-export const IssueForm = ({ loading, handleSubmit, initialValue, valueChangeHandler }: PropsType) => {
+export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: PropsType) => {
 
+  // Pass changes in form state to parent component
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
-    if (valueChangeHandler) {
-      valueChangeHandler(name, value);
+    switch(name){
+      case "randomDid":
+        const newVal = (value == "true");
+        console.log(newVal);
+        setOptions({...formState, randomDid: value == "true"});
+        break;
+      case "didSeed":
+        setOptions({...formState, didSeed: value});
+        break;
+      case "didMethod":
+        setOptions({...formState, didMethod: value});
+        break;
+      case "serializationType":
+        setOptions({...formState, serializationType: value});
+        break;
+      case "keySuite":
+        setOptions({...formState, keySuite: value});
+        break;
     }
   }
 
   return (
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <FormControl>
-        {/* DID selection */}
-        <FormLabel id="demo-radio-buttons-group-label">Sign With:</FormLabel>
-        <RadioGroup
-          defaultValue={initialValue.randomDid ? "true" : "false"}
-          name="randomDid"
-          onChange={handleChange}
-        >
-          <FormControlLabel value="true" control={<Radio />} label="New Random DID" />
-          <FormControlLabel value="false" control={<Radio />} label="Existing DID" />
-          <TextField name="didSeed" id="standard-basic" label="Secret key seed" variant="standard" onChange={handleChange} />
-        </RadioGroup>
-        
-        {/* Serialization Parameters */}
-        <Select
-          name="didMethod"
-          defaultValue={initialValue.didMethod}
-          onChange={handleChange}
-        >
-          <MenuItem value={"did:key"}>did:key</MenuItem>
-          <MenuItem value={"null"}>null</MenuItem>
-        </Select>
-        
-        <Select
-          name="serializationType"
-          defaultValue={initialValue.serializationType}
-          onChange={handleChange}
-        >
-          <MenuItem value={"JSON-LD"}>JSON-LD</MenuItem>
-          <MenuItem value={"null"}>null</MenuItem>
-        </Select>
+      <Box  display="flex" alignItems="flex-start" flexDirection="column">
+        <FormControl>
+          {/* DID selection */}
+          <FormLabel id="demo-radio-buttons-group-label">Sign With:</FormLabel>
+          <RadioGroup
+            name="randomDid"
+            onChange={handleChange}
+            value={formState.randomDid.toString()}
+          >
+            <FormControlLabel value="true" control={<Radio />} label="New Random DID" />
+            <FormControlLabel value="false" control={<Radio />} label="Existing DID" />
+          </RadioGroup>
+        </FormControl>
 
-        <Select
-          name="keySuite"
-          defaultValue={initialValue.keySuite}
-          onChange={handleChange}
-        >
-          <MenuItem value={"Ed25519Signature2020"}>Ed25519Signature2020</MenuItem>
-          <MenuItem value={"null"}>null</MenuItem>
-        </Select>
-      </FormControl>
+        <FormControl>
+            {/* <FormLabel>Did Seed</FormLabel> */}
+            <TextField name="didSeed" value={formState.didSeed} id="standard-basic" label="Secret key seed" variant="standard" onChange={handleChange} />
+        </FormControl>
+          
+        <FormControl>
+          <FormLabel>Did Method</FormLabel>
+          <Select
+            name="didMethod"
+            value={formState.didMethod}
+            onChange={handleChange}
+          >
+            <MenuItem value={"did:key"}>did:key</MenuItem>
+            <MenuItem value={"null"}>null</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl>  
+          <FormLabel>Serialization Type</FormLabel>
+          <Select
+            name="serializationType"
+            value={formState.serializationType}
+            onChange={handleChange}
+          >
+            <MenuItem value={"JSON-LD"}>JSON-LD</MenuItem>
+            <MenuItem value={"null"}>null</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl>
+          <FormLabel>Key Suite</FormLabel>
+          <Select
+            name="keySuite"
+            value={formState.keySuite}
+            onChange={handleChange}
+          >
+            <MenuItem value={"Ed25519Signature2020"}>Ed25519Signature2020</MenuItem>
+            <MenuItem value={"null"}>null</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
     </Form>
   );
 };
