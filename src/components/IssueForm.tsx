@@ -15,6 +15,7 @@ import TextField from "@material-ui/core/TextField";
 import COLORS from "../utils/colors";
 import { getConfig } from "../utils/config" ;
 import {IssueParams} from "../api/local";
+import "../styles/main.css"
 
 const CONFIG = getConfig();
 
@@ -40,7 +41,7 @@ const ContainerDidDoc = styled.div`
 
 export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: PropsType) => {
 
-  // Pass changes in form state to parent component
+  // Pass any changes to the issue parameters upwards to the parent component state
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
     switch(name){
@@ -68,8 +69,20 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
       <Box  display="flex" alignItems="flex-start" flexDirection="column">
         <FormControl>
+          <FormLabel className="formLabel">Did Method</FormLabel>
+          <Select
+            name="didMethod"
+            value={formState.didMethod}
+            onChange={handleChange}
+          >
+            <MenuItem value={"did:key"}>did:key</MenuItem>
+            <MenuItem value={"null"}>null</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl>
           {/* DID selection */}
-          <FormLabel id="demo-radio-buttons-group-label">Sign With:</FormLabel>
+          <FormLabel>Sign With:</FormLabel>
           <RadioGroup
             name="randomDid"
             onChange={handleChange}
@@ -81,42 +94,30 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         </FormControl>
 
         <FormControl>
-            {/* <FormLabel>Did Seed</FormLabel> */}
+            {/* <FormLabel className="formLabel">Did Seed</FormLabel> */}
             <TextField name="didSeed" value={formState.didSeed} id="standard-basic" label="Secret key seed" variant="standard" onChange={handleChange} />
         </FormControl>
-          
-        <FormControl>
-          <FormLabel>Did Method</FormLabel>
-          <Select
-            name="didMethod"
-            value={formState.didMethod}
-            onChange={handleChange}
-          >
-            <MenuItem value={"did:key"}>did:key</MenuItem>
-            <MenuItem value={"null"}>null</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl>  
-          <FormLabel>Serialization Type</FormLabel>
-          <Select
-            name="serializationType"
-            value={formState.serializationType}
-            onChange={handleChange}
-          >
-            <MenuItem value={"JSON-LD"}>JSON-LD</MenuItem>
-            <MenuItem value={"null"}>null</MenuItem>
-          </Select>
-        </FormControl>
 
         <FormControl>
-          <FormLabel>Key Suite</FormLabel>
+          <FormLabel className="formLabel">Key Suite</FormLabel>
           <Select
             name="keySuite"
             value={formState.keySuite}
             onChange={handleChange}
           >
             <MenuItem value={"Ed25519Signature2020"}>Ed25519Signature2020</MenuItem>
+            <MenuItem value={"null"}>null</MenuItem>
+          </Select>
+        </FormControl>
+          
+        <FormControl>  
+          <FormLabel className="formLabel">Serialization Type</FormLabel>
+          <Select
+            name="serializationType"
+            value={formState.serializationType}
+            onChange={handleChange}
+          >
+            <MenuItem value={"JSON-LD"}>JSON-LD</MenuItem>
             <MenuItem value={"null"}>null</MenuItem>
           </Select>
         </FormControl>

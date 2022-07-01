@@ -1,1 +1,5 @@
 @import "./fonts.css";
+
+.formLabel {
+	padding: 10rem;
+}
