@@ -5,8 +5,13 @@ import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import { Title, SubTitle, Content, Container } from  "../utils/styles";
 import { JSONEditor } from "@material-did/common";
-import Button from "@material-ui/core/Button";
+import {
+  Box,
+  Button,
+  ThemeProvider
+} from "@material-ui/core";
 import {IssueParams} from "../api/local";
+import theme from "../utils/theme";
 
 // import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 // import { ProvePresentationRequest } from "../api/index";
@@ -77,25 +82,30 @@ export const Issue: FC<SigningProps> = ({
   // };
 
   return (
-    <Container>
-      {/* <Title>Issue Credential</Title> */}
-      <SubTitle>Enter your unsigned credential below to issue</SubTitle>
-      <Content>
-        <JSONEditor
-          value={JSON.stringify(document, null, 2)}
-          onChange={editorOnChange}
-        />
+    <ThemeProvider theme={theme}>
+      <Container>
+        {/* <Title>Issue Credential</Title> */}
+        <Box display="flex">
+        {/* <h1>Unsigned Credential</h1>
+        <h2>Enter your credential below</h2> */}
+        </Box>
+        <Content>
+          <JSONEditor
+            value={JSON.stringify(document, null, 2)}
+            onChange={editorOnChange}
+          />
 
-        <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
-      </Content>
-      <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
-      <Credential
-        subTitle="Signed Credential"
-        value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
-      />
-      <Button color="primary">
-        Verify this Credential
-      </Button>
-    </Container>
+          <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
+        </Content>
+        <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
+        <Credential
+          subTitle="Signed Credential"
+          value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
+        />
+        <Button color="primary">
+          Verify this Credential
+        </Button>
+      </Container>
+    </ThemeProvider>
   );
 };
