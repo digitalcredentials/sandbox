@@ -4,8 +4,8 @@ import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 import { Link, useLocation } from "react-router-dom";
 
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 
 const NavTabs = () => {
   const currentUrl = useLocation().pathname;

@@ -1,5 +1,5 @@
+//TODO: Change this to use mui v5.0
 import { createTheme } from '@material-ui/core/styles';
-import { grey, deepPurple, amber } from '@material-ui/core/colors';
 import COLORS from "./colors";
 
 const theme = createTheme({

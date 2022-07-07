@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NAV_SIZE, TOP_NAV_PANEL_ICONS } from "../../utils/constants";
 import COLORS from "../../utils/colors";
 
-import {Tab, Tabs, Link} from "@material-ui/core";
+import {Tab, Tabs, Link} from "@mui/material";
 
 const Container = styled.div`
   display: flex;

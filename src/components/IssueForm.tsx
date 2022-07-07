@@ -10,8 +10,8 @@ import {
   Select,
   MenuItem,
   Box,
- } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
+ } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import COLORS from "../utils/colors";
 import { getConfig } from "../utils/config" ;
 import {IssueParams} from "../api/local";
