@@ -3,12 +3,12 @@ import { SigningProps } from "../components/Props";
 import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
-import { Title, SubTitle, Content, Container } from  "../utils/styles";
 import { JSONEditor } from "@material-did/common";
 import {
   Box,
   Button,
-  ThemeProvider
+  Grid,
+  ThemeProvider,
 } from "@material-ui/core";
 import {IssueParams} from "../api/local";
 import theme from "../utils/theme";
@@ -83,29 +83,36 @@ export const Issue: FC<SigningProps> = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
+      <Grid container spacing={4}>
         {/* <Title>Issue Credential</Title> */}
-        <Box display="flex">
+        <Box sx={{ display: "flex", flexGrow: 1 }}>
         {/* <h1>Unsigned Credential</h1>
         <h2>Enter your credential below</h2> */}
         </Box>
-        <Content>
+        <Grid item xs={12} sm={8}>
           <JSONEditor
             value={JSON.stringify(document, null, 2)}
             onChange={editorOnChange}
           />
-
+        </Grid>
+        <Grid item xs={12} sm={4}>
           <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
-        </Content>
-        <Button onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
-        <Credential
-          subTitle="Signed Credential"
-          value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
-        />
-        <Button color="primary">
-          Verify this Credential
-        </Button>
-      </Container>
+        </Grid>
+        <Grid item xs={12} >
+          <Button onClick={handleSubmit} variant="contained" size="large" color="primary" fullWidth={true}>Issue Credential</Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Credential
+            subTitle="Signed Credential"
+            value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button color="primary" variant="outlined" fullWidth={true}>
+            Verify this Credential
+          </Button>
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 };
