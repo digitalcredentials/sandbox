@@ -9,9 +9,10 @@ import {
   Button,
   Grid,
   ThemeProvider,
-} from "@material-ui/core";
+} from "@mui/material";
 import {IssueParams} from "../api/local";
 import theme from "../utils/theme";
+
 
 // import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 // import { ProvePresentationRequest } from "../api/index";
@@ -99,7 +100,7 @@ export const Issue: FC<SigningProps> = ({
           <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
         </Grid>
         <Grid item xs={12} >
-          <Button onClick={handleSubmit} variant="contained" size="large" color="primary" fullWidth={true}>Issue Credential</Button>
+          <Button sx={{width: "600px"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
         </Grid>
         <Grid item xs={12}>
           <Credential
@@ -112,6 +113,8 @@ export const Issue: FC<SigningProps> = ({
             Verify this Credential
           </Button>
         </Grid>
+        <Button sx={{ flexDirection: 'column' }}>Example</Button>;
+
       </Grid>
     </ThemeProvider>
   );
