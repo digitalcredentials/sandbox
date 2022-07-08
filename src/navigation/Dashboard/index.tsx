@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
+import Box from "@material-ui/core/Box";
 import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
 import { Issue, Verify, About } from "../../pages";
@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { NAV_SIZE } from "../../utils/constants";
 import Copyright from "./Copyright";
+import { StyledEngineProvider } from '@mui/material/styles';
+
 
 const Container = styled.div`
-  margin: calc(${NAV_SIZE.TOP_NAV_HEIGHT} + 40px) 8% 0
+  margin: calc(${NAV_SIZE.TOP_NAV_HEIGHT} + 15px) 8% 0
     calc( 8%);
 `;
 
@@ -44,6 +46,7 @@ export const Dashboard = () => {
   };
 
   return (
+    <StyledEngineProvider injectFirst>
     <Container>
       <Router basename="/playground">
         <NavBar setDocument={doSetDocument} />
@@ -78,5 +81,6 @@ export const Dashboard = () => {
         </Box>
       </Router>
     </Container>
+    </StyledEngineProvider>
   );
 };

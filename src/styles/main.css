@@ -1,5 +1,13 @@
 @import "./fonts.css";
 
-.formLabel {
-	padding: 12rem;
+.MuiFormControl-root {
+	margin-top: 1rem;
+}
+
+.MuiTextField-root {
+	margin-top: -.75rem;
+}
+
+.MuiFormLabel-root {
+	padding-bottom: .3rem;
 }
