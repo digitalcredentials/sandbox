@@ -11,7 +11,6 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import {IssueParams} from "../api/local";
-import theme from "../utils/theme";
 
 
 // import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
@@ -83,39 +82,37 @@ export const Issue: FC<SigningProps> = ({
   // };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container spacing={4}>
-        {/* <Title>Issue Credential</Title> */}
-        <Box sx={{ display: "flex", flexGrow: 1 }}>
-        {/* <h1>Unsigned Credential</h1>
-        <h2>Enter your credential below</h2> */}
-        </Box>
-        <Grid item xs={12} sm={8}>
-          <JSONEditor
-            value={JSON.stringify(document, null, 2)}
-            onChange={editorOnChange}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
-        </Grid>
-        <Grid item xs={12} >
-          <Button sx={{width: "600px"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Credential
-            subTitle="Signed Credential"
-            value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Button color="primary" variant="outlined" fullWidth={true}>
-            Verify this Credential
-          </Button>
-        </Grid>
-        <Button sx={{ flexDirection: 'column' }}>Example</Button>;
-
+    <Grid container spacing={4}>
+      {/* <Title>Issue Credential</Title> */}
+      <Box sx={{ display: "flex", flexGrow: 1 }}>
+      {/* <h1>Unsigned Credential</h1>
+      <h2>Enter your credential below</h2> */}
+      </Box>
+      <Grid item xs={12} sm={8}>
+        <JSONEditor
+          value={JSON.stringify(document, null, 2)}
+          onChange={editorOnChange}
+        />
       </Grid>
-    </ThemeProvider>
+      <Grid item xs={12} sm={4}>
+        <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
+      </Grid>
+      <Grid item xs={12} >
+        <Button sx={{width: "600px"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
+      </Grid>
+      <Grid item xs={12}>
+        <Credential
+          subTitle="Signed Credential"
+          value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Button color="primary" variant="outlined" fullWidth={true}>
+          Verify this Credential
+        </Button>
+      </Grid>
+      <Button sx={{ flexDirection: 'column' }}>Example</Button>;
+
+    </Grid>
   );
 };

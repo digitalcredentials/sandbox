@@ -67,7 +67,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
 
   return (
     <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <Box  display="flex" alignItems="flex-start" flexDirection="column">
+      <Box  sx={{alignContent: "center"}} display="flex" alignItems="flex-start" flexDirection="column">
         <FormControl>
           <FormLabel className="formLabel">Did Method</FormLabel>
           <Select
@@ -80,9 +80,9 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </Select>
         </FormControl>
 
-        <FormControl>
+        <FormControl margin="none">
           {/* DID selection */}
-          <FormLabel>Sign With:</FormLabel>
+          <FormLabel>Sign With</FormLabel>
           <RadioGroup
             name="randomDid"
             onChange={handleChange}

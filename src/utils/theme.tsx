@@ -3,31 +3,31 @@ import { createTheme } from '@material-ui/core/styles';
 import COLORS from "./colors";
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: COLORS.PRIMARY_BLUE,
-    },
-    secondary: {
-      main: COLORS.SECONDARY_RED,
-    },
-    info: {
-      main: COLORS.GREY,
-    }
-  },
+  // palette: {
+  //   primary: {
+  //     main: COLORS.PRIMARY_BLUE,
+  //   },
+  //   secondary: {
+  //     main: COLORS.SECONDARY_RED,
+  //   },
+  //   info: {
+  //     main: COLORS.GREY,
+  //   }
+  // },
 });
 
 theme.props = {
   MuiInputLabel: {
-    shrink: true,
+    // shrink: true,
   },
 };
 
 theme.overrides = {
   MuiFormLabel: {
     root: {
-      color: COLORS.GREY,
-      marginTop: "1.5rem",
-      marginBottom: "-.7rem",
+      // color: COLORS.GREY,
+      // marginTop: "1.5rem",
+      // marginBottom: "-.7rem",
     }
   },
   MuiInputLabel: {
