@@ -97,8 +97,8 @@ export const Issue: FC<SigningProps> = ({
       <Grid item xs={12} sm={4}>
         <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
       </Grid>
-      <Grid item xs={12} >
-        <Button sx={{width: "600px"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
+      <Grid item xs={12}>
+        <Button sx={{width: "100%"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
       </Grid>
       <Grid item xs={12}>
         <Credential
@@ -106,13 +106,11 @@ export const Issue: FC<SigningProps> = ({
           value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
         />
       </Grid>
-      <Grid item xs={12}>
-        <Button color="primary" variant="outlined" fullWidth={true}>
+      <Grid item xs={12} sx={{textAlign: "center"}}>
+        <Button sx={{width: "20rem"}} color="primary" variant="outlined">
           Verify this Credential
         </Button>
       </Grid>
-      <Button sx={{ flexDirection: 'column' }}>Example</Button>;
-
     </Grid>
   );
 };
