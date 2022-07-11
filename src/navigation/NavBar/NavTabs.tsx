@@ -16,7 +16,13 @@ const NavTabs = () => {
       value={currentUrl}
       centered
       //TODO: reference constants!!!
-      sx={{mt: "105px"}}
+      sx={{
+        mt: "105px",
+        position: "sticky",
+        top: "0px",
+        backgroundColor: "white",
+        zIndex: 9999,
+      }}
     >
       {NAV_SIDEBAR_ICONS.map((item, index) => {
         return (

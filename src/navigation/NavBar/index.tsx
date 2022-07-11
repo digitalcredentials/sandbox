@@ -1,3 +1,4 @@
+//TODO: get rid of this file, it's no longer in use!
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import TopNavPanel from "./TopNavPanel";

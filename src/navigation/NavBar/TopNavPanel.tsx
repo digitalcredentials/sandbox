@@ -8,7 +8,7 @@ import {Tab, Tabs, Link} from "@mui/material";
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
