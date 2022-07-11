@@ -86,9 +86,19 @@ export const Issue: FC<SigningProps> = ({
     <Grid container spacing={4} sx={{mt: "-.5rem"}}>
       {/* <Title>Issue Credential</Title> */}
       <Grid item xs={12} sm={8}>
-        <Box sx={{ display: "flex", flexGrow: 1, alignItems: "baseline", mb: ".75rem"}}>
-          <Typography variant="h1">Unsigned Credential</Typography>
-          <Typography variant="h2" sx={{ml: "2%"}}>Enter your credential below</Typography>
+        <Box sx={{
+          display: "flex",
+          flexGrow: 1,
+          alignItems: "baseline",
+          mb: ".75rem"
+        }}>
+          <Typography
+            variant="h1"
+          >Unsigned Credential</Typography>
+          <Typography
+            variant="h2"
+            sx={{ml: "2%"}}
+          >Enter your credential below</Typography>
         </Box>
         <Credential
           value={JSON.stringify(document, null, 2)}
@@ -98,21 +108,43 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
       {/* <Divider orientation="vertical" /> */}
       <Grid item xs={12} sm={4}>
-        <Typography variant="h1" sx={{mb: "-0.75rem", pl: "0.5rem"}}>Signing Parameters</Typography>
-        <IssueForm handleSubmit={handleSubmit} loading={loading} formState={options} setOptions={setOptions}/>
+        <Typography
+          variant="h1"
+          sx={{mb: "-1rem", pl: "0.5rem"}}
+        >Signing Parameters</Typography>
+        <IssueForm
+          handleSubmit={handleSubmit}
+          loading={loading}
+          formState={options}
+          setOptions={setOptions}
+        />
       </Grid>
       <Grid item xs={12} sx={{textAlign: "center"}}>
-        <Button sx={{width: "30%"}} onClick={handleSubmit} variant="contained" size="large" color="primary">Issue Credential</Button>
+        <Button
+          sx={{width: "30%"}}
+          onClick={handleSubmit}
+          variant="contained"
+          size="large"
+          color="primary">Issue Credential</Button>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h1" sx={{mb: "-0.75rem", pl: "0.5rem", textAlign: "center"}}>Signed Credential</Typography>
+        <Typography
+          variant="h1"
+          sx={{
+            pl: "0.5rem",
+            textAlign: "center"}}
+        >Signed Credential</Typography>
         <Credential
           editing={false}  
           value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
         />
       </Grid>
       <Grid item xs={12} sx={{textAlign: "center"}}>
-        <Button sx={{width: "60%"}} color="primary" variant="outlined">
+        <Button
+          sx={{width: "30%"}}
+          color="primary"
+          variant="contained"
+        >
           Verify this Credential
         </Button>
       </Grid>
