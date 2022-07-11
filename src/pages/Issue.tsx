@@ -108,10 +108,10 @@ export const Issue: FC<SigningProps> = ({
         />
       </Grid>
 
-      {/* Submit Button */}
+      {/* Issue Button */}
       <Grid item xs={12} sx={{textAlign: "center"}}>
         <Button
-          sx={{width: "30%"}}
+          sx={{width: "50%"}}
           onClick={handleSubmit}
           variant="contained"
           size="large"
