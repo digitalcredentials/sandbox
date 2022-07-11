@@ -4,7 +4,7 @@ import COLORS from "../utils/colors";
 import { JSONEditor } from "@material-did/common";
 
 type PropsType = {
-  subTitle: string;
+  subTitle?: string;
   value: string;
 };
 
