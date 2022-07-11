@@ -22,6 +22,7 @@ const NavTabs = () => {
         top: "0px",
         backgroundColor: "white",
         zIndex: 9999,
+        boxShadow: "0px 5px 10px -10px black",
       }}
     >
       {NAV_SIDEBAR_ICONS.map((item, index) => {
