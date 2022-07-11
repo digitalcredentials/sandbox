@@ -11,7 +11,13 @@ const NavTabs = () => {
   const currentUrl = useLocation().pathname;
 
   return (
-    <Tabs variant="fullWidth" value={currentUrl} centered>
+    <Tabs
+      variant="fullWidth"
+      value={currentUrl}
+      centered
+      //TODO: reference constants!!!
+      sx={{mt: "105px"}}
+    >
       {NAV_SIDEBAR_ICONS.map((item, index) => {
         return (
           <Tab
