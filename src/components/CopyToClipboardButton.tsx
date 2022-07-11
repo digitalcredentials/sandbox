@@ -1,3 +1,7 @@
+// Button that copies to clipboard whatever string it is given as a prop
+// Based on https://codesandbox.io/s/react-copy-to-clipboard-button-with-material-ui-c8sly3?from-embed
+
+
 import {
 	Button,
 	Box,
