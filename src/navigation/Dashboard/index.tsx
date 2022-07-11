@@ -9,6 +9,9 @@ import styled from "styled-components";
 import { NAV_SIZE } from "../../utils/constants";
 import Copyright from "./Copyright";
 import { StyledEngineProvider } from '@mui/material/styles';
+import TopNavPanel from "../NavBar/TopNavPanel";
+import NavTabs from "../NavBar/NavTabs";
+
 
 
 const Container = styled.div`
@@ -50,7 +53,8 @@ export const Dashboard = () => {
     <StyledEngineProvider injectFirst>
     <Box>
       <Router basename="/playground">
-        <NavBar setDocument={doSetDocument} />
+        <TopNavPanel/>
+        <NavTabs/>
         <Box
           sx={{
             //TODO: change these margins to a const reference!!!
