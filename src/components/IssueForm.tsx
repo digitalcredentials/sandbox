@@ -110,7 +110,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
               name="didSeed"
               value={formState.didSeed}
               id="standard-basic"
-              label="Secret key seed"
+              label="Paste secret key seed"
               variant="standard"
               onChange={handleChange}
             />
