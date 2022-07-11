@@ -38,21 +38,6 @@ export const Issue: FC<SigningProps> = ({
     }
   );
 
-  // Deprecated submit function that called external sign function
-  // const handleSubmit = async (event: any) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     const response = await SignedDocumentRequest(document);
-  //     const signedDocument = response.data;
-  //     setSignedDocument(signedDocument);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   // Call local signing function on submit
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -67,6 +52,7 @@ export const Issue: FC<SigningProps> = ({
     }
   };
 
+  // Update stored unsigned credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     try {
       const dataJson = JSON.parse(data);
@@ -84,7 +70,7 @@ export const Issue: FC<SigningProps> = ({
 
   return (
     <Grid container spacing={4} sx={{mt: "-.5rem"}}>
-      {/* <Title>Issue Credential</Title> */}
+      {/* Unsigned Credential Editor Section */}
       <Grid item xs={12} sm={8}>
         <Box sx={{
           display: "flex",
@@ -107,6 +93,8 @@ export const Issue: FC<SigningProps> = ({
         />
       </Grid>
       {/* <Divider orientation="vertical" /> */}
+      
+      {/* Signing Parameters */}
       <Grid item xs={12} sm={4}>
         <Typography
           variant="h1"
@@ -119,6 +107,8 @@ export const Issue: FC<SigningProps> = ({
           setOptions={setOptions}
         />
       </Grid>
+
+      {/* Submit Button */}
       <Grid item xs={12} sx={{textAlign: "center"}}>
         <Button
           sx={{width: "30%"}}
@@ -127,6 +117,8 @@ export const Issue: FC<SigningProps> = ({
           size="large"
           color="primary">Issue Credential</Button>
       </Grid>
+      
+      {/* Signed Credential Section */}
       <Grid item xs={12}>
         <Typography
           variant="h1"
@@ -139,6 +131,8 @@ export const Issue: FC<SigningProps> = ({
           value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
         />
       </Grid>
+
+      {/* Button to move to verify section */}
       <Grid item xs={12} sx={{textAlign: "center"}}>
         <Button
           sx={{width: "30%"}}

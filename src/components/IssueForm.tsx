@@ -33,11 +33,6 @@ const Form = styled.form`
   padding: 10px;
 `;
 
-const ContainerDidDoc = styled.div`
-  font-size: 0.3em;
-  color: ${COLORS.METEORITE};
-`;
-
 
 export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: PropsType) => {
 
@@ -75,6 +70,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         flexDirection="column"
       >
 
+        {/* Did Method Selection */}
         <FormControl>
           <FormLabel className="formLabel">Did Method</FormLabel>
           <Select
@@ -87,6 +83,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </Select>
         </FormControl>
 
+        {/* Radio to choose whether to autogenerate did */}
         <FormControl margin="none">
           <FormLabel>Sign With</FormLabel>
           <RadioGroup
@@ -107,6 +104,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </RadioGroup>
         </FormControl>
 
+        {/* optional did seed */}
         <FormControl>
             <TextField
               name="didSeed"
@@ -118,6 +116,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
             />
         </FormControl>
 
+        {/* Key Suite Selection */}
         <FormControl>
           <FormLabel className="formLabel">Key Suite</FormLabel>
           <Select
@@ -134,6 +133,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </Select>
         </FormControl>
           
+        {/* Serialization Type Selection */}
         <FormControl>  
           <FormLabel className="formLabel">
             Serialization Type

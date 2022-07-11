@@ -16,16 +16,10 @@ type PropsType = {
   onChange?: (value: string, event?: any) => void;
 };
 
-// const CopyToClipboardButton = () => {
-//   const [open, setOpen] = useState(false)
-// }
 
-// const handleClick = () => {
-//   setOpen(true)
-//   navigator.clipboard.writeText(window.location.toString()))
-// }
-
+// Editor window for editing, viewing credentials
 export const Credential = ({ value, editing, onChange }: PropsType) => {
+  // Editor version
   if (editing) {
     return <Box
     sx={{
@@ -44,6 +38,8 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       />
     </Box>
   }
+
+  // Viewer version
   return <Box
   sx={{
     borderRadius: "10px",
