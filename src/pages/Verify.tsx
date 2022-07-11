@@ -35,12 +35,12 @@ export const Verify: FC<VerificationProps> = ({
       <Content>
         <VerifyForm handleSubmit={handleSubmit} loading={loading} buttonText={'Verify Credential'} subtitleText={'Assertion Method'} initialValue={CONFIG.signingKeyId}/>
         <Credential
-          subTitle="Signed Credential"
+          editing={true}
           value={JSON.stringify(signedDocument, null, 2)}
         />
       </Content>
       <Credential
-        subTitle="Verification Result"
+        editing={true}
         value={
           verificationResult
             ? JSON.stringify(verificationResult, null, 2)

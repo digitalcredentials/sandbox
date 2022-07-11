@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../utils/colors";
-import { JSONEditor } from "@material-did/common";
+import AceEditor from "react-ace";
+import {Box} from "@mui/material";
 
 type PropsType = {
-  subTitle?: string;
   value: string;
+  editing: boolean;
+  onChange?: (value: string, event?: any) => void;
 };
 
 const Container = styled.div`
@@ -27,13 +29,29 @@ const ContainerEditor = styled.div`
   height: 500px;
 `;
 
-export const Credential = ({ subTitle, value }: PropsType) => {
-  return (
-    <Container>
-      <SubTitle>{subTitle}</SubTitle>
-      <ContainerEditor>
-        <JSONEditor value={value} />
-      </ContainerEditor>
-    </Container>
-  );
+export const Credential = ({ value, editing, onChange }: PropsType) => {
+  if (editing) {
+    return <Box
+    sx={{borderRadius: "10px", border: "2px solid gray", overflow: "hidden"}}>
+      <AceEditor
+        value={value}
+        onChange={onChange}
+        width="100%"
+        mode="json"
+        theme="tomorrow"
+        wrapEnabled={true}
+      />
+    </Box>
+  }
+  return <Box
+  sx={{borderRadius: "10px", border: "3px solid green", overflow: "hidden", mt: "1.5rem"}}>
+    <AceEditor
+      value={value}
+      width="100%"
+      showGutter={false}
+      readOnly={true}
+      wrapEnabled={true}
+      highlightActiveLine={false}
+    />
+  </Box>
 };

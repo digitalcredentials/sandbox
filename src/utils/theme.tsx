@@ -1,5 +1,4 @@
-//TODO: Change this to use mui v5.0
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 import COLORS from "./colors";
 
 const theme = createTheme({
@@ -15,28 +14,5 @@ const theme = createTheme({
   //   }
   // },
 });
-
-theme.props = {
-  MuiInputLabel: {
-    // shrink: true,
-  },
-};
-
-theme.overrides = {
-  MuiFormLabel: {
-    root: {
-      // color: COLORS.GREY,
-      // marginTop: "1.5rem",
-      // marginBottom: "-.7rem",
-    }
-  },
-  MuiInputLabel: {
-    root: {
-      marginTop: 0,
-      marginBottom: 0,
-    }
-  }
-  
-};
 
 export default theme;

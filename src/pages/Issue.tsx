@@ -3,7 +3,6 @@ import { SigningProps } from "../components/Props";
 import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
-import { JSONEditor } from "@material-did/common";
 import {
   Box,
   Button,
@@ -68,7 +67,7 @@ export const Issue: FC<SigningProps> = ({
     }
   };
 
-  const editorOnChange = async (data: string) => {
+  const editorOnChange = async (data: string, event?: any) => {
     try {
       const dataJson = JSON.parse(data);
       setDocument(dataJson);
@@ -91,8 +90,9 @@ export const Issue: FC<SigningProps> = ({
           <Typography variant="h1">Unsigned Credential</Typography>
           <Typography variant="h2" sx={{ml: "2%"}}>Enter your credential below</Typography>
         </Box>
-        <JSONEditor
+        <Credential
           value={JSON.stringify(document, null, 2)}
+          editing={true}
           onChange={editorOnChange}
         />
       </Grid>
@@ -107,6 +107,7 @@ export const Issue: FC<SigningProps> = ({
       <Grid item xs={12}>
         <Typography variant="h1" sx={{mb: "-0.75rem", pl: "0.5rem", textAlign: "center"}}>Signed Credential</Typography>
         <Credential
+          editing={false}  
           value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
         />
       </Grid>
