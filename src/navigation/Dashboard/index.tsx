@@ -12,6 +12,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 
 
 const Container = styled.div`
+  //TODO: Improve constants reference!!!
   margin: calc(${NAV_SIZE.TOP_NAV_HEIGHT} + 15px) 8% 0
     calc( 8%);
 `;
@@ -47,9 +48,17 @@ export const Dashboard = () => {
 
   return (
     <StyledEngineProvider injectFirst>
-    <Container>
+    <Box>
       <Router basename="/playground">
         <NavBar setDocument={doSetDocument} />
+        <Box
+          sx={{
+            //TODO: change these margins to a const reference!!!
+            mt: "15px",
+            mb: "50px",
+            mx: "8%",
+          }}
+        >
         <Switch>
           <Route path="/verify">
             <Verify
@@ -79,8 +88,9 @@ export const Dashboard = () => {
         <Box pt={4}>
           <Copyright />
         </Box>
+        </Box>
       </Router>
-    </Container>
+    </Box>
     </StyledEngineProvider>
   );
 };
