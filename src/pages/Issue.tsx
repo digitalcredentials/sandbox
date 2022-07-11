@@ -115,7 +115,7 @@ export const Issue: FC<SigningProps> = ({
           onClick={handleSubmit}
           variant="contained"
           size="large"
-          color="primary">Issue Credential</Button>
+          color="primary">Sign Credential</Button>
       </Grid>
       
       {/* Signed Credential Section */}
