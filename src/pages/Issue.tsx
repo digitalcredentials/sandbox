@@ -4,6 +4,8 @@ import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
 import { getConfig } from "../utils/config";
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   CircularProgress,
@@ -38,17 +40,22 @@ export const Issue: FC<SigningProps> = ({
       keySuite: "Ed25519Signature2020",
     }
   );
+  const [signingError, setSigningError] = useState<Error>();
 
   // Call local signing function on submit
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
     try {
-      const signedDocument = await SignCredential(document, options);
+      const documentJSON = JSON.parse(document);
+      const signedDocument = await SignCredential(documentJSON, options);
       //TODO: remove delay (just aesthetic to see loading spinner)
       await new Promise(resolve => setTimeout(resolve, 300));
       setSignedDocument(signedDocument);
+      setSigningError(undefined);
     } catch (error) {
+      setSigningError(error);
+      console.log(signingError);
       console.log(error);
     } finally {
       setLoading(false);
@@ -57,10 +64,11 @@ export const Issue: FC<SigningProps> = ({
 
   // Update stored unsigned credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
-    try {
-      const dataJson = JSON.parse(data);
-      setDocument(dataJson);
-    } catch (error) {}
+    // try {
+    //   const dataJson = JSON.parse(data);
+    //   setDocument(dataJson);
+    // } catch (error) {}
+    setDocument(data);
   };
 
   // Deprecated code for encoding QR code
@@ -72,7 +80,12 @@ export const Issue: FC<SigningProps> = ({
   // };
 
   return (
-    <Grid container spacing={4} sx={{mt: "-.5rem"}}>
+    <Grid
+      container
+      spacing={4}
+      justifyContent="center"
+      sx={{mt: "-.5rem"}}
+    >
       {/* Unsigned Credential Editor Section */}
       <Grid item xs={12} sm={8}>
         <Box sx={{
@@ -90,7 +103,7 @@ export const Issue: FC<SigningProps> = ({
           >Enter your credential below</Typography>
         </Box>
         <Credential
-          value={JSON.stringify(document, null, 2)}
+          value={document}
           editing={true}
           onChange={editorOnChange}
         />
@@ -111,9 +124,26 @@ export const Issue: FC<SigningProps> = ({
         />
       </Grid>
 
+      {/* Error message */}
+      {signingError &&
+        <Grid item
+          xs={8}
+        >
+          <Alert
+            severity="error"
+          >
+            <AlertTitle><strong>{signingError.name}</strong></AlertTitle>
+            {signingError.message}
+          </Alert>
+        </Grid>
+      }
+
       {/* Issue Button */}
       {!loading &&
-        <Grid item xs={12} sx={{textAlign: "center"}}>
+        <Grid item
+          xs={12}
+          sx={{textAlign: "center"}}
+        >
           <Button
             sx={{width: "50%"}}
             onClick={handleSubmit}
@@ -125,7 +155,10 @@ export const Issue: FC<SigningProps> = ({
       }
 
       {loading &&
-        <Grid item xs={12} sx={{textAlign: "center"}}>
+        <Grid item
+          xs={12}
+          sx={{textAlign: "center"}}
+        >
           <CircularProgress/>
         </Grid>
       }

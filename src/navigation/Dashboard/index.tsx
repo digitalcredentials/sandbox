@@ -21,13 +21,13 @@ const Container = styled.div`
 `;
 
 export const Dashboard = () => {
-  const [document, setDocument] = useState(smallList[0].document);
+  const [document, setDocument] = useState(JSON.stringify(smallList[0].document, null, 2));
   const [signedDocument, setSignedDocument] = useState({});
   const [verificationResult, setVerificationResult] = useState({});
   const [demoCredential, setDemoCredential] = useState({});
   const [subjectDid, setSubjectDid] = useState('did:example:1234');
 
-  const doSetDocument = (doc: any) => {
+  const doSetDocument = (doc: string) => {
     setDocument(doc);
     setSignedDocument({});
   };

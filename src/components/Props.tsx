@@ -7,7 +7,7 @@ export interface DocProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface SigningProps extends HTMLAttributes<HTMLDivElement> {
-  document: any;
+  document: string;
   setDocument: (document: any) => void;
   signedDocument: any;
   setSignedDocument: (signedDocument: any) => void;
