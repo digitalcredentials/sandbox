@@ -7,6 +7,10 @@ import { Link, useLocation } from "react-router-dom";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import HelpIcon from '@mui/icons-material/Help';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
+
 const NavTabs = () => {
   const currentUrl = useLocation().pathname;
 
@@ -15,7 +19,8 @@ const NavTabs = () => {
       variant="fullWidth"
       value={currentUrl}
       centered
-      //TODO: reference constants!!!
+      //TODO: increase font size of labels
+      //TODO: reference constants for sizes!!!
       sx={{
         mt: "105px",
         position: "sticky",
@@ -25,17 +30,30 @@ const NavTabs = () => {
         boxShadow: "0px 5px 10px -10px black",
       }}
     >
-      {NAV_SIDEBAR_ICONS.map((item, index) => {
-        return (
-          <Tab
-            label={item.label}
-            value={item.link}
-            component={Link}
-            to={item.link}
-            key={index}
-          />
-        );
-      })}
+      <Tab
+        label="Issue"
+        value="/"
+        component={Link}
+        to="/"
+        key={0}
+        icon={<HistoryEduIcon/>}
+      />
+      <Tab
+        label="Verify"
+        value="/verify"
+        component={Link}
+        to="/verify"
+        key={1}
+        icon={<PublishedWithChangesIcon/>}
+      />
+      <Tab
+        label="About"
+        value="/about"
+        component={Link}
+        to="/about"
+        key={2}
+        icon={<HelpIcon/>}
+      />
     </Tabs>
   );
 };
