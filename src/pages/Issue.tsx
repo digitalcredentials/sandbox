@@ -112,13 +112,14 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
 
       {/* Issue Button */}
-      {Object.keys(signedDocument).length == 0 && !loading &&
+      {!loading &&
         <Grid item xs={12} sx={{textAlign: "center"}}>
           <Button
             sx={{width: "50%"}}
             onClick={handleSubmit}
             variant="contained"
             size="large"
+            disabled={Object.keys(signedDocument).length > 0}
             color="primary">Sign Credential</Button>
         </Grid>
       }
