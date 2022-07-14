@@ -33,7 +33,7 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 			<Button
 				onClick={handleClick}
 				variant="outlined"
-				sx={{mr: "5px", mt: "2px"}}
+				sx={{mr: "5px", mt: "3px"}}
 			>Copy to Clipboard</Button>
 			<Snackbar
 				open={open}

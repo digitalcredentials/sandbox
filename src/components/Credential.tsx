@@ -32,7 +32,6 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
         onChange={onChange}
         width="100%"
         mode="json"
-        theme="tomorrow"
         wrapEnabled={true}
         showPrintMargin={false}
       />
