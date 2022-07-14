@@ -119,29 +119,33 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
       
       {/* Signed Credential Section */}
-      <Grid item xs={12}>
-        <Typography
-          variant="h1"
-          sx={{
-            pl: "0.5rem",
-            textAlign: "center"}}
-        >Signed Credential</Typography>
-        <Credential
-          editing={false}  
-          value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
-        />
-      </Grid>
+      {Object.keys(signedDocument).length > 0 &&
+        <Grid item xs={12}>
+          <Typography
+            variant="h1"
+            sx={{
+              pl: "0.5rem",
+              textAlign: "center"}}
+          >Signed Credential</Typography>
+          <Credential
+            editing={false}  
+            value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
+          />
+        </Grid>
+      }
 
       {/* Button to move to verify section */}
-      <Grid item xs={12} sx={{textAlign: "center"}}>
-        <Button
-          sx={{width: "30%"}}
-          color="primary"
-          variant="contained"
-        >
-          Verify this Credential
-        </Button>
-      </Grid>
+      {Object.keys(signedDocument).length > 0 && 
+        <Grid item xs={12} sx={{textAlign: "center"}}>
+          <Button
+            sx={{width: "30%"}}
+            color="primary"
+            variant="contained"
+          >
+            Verify this Credential
+          </Button>
+        </Grid>
+      }
     </Grid>
   );
 };
