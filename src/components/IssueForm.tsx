@@ -1,4 +1,5 @@
 import React from "react";
+import {useRef} from "react";
 import styled from "styled-components";
 import { 
   Radio,
@@ -41,8 +42,6 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
     const { target: { name, value } } = event;
     switch(name){
       case "randomDid":
-        const newVal = (value == "true");
-        console.log(newVal);
         setOptions({...formState, randomDid: value == "true"});
         break;
       case "didSeed":
@@ -83,38 +82,46 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </Select>
         </FormControl>
 
-        {/* Radio to choose whether to autogenerate did */}
-        <FormControl margin="none">
-          <FormLabel>Sign With</FormLabel>
-          <RadioGroup
-            name="randomDid"
-            onChange={handleChange}
-            value={formState.randomDid.toString()}
-          >
-            <FormControlLabel
-              value="true"
-              control={<Radio />}
-              label="New Random DID"
-            />
-            <FormControlLabel
-              value="false"
-              control={<Radio />}
-              label="Existing DID"
-            />
-          </RadioGroup>
-        </FormControl>
-
-        {/* optional did seed */}
-        <FormControl>
-            <TextField
-              name="didSeed"
-              value={formState.didSeed}
-              id="standard-basic"
-              label="Paste secret key seed"
-              variant="standard"
+        {/* Flex container brigns text field inline w/ radio group */}
+        <Box sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-end",
+        }}>
+          {/* Radio to choose whether to autogenerate did */}
+          <FormControl margin="none">
+            <FormLabel>Sign With</FormLabel>
+            <RadioGroup
+              name="randomDid"
               onChange={handleChange}
-            />
-        </FormControl>
+              value={formState.randomDid.toString()}
+            >
+              <FormControlLabel
+                value="true"
+                control={<Radio />}
+                label="New Random DID"
+              />
+              <FormControlLabel
+                value="false"
+                control={<Radio />}
+                label="Existing DID"
+              />
+            </RadioGroup>
+          </FormControl>
+
+          {/* optional did seed */}
+          <FormControl sx={{mb: "0.5rem"}}>
+              <TextField
+                name="didSeed"
+                value={formState.didSeed}
+                id="standard-basic"
+                label="Paste secret key seed"
+                variant="standard"
+                onChange={handleChange}
+                disabled={formState.randomDid}
+              />
+          </FormControl>
+        </Box>
 
         {/* Key Suite Selection */}
         <FormControl>
