@@ -6,6 +6,7 @@ import { getConfig } from "../utils/config";
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   ThemeProvider,
@@ -44,6 +45,8 @@ export const Issue: FC<SigningProps> = ({
     setLoading(true);
     try {
       const signedDocument = await SignCredential(document, options);
+      //TODO: remove delay (just aesthetic to see loading spinner)
+      await new Promise(resolve => setTimeout(resolve, 300));
       setSignedDocument(signedDocument);
     } catch (error) {
       console.log(error);
@@ -109,14 +112,22 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
 
       {/* Issue Button */}
-      <Grid item xs={12} sx={{textAlign: "center"}}>
-        <Button
-          sx={{width: "50%"}}
-          onClick={handleSubmit}
-          variant="contained"
-          size="large"
-          color="primary">Sign Credential</Button>
-      </Grid>
+      {Object.keys(signedDocument).length == 0 && !loading &&
+        <Grid item xs={12} sx={{textAlign: "center"}}>
+          <Button
+            sx={{width: "50%"}}
+            onClick={handleSubmit}
+            variant="contained"
+            size="large"
+            color="primary">Sign Credential</Button>
+        </Grid>
+      }
+
+      {loading &&
+        <Grid item xs={12} sx={{textAlign: "center"}}>
+          <CircularProgress/>
+        </Grid>
+      }
       
       {/* Signed Credential Section */}
       {Object.keys(signedDocument).length > 0 &&
