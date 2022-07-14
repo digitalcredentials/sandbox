@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import {IssueParams} from "../api/local";
+import SendIcon from '@mui/icons-material/Send';
 
 
 // import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
@@ -49,7 +50,7 @@ export const Issue: FC<SigningProps> = ({
     try {
       const documentJSON = JSON.parse(document);
       const signedDocument = await SignCredential(documentJSON, options);
-      //TODO: remove delay (just aesthetic to see loading spinner)
+      //TODO: remove fake delay (just aesthetic to see loading spinner)
       await new Promise(resolve => setTimeout(resolve, 300));
       setSignedDocument(signedDocument);
       setSigningError(undefined);
@@ -186,6 +187,7 @@ export const Issue: FC<SigningProps> = ({
             sx={{width: "30%"}}
             color="primary"
             variant="contained"
+            endIcon={<SendIcon/>}
           >
             Verify this Credential
           </Button>
