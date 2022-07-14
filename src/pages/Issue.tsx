@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import {IssueParams} from "../api/local";
 import SendIcon from '@mui/icons-material/Send';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 // import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
@@ -172,7 +173,17 @@ export const Issue: FC<SigningProps> = ({
             sx={{
               pl: "0.5rem",
               textAlign: "center"}}
-          >Signed Credential</Typography>
+          >
+            <CheckCircleIcon
+              fontSize="large"
+              sx={{
+                color: "green",
+                mb: "-8px",
+                mr: "8px",
+              }}
+            />
+            Signed Credential
+          </Typography>
           <Credential
             editing={false}  
             value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
