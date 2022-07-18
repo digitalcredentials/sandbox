@@ -95,10 +95,10 @@ export const Issue: FC<SigningProps> = ({
           mb: ".75rem"
         }}>
           <Typography
-            variant="h1"
+            variant="h2"
           >Unsigned Credential</Typography>
           <Typography
-            variant="h2"
+            variant="h3"
             sx={{ml: "2%"}}
           >Enter your credential below</Typography>
         </Box>
@@ -113,7 +113,7 @@ export const Issue: FC<SigningProps> = ({
       {/* Signing Parameters */}
       <Grid item xs={12} sm={4}>
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{mb: "-1rem", pl: "0.5rem"}}
         >Signing Parameters</Typography>
         <IssueForm
@@ -167,7 +167,7 @@ export const Issue: FC<SigningProps> = ({
       {Object.keys(signedDocument).length > 0 &&
         <Grid item xs={12}>
           <Typography
-            variant="h1"
+            variant="h2"
             sx={{
               pl: "0.5rem",
               textAlign: "center"}}

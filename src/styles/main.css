@@ -3,11 +3,16 @@
 /* Typography */
 
 .MuiTypography-h1 {
+	font-size: 3rem;
+	font-weight: 800;
+}
+
+.MuiTypography-h2 {
 	font-size: 1.7rem;
 	font-weight: 400;
 }
 
-.MuiTypography-h2 {
+.MuiTypography-h3 {
 	font-size: 1.25rem;
 	font-weight: 400;
 	color: #424242;
