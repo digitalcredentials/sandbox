@@ -12,3 +12,8 @@ export function SignCredential(unsignedCredential: object, options: IssueParams)
 	console.log(options);
 	return {hello: "world"};
 }
+
+export function VerifyCredential(unVerifiedCredential: object)
+{
+	return {data: "hello world"};
+}

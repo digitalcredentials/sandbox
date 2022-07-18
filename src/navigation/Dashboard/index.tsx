@@ -23,6 +23,7 @@ const Container = styled.div`
 export const Dashboard = () => {
   const [document, setDocument] = useState(JSON.stringify(smallList[0].document, null, 2));
   const [signedDocument, setSignedDocument] = useState({});
+  const [unverifiedDocument, setUnverifiedDocument] = useState("");
   const [verificationResult, setVerificationResult] = useState({});
   const [demoCredential, setDemoCredential] = useState({});
   const [subjectDid, setSubjectDid] = useState('did:example:1234');
@@ -34,8 +35,14 @@ export const Dashboard = () => {
 
   const doSetSignedDocument = (signedDoc: any) => {
     setSignedDocument(signedDoc);
+    setUnverifiedDocument(JSON.stringify(signedDoc, null, 2));
     setVerificationResult({});
   };
+
+  const doSetUnverifiedDocument = (signedDoc: string) => {
+    setUnverifiedDocument(signedDoc);
+    setVerificationResult({});
+  }
 
   const doSetVerificationResult = (verificationRes: any) => {
     setVerificationResult(verificationRes);
@@ -66,18 +73,14 @@ export const Dashboard = () => {
         <Switch>
           <Route path="/verify">
             <Verify
-              signedDocument={signedDocument}
-              setSignedDocument={doSetSignedDocument}
+              unverifiedDocument={unverifiedDocument}
+              setUnverifiedDocument={doSetUnverifiedDocument}
               verificationResult={verificationResult}
               setVerificationResult={doSetVerificationResult}
             />
           </Route>
           <Route path="/about">
             <About
-              signedDocument={signedDocument}
-              setSignedDocument={doSetSignedDocument}
-              verificationResult={verificationResult}
-              setVerificationResult={doSetVerificationResult}
             />
           </Route>
           <Route path="/">
