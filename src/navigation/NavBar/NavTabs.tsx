@@ -27,6 +27,7 @@ const NavTabs = () => {
         backgroundColor: "white",
         zIndex: 9999,
         boxShadow: "0px 5px 10px -10px black",
+        pt: "5px",
       }}
     >
       <Tab
@@ -35,7 +36,7 @@ const NavTabs = () => {
         component={Link}
         to="/"
         key={0}
-        icon={<HistoryEduIcon/>}
+        icon={<HistoryEduIcon fontSize="large"/>}
       />
       <Tab
         label="Verify"
@@ -43,7 +44,7 @@ const NavTabs = () => {
         component={Link}
         to="/verify"
         key={1}
-        icon={<PublishedWithChangesIcon/>}
+        icon={<PublishedWithChangesIcon fontSize="large"/>}
       />
       <Tab
         label="About"
@@ -51,7 +52,7 @@ const NavTabs = () => {
         component={Link}
         to="/about"
         key={2}
-        icon={<HelpIcon/>}
+        icon={<HelpIcon fontSize="large"/>}
       />
     </Tabs>
   );

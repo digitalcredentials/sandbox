@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 
+// Header bar
 const TopNavPanel = () => {
   return (
     <AppBar
@@ -17,14 +18,16 @@ const TopNavPanel = () => {
       }}
     >
       <Toolbar>
+      {/* DCC Icon white on transparent */}
       <img src={logo} height="60rem"/>
+      {/* Site title */}
       <Typography
         variant="h1"
         component="div"
         align="center"
         sx={{
           flexGrow: 1,
-          ml: "-5rem",
+          ml: "-7%",
           mb: "-1rem",
         }}
       >

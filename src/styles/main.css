@@ -3,7 +3,7 @@
 /* Typography */
 
 .MuiTypography-h1 {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: 800;
 }
 
@@ -16,6 +16,12 @@
 	font-size: 1.25rem;
 	font-weight: 400;
 	color: #424242;
+}
+
+
+
+.MuiTab-root {
+	font-size: 1.1rem;
 }
 
 
