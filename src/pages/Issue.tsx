@@ -57,8 +57,6 @@ export const Issue: FC<SigningProps> = ({
       setSigningError(undefined);
     } catch (error) {
       setSigningError(error);
-      console.log(signingError);
-      console.log(error);
     } finally {
       setLoading(false);
     }
