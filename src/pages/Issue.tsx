@@ -2,28 +2,18 @@ import React, { FC, useState } from "react";
 import { SigningProps } from "../components/Props";
 import { SignCredential } from "../api/local";
 import { Credential, IssueForm } from "../components";
-import { getConfig } from "../utils/config";
 import {
   Alert,
   AlertTitle,
   Box,
   Button,
   CircularProgress,
-  Divider,
   Grid,
-  ThemeProvider,
   Typography,
 } from "@mui/material";
 import {IssueParams} from "../api/local";
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
-
-// import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
-// import { ProvePresentationRequest } from "../api/index";
-// import { SignedDocumentRequest } from "../api/index";
-
-const CONFIG = getConfig(); 
 
 export const Issue: FC<SigningProps> = ({
   document,
@@ -32,7 +22,6 @@ export const Issue: FC<SigningProps> = ({
   setSignedDocument,
 }) => {
   const [loading, setLoading] = useState(false);
-  // const [qrCodeUrl, setQrCodeUrl] = useState('');
   const [options, setOptions] = useState<IssueParams>(
     {
       randomDid: true,
@@ -64,20 +53,8 @@ export const Issue: FC<SigningProps> = ({
 
   // Update stored unsigned credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
-    // try {
-    //   const dataJson = JSON.parse(data);
-    //   setDocument(dataJson);
-    // } catch (error) {}
     setDocument(data);
   };
-
-  // Deprecated code for encoding QR code
-  // const updateQrCodeUrl = async (document: any) => {
-  //   const vpUnsigned = encodeToVpUnsigned(document);
-  //   const vpSigned = (await ProvePresentationRequest(vpUnsigned)).data;
-  //   const qrCodeUrl = await encodeToQrCodeUrl(vpSigned);
-  //   setQrCodeUrl(qrCodeUrl);
-  // };
 
   return (
     <Grid
@@ -108,7 +85,6 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
       </Grid>
-      {/* <Divider orientation="vertical" /> */}
       
       {/* Signing Parameters */}
       <Grid item xs={12} sm={4}>
@@ -154,6 +130,7 @@ export const Issue: FC<SigningProps> = ({
         </Grid>
       }
 
+      {/* Loading bar */}
       {loading &&
         <Grid item
           xs={12}
