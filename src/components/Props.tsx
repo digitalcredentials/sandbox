@@ -8,14 +8,14 @@ export interface DocProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface SigningProps extends HTMLAttributes<HTMLDivElement> {
   document: string;
-  setDocument: (document: any) => void;
+  setDocument: (document: string) => void;
   signedDocument: any;
   setSignedDocument: (signedDocument: any) => void;
 }
 
 export interface VerificationProps extends HTMLAttributes<HTMLDivElement> {
-  signedDocument: any;
-  setSignedDocument: (signedDocument: any) => void;
+  unverifiedDocument: string;
+  setUnverifiedDocument: (signedDocument: string) => void;
   verificationResult: any;
   setVerificationResult: (verificationResult: any) => void;
 }
