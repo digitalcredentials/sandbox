@@ -22,7 +22,6 @@ const NavTabs = () => {
       //TODO: increase font size of labels
       //TODO: reference constants for sizes!!!
       sx={{
-        mt: "80px",
         position: "sticky",
         top: "0px",
         backgroundColor: "white",
