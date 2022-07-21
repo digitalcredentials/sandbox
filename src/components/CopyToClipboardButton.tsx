@@ -20,6 +20,7 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 	const [open, setOpen] = useState(false)
 	const handleClick = () => {
 		setOpen(true)
+		// TODO: Make sure that this works on safari once site is published with https!!
 		navigator.clipboard.writeText(value)
 	}
 	return (
