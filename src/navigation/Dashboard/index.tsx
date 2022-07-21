@@ -7,7 +7,7 @@ import { Issue, Verify, About } from "../../pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { NAV_SIZE } from "../../utils/constants";
-import Copyright from "./Copyright";
+import Footer from "./Footer";
 import { StyledEngineProvider } from '@mui/material/styles';
 import TopNavPanel from "../NavBar/TopNavPanel";
 import NavTabs from "../NavBar/NavTabs";
@@ -66,7 +66,6 @@ export const Dashboard = () => {
           sx={{
             //TODO: change these margins to a const reference!!!
             mt: "15px",
-            mb: "50px",
             mx: "8%",
           }}
         >
@@ -93,7 +92,7 @@ export const Dashboard = () => {
           </Route>
         </Switch>
         <Box pt={4}>
-          <Copyright />
+          <Footer />
         </Box>
         </Box>
       </Router>

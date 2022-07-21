@@ -1,3 +1,4 @@
+/* TODO: Store colors in consts! */
 @import "./fonts.css";
 
 /* Typography */
@@ -18,8 +19,13 @@
 	color: #424242;
 }
 
+.MuiTypography-body2 {
+	font-size: 1rem;
+	color: #424242;
+}
 
 
+/* Misc Elements */
 .MuiTab-root {
 	font-size: 1.1rem;
 }
