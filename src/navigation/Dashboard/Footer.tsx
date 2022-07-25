@@ -14,7 +14,7 @@ const Footer = () => {
       sx={{
         flexDirection: "column",
         gap: "7px",
-        mt: "30px",
+        mt: "5px",
         mb: "30px",
       }}
     >
