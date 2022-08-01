@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import { StyledEngineProvider } from '@mui/material/styles';
 import TopNavPanel from "../NavBar/TopNavPanel";
 import NavTabs from "../NavBar/NavTabs";
+import { VerificationResultsProps } from "../../components/Props";
 
 
 
@@ -24,7 +25,7 @@ export const Dashboard = () => {
   const [document, setDocument] = useState(JSON.stringify(smallList[0].document, null, 2));
   const [signedDocument, setSignedDocument] = useState({});
   const [unverifiedDocument, setUnverifiedDocument] = useState("");
-  const [verificationResult, setVerificationResult] = useState({});
+  const [verificationResult, setVerificationResult] = useState([]);
   const [demoCredential, setDemoCredential] = useState({});
   const [subjectDid, setSubjectDid] = useState('did:example:1234');
 
@@ -36,14 +37,15 @@ export const Dashboard = () => {
   const doSetSignedDocument = (signedDoc: any) => {
     setSignedDocument(signedDoc);
     setUnverifiedDocument(JSON.stringify(signedDoc, null, 2));
-    setVerificationResult({});
+    setVerificationResult([]);
   };
 
   const doSetUnverifiedDocument = (signedDoc: string) => {
     setUnverifiedDocument(signedDoc);
-    setVerificationResult({});
+    setVerificationResult([]);
   }
 
+  //TODO: make stricter typing for verification results
   const doSetVerificationResult = (verificationRes: any) => {
     setVerificationResult(verificationRes);
   };

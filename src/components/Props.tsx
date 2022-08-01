@@ -20,6 +20,12 @@ export interface VerificationProps extends HTMLAttributes<HTMLDivElement> {
   setVerificationResult: (verificationResult: any) => void;
 }
 
+//TODO: make props type for verification results more strict
+export interface VerificationResultsProps extends HTMLAttributes<HTMLDivElement> {
+  results: any;
+  error: Error | undefined;
+}
+
 export interface RequestProps extends HTMLAttributes<HTMLDivElement> {
   subjectDid: string;
   setSubjectDid: (subjectDid: string) => void;
