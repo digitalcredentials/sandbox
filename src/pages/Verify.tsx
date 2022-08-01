@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
 import { VerificationProps } from "../components/Props";
-import { VerifyDocumentRequest } from "../api";
 import { VerifyCredential } from "../api/local";
 import { Credential, VerifyForm } from "../components";
 import { getConfig } from "../utils/config";
+import { VerificationResultsCard } from "../components";
 import {
   Alert,
   AlertTitle,
@@ -35,7 +35,7 @@ export const Verify: FC<VerificationProps> = ({
       const response = await VerifyCredential(
         documentJSON,
       );
-      const result = response.data;
+      const result = response;
       setVerificationResult(result);
       setVerifyingError(undefined);
     } catch (error) {
@@ -44,6 +44,7 @@ export const Verify: FC<VerificationProps> = ({
     } finally {
       setLoading(false);
     }
+
   };
   
   // Update stored credential upon edit
@@ -106,10 +107,15 @@ return (
         onClick={handleSubmit}
         variant="contained"
         size="large"
-        color="primary">Verify Credential</Button>
+        color="primary"
+        disabled={Object.keys(verificationResult).length > 0}
+      >
+        Verify Credential
+      </Button>
     </Grid>
   }
 
+  {/* Loading spinner */}
   {loading &&
     <Grid item
       xs={12}
@@ -117,6 +123,11 @@ return (
     >
       <CircularProgress/>
     </Grid>
+  }
+
+  {/* If there are signs verification has been run, show results card */}
+  {(verificationResult.length > 0 || verifyingError) &&
+    <VerificationResultsCard error={verifyingError} results={verificationResult}/>
   }
   
 </Grid>
