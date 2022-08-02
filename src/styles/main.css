@@ -15,8 +15,11 @@
 
 .MuiTypography-h3 {
 	font-size: 1.25rem;
-	font-weight: 400;
 	color: #424242;
+}
+
+.MuiTypography-h4 {
+	font-size: 1rem;
 }
 
 .MuiTypography-body2 {

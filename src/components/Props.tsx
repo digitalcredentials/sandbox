@@ -26,6 +26,11 @@ export interface VerificationResultsProps extends HTMLAttributes<HTMLDivElement>
   error: Error | undefined;
 }
 
+export interface VerificationCheckProps extends HTMLAttributes<HTMLDivElement> {
+  valid: boolean;
+  message: string;
+}
+
 export interface RequestProps extends HTMLAttributes<HTMLDivElement> {
   subjectDid: string;
   setSubjectDid: (subjectDid: string) => void;
