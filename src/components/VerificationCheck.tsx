@@ -2,6 +2,7 @@
 
 import {
 	Grid,
+	Typography,
  } from '@mui/material'
 import React from 'react'
 import {FC, useState} from 'react'
@@ -39,7 +40,7 @@ export const VerificationCheck: FC<VerificationCheckProps> = ({
 			</Grid>
 			{/* Display message */}
 			<Grid item xs={10.5}>
-				{message}
+				<Typography variant="h4">{message}</Typography>
 			</Grid>
 		</Grid>
 	)

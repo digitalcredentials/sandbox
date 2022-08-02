@@ -74,7 +74,6 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 								fontSize="large"
 								sx={{
 									color: "green",
-									mb: "-10px",
 									mr: "8px",
 								}}
 								/>}
