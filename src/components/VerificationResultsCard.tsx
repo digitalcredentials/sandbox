@@ -34,8 +34,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 	return (
 		<Card
 			sx={{
-				width: "100%",
-				mt: "2rem",
+				mt: "0.25rem",
 				boxShadow: "0px 0px 5px -1px grey",
 			}}
 		>
