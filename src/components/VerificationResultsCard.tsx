@@ -60,13 +60,21 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 								justifyContent: 'center',
 							}}
 						>
-							<Grid container spacing={2}>
-								<Grid item xs={2} sx={{mt: "1.5rem"}}>
+							<Typography
+								align="center"
+								variant="h3"
+								sx={{
+									mx: "0.5rem",
+									fontWeight: "800",
+								}}
+							>
+
 								{/* Overall Check or X */}
 								{verificationSuccess && <CheckCircleIcon
 								fontSize="large"
 								sx={{
 									color: "green",
+									mb: "-10px",
 									mr: "8px",
 								}}
 								/>}
@@ -77,17 +85,6 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 									mr: "8px",
 								}}
 								/>}
-								</Grid>
-							<Grid item xs={10}>
-							<Typography
-								align="center"
-								variant="h3"
-								sx={{
-									mx: "0.5rem",
-									fontWeight: "800",
-								}}
-							>
-
 
 								<br/>
 								
@@ -95,8 +92,6 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 								{!verificationSuccess && "Verification Failed"}
 								{verificationSuccess && "Verification Success"}
 							</Typography>
-							</Grid>
-							</Grid>
 						</Alert>
 					</Grid>
 
