@@ -35,7 +35,8 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 		<Card
 			sx={{
 				width: "100%",
-				mt: "1.5rem",
+				mt: "2rem",
+				boxShadow: "0px 0px 5px -1px grey",
 			}}
 		>
 			<CardContent>
@@ -43,7 +44,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 					container
 					spacing={2}
 					sx={{
-						mb:"-8px"
+						mb:"-8px",
 					}}
 				>
 					{/* Overall pass/fail display on left hand side */}
@@ -104,7 +105,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 							sx={{
 								height:"100%",
 								width:"100%",
-								backgroundColor: "#f3f4f6",
+								backgroundColor: "white",
 								color: "black",
 							}}
 						>
