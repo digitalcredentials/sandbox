@@ -50,6 +50,7 @@ export const Verify: FC<VerificationProps> = ({
   // Update stored credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     setUnverifiedDocument(data);
+    setVerifyingError(undefined);
   };
 
 return (
