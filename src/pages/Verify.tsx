@@ -82,19 +82,6 @@ return (
     />
   </Grid>
   
-  {/* Error message */}
-  {verifyingError &&
-    <Grid item
-      xs={8}
-    >
-      <Alert
-        severity="error"
-      >
-        <AlertTitle><strong>{verifyingError.name}</strong></AlertTitle>
-        {verifyingError.message}
-      </Alert>
-    </Grid>
-  }
 
   {/* Issue Button */}
   {!loading &&
