@@ -115,7 +115,9 @@ return (
 
   {/* If there are signs verification has been run, show results card */}
   {(verificationResult.length > 0 || verifyingError) &&
-    <VerificationResultsCard error={verifyingError} results={verificationResult}/>
+    <Grid item xs={12}>
+      <VerificationResultsCard error={verifyingError} results={verificationResult}/>
+    </Grid>
   }
   
 </Grid>
