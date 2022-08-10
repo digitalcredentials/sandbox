@@ -22,7 +22,7 @@ export const VerificationCheck: FC<VerificationCheckProps> = ({
 		>
 
 			{/* Display check or X */}
-			<Grid item xs={1.5}>
+			<Grid item xs={2} sm={1.5}>
 				{valid &&
 					<CheckIcon
 						sx={{
@@ -41,17 +41,7 @@ export const VerificationCheck: FC<VerificationCheckProps> = ({
 			{/* Display message */}
 			<Grid
 				item
-				xs={9} sm={10.5}
-				sx={{
-					ml: {
-						xs:"10px",
-						sm:0,
-					},
-					mr: {
-						xs:"-10px",
-						sm:0,
-					},
-				}}
+				xs={10} sm={10.5}
 			>
 				<Typography variant="h4">{message}</Typography>
 			</Grid>
