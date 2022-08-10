@@ -72,7 +72,10 @@ export const Dashboard = () => {
         <Box
           sx={{
             //TODO: change these margins to a const reference!!!
-            mt: "15px",
+            mt: {
+              xs:"-10px", 
+              sm:"15px",
+            },
             mx: "6%",
           }}
         >
