@@ -3,6 +3,7 @@ import logo from "../../icons/DCC Logos (Public)/1x/DCC Logo-White Text on Trans
 
 import {
   AppBar,
+  Box,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -18,8 +19,23 @@ const TopNavPanel = () => {
       }}
     >
       <Toolbar>
-      {/* DCC Icon white on transparent */}
-      <img src={logo} height="60rem"/>
+      
+      {/* DCC Icon, white on transparent */}
+      <Box
+        component="img"
+        sx={{
+          height: {
+            sm: "45px",
+            md: "60px",
+          },
+          display: {
+            xs: "none",
+            sm: "block",
+          },
+        }} 
+        src={logo}
+      />
+
       {/* Site title */}
       <Typography
         variant="h1"
@@ -27,12 +43,15 @@ const TopNavPanel = () => {
         align="center"
         sx={{
           flexGrow: 1,
-          ml: "-7%",
-          mb: "-1rem",
+          mr: {
+            xs: "0",
+            sm: "7%",
+          },
         }}
       >
         DCC Developer Sandbox
       </Typography>
+      
       </Toolbar>
     </AppBar>
   );
