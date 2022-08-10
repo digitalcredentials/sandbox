@@ -71,7 +71,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         sx={{
           justifyContent: {
             xs: "center",
-            md: "normal",
+            lg: "normal",
           },
         }}
       >
@@ -80,8 +80,9 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           alignContent: "center",
           width: {
             xs: "90%",
-            sm: "60%",
-            md: "100%",
+            sm: "65%",
+            md: "50%",
+            lg: "100%",
           },
         }}
         display="flex"

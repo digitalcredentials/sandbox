@@ -64,7 +64,7 @@ export const Issue: FC<SigningProps> = ({
       sx={{mt: "-.5rem"}}
     >
       {/* Unsigned Credential Editor Section */}
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} lg={8}>
         {/* Credential editor headers */}
         <Box sx={{
           display: {
@@ -106,7 +106,7 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
       
       {/* Signing Parameters */}
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} lg={4}>
         <IssueForm
           handleSubmit={handleSubmit}
           loading={loading}

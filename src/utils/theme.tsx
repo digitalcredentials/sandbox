@@ -13,6 +13,15 @@ const theme = createTheme({
   //     main: COLORS.GREY,
   //   }
   // },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 768,
+      lg: 900,
+      xl: 1200,
+    },
+  },
 });
 
 export default theme;
