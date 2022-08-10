@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Box} from "@mui/material";
+import {Box, ThemeProvider} from "@mui/material";
 import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
 import { Issue, Verify, About } from "../../pages";
@@ -12,6 +12,8 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import TopNavPanel from "../NavBar/TopNavPanel";
 import NavTabs from "../NavBar/NavTabs";
 import { VerificationResultsProps } from "../../components/Props";
+
+import theme from "../../utils/theme";
 
 
 
@@ -60,6 +62,7 @@ export const Dashboard = () => {
 
   return (
     <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
     <Box>
       <Router basename="/playground">
         <TopNavPanel/>
@@ -99,6 +102,7 @@ export const Dashboard = () => {
         </Box>
       </Router>
     </Box>
+    </ThemeProvider>
     </StyledEngineProvider>
   );
 };
