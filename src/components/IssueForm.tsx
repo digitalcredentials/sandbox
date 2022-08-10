@@ -102,7 +102,9 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         </Typography>
 
         {/* Did Method Selection */}
-        <FormControl>
+        <FormControl
+          sx={{width:"100%"}}
+        >
           <FormLabel className="formLabel">Did Method</FormLabel>
           <Select
             name="didMethod"
@@ -156,7 +158,9 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         </Box>
 
         {/* Key Suite Selection */}
-        <FormControl>
+        <FormControl
+          sx={{width:"100%"}}
+        >
           <FormLabel className="formLabel">Key Suite</FormLabel>
           <Select
             name="keySuite"
@@ -173,7 +177,9 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         </FormControl>
           
         {/* Serialization Type Selection */}
-        <FormControl>  
+        <FormControl
+          sx={{width:"100%"}}
+        >  
           <FormLabel className="formLabel">
             Serialization Type
           </FormLabel>
