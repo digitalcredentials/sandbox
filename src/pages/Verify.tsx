@@ -63,18 +63,33 @@ return (
   {/* Unsigned Credential Editor Section */}
   <Grid item xs={12}>
     <Box sx={{
-      display: "flex",
+      display: {
+        xs: "block",
+        md: "flex",
+      },
       flexGrow: 1,
       alignItems: "baseline",
       mb: ".75rem"
     }}>
-      <Typography
-        variant="h2"
-      >Unverified Credential</Typography>
+      <Typography variant="h2">
+        Unverified Credential
+      </Typography>
+      
       <Typography
         variant="h3"
-        sx={{ml: "2%"}}
-      >Enter your signed credential below</Typography>
+        sx={{
+          ml: {
+            xs: 0,
+            md: "2%",
+          },
+          mt: {
+            xs: "0.35rem",
+            md: 0,
+          },
+        }}
+      >
+        Enter your signed credential below
+      </Typography>
     </Box>
     <Credential
       value={unverifiedDocument}
