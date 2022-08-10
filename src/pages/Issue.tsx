@@ -64,21 +64,40 @@ export const Issue: FC<SigningProps> = ({
       sx={{mt: "-.5rem"}}
     >
       {/* Unsigned Credential Editor Section */}
-      <Grid item xs={12} sm={8}>
+      <Grid item xs={12} md={8}>
+        {/* Credential editor headers */}
         <Box sx={{
-          display: "flex",
+          display: {
+            xs: "block",
+            sm: "flex",
+          },
           flexGrow: 1,
           alignItems: "baseline",
           mb: ".75rem"
         }}>
-          <Typography
-            variant="h2"
-          >Unsigned Credential</Typography>
+          <Typography variant="h2">
+            Unsigned Credential
+          </Typography>
+          
           <Typography
             variant="h3"
-            sx={{ml: "2%"}}
-          >Enter your credential below</Typography>
+            sx={{
+              ml: {
+                xs: 0,
+                sm: "2%",
+              },
+              mt: {
+                xs: "0.35rem",
+                sm: 0,
+              },
+            }}
+          >
+            Enter your credential below
+          </Typography>
         </Box>
+
+
+        {/* Credential Editor Box */}
         <Credential
           value={document}
           editing={true}
@@ -87,11 +106,7 @@ export const Issue: FC<SigningProps> = ({
       </Grid>
       
       {/* Signing Parameters */}
-      <Grid item xs={12} sm={4}>
-        <Typography
-          variant="h2"
-          sx={{mb: "-1rem", pl: "0.5rem"}}
-        >Signing Parameters</Typography>
+      <Grid item xs={12} md={4}>
         <IssueForm
           handleSubmit={handleSubmit}
           loading={loading}

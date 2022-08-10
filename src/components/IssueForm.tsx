@@ -2,15 +2,16 @@ import React from "react";
 import {useRef} from "react";
 import styled from "styled-components";
 import { 
-  Radio,
-  RadioGroup,
+  Box,
   FormControl,
   FormControlLabel,
   FormLabel,
-  FormGroup,
-  Select,
+  Grid,
   MenuItem,
-  Box,
+  Radio,
+  RadioGroup,
+  Select,
+  Typography,
  } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import COLORS from "../utils/colors";
@@ -61,13 +62,44 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
 
   return (
     // Issue Parameters Form
-    <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <Form
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+    >
+      <Grid
+        container
+        sx={{
+          justifyContent: {
+            xs: "center",
+            md: "normal",
+          },
+        }}
+      >
       <Box
-        sx={{alignContent: "center"}}
+        sx={{
+          alignContent: "center",
+          width: {
+            xs: "90%",
+            sm: "60%",
+            md: "100%",
+          },
+        }}
         display="flex"
         alignItems="flex-start"
         flexDirection="column"
       >
+        {/* Form Title */}
+        <Typography
+          variant="h2"
+          sx={{
+            mt: "-.3rem",
+            mb: "-0.3rem",
+            ml: "-0.2rem",
+          }}
+        >
+          Signing Parameters
+        </Typography>
 
         {/* Did Method Selection */}
         <FormControl>
@@ -159,6 +191,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           </Select>
         </FormControl>
       </Box>
+      </Grid>
     </Form>
   );
 };

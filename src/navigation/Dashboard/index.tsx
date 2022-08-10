@@ -68,7 +68,7 @@ export const Dashboard = () => {
           sx={{
             //TODO: change these margins to a const reference!!!
             mt: "15px",
-            mx: "8%",
+            mx: "6%",
           }}
         >
         <Switch>
