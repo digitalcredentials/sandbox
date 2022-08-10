@@ -14,6 +14,7 @@ import NavTabs from "../NavBar/NavTabs";
 import { VerificationResultsProps } from "../../components/Props";
 
 import theme from "../../utils/theme";
+import ScrollToTop from "../../components/ScrollToTop";
 
 
 
@@ -65,6 +66,7 @@ export const Dashboard = () => {
     <ThemeProvider theme={theme}>
     <Box>
       <Router basename="/playground">
+        <ScrollToTop/>
         <TopNavPanel/>
         <NavTabs/>
         <Box
