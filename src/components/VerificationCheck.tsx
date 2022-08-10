@@ -39,7 +39,20 @@ export const VerificationCheck: FC<VerificationCheckProps> = ({
 				}
 			</Grid>
 			{/* Display message */}
-			<Grid item xs={10.5}>
+			<Grid
+				item
+				xs={9} sm={10.5}
+				sx={{
+					ml: {
+						xs:"10px",
+						sm:0,
+					},
+					mr: {
+						xs:"-10px",
+						sm:0,
+					},
+				}}
+			>
 				<Typography variant="h4">{message}</Typography>
 			</Grid>
 		</Grid>

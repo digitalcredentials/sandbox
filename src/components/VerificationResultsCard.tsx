@@ -47,7 +47,10 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 					}}
 				>
 					{/* Overall pass/fail display on left hand side */}
-					<Grid item xs={3}>
+					<Grid
+						item
+						xs={12} md={3}
+					>
 						<Alert
 							severity={verificationSuccess ? "success" : "error"}
 							icon={false}
@@ -94,10 +97,24 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 						</Alert>
 					</Grid>
 
-					<Grid item xs={0.1}><Divider orientation="vertical"/></Grid>
+					<Grid
+						item
+						xs={0.1}
+						sx={{
+							display:{
+								xs:"none",
+								md:"block",
+							},
+						}}
+					>
+						<Divider orientation="vertical"/>
+					</Grid>
 					
 					{/* More detailed verification results on right hand side */}
-					<Grid item xs={8.5}>
+					<Grid
+						item
+						xs={12} md={8.5}
+					>
 						<Alert
 							severity="error"
 							icon={false}
