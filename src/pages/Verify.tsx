@@ -106,7 +106,12 @@ return (
       sx={{textAlign: "center"}}
     >
       <Button
-        sx={{width: "50%"}}
+        sx={{
+          width: {
+            xs:"80%",
+            sm:"50%",
+          },
+        }}
         onClick={handleSubmit}
         variant="contained"
         size="large"
