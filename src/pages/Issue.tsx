@@ -138,12 +138,20 @@ export const Issue: FC<SigningProps> = ({
           sx={{textAlign: "center"}}
         >
           <Button
-            sx={{width: "50%"}}
+            sx={{
+              width: {
+                xs:"80%",
+                sm:"50%",
+              },
+            }}
             onClick={handleSubmit}
             variant="contained"
             size="large"
             disabled={Object.keys(signedDocument).length > 0}
-            color="primary">Sign Credential</Button>
+            color="primary"
+          >
+            Sign Credential
+          </Button>
         </Grid>
       }
 
