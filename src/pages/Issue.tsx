@@ -14,6 +14,8 @@ import {
 import {IssueParams} from "../api/local";
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Link } from 'react-router-dom'
+
 
 export const Issue: FC<SigningProps> = ({
   document,
@@ -185,10 +187,18 @@ export const Issue: FC<SigningProps> = ({
       {Object.keys(signedDocument).length > 0 && 
         <Grid item xs={12} sx={{textAlign: "center"}}>
           <Button
-            sx={{width: "30%"}}
+            sx={{
+              width: {
+                xs: "80%",
+                sm: "40%",
+              },
+            }}
             color="primary"
-            variant="contained"
+            variant="text"
             endIcon={<SendIcon/>}
+            component={Link}
+            to="/verify"
+            size="large"
           >
             Verify this Credential
           </Button>

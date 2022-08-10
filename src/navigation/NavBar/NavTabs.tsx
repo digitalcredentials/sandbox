@@ -1,7 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import { NAV_SIZE, NAV_SIDEBAR_ICONS } from "../../utils/constants";
-import COLORS from "../../utils/colors";
 import { Link, useLocation } from "react-router-dom";
 
 import Tab from "@mui/material/Tab";
