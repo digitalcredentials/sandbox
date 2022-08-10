@@ -4,7 +4,6 @@
 /* Typography */
 
 .MuiTypography-h1 {
-	font-size: 2.5rem;
 	font-weight: 800;
 }
 
@@ -48,3 +47,37 @@
 .MuiFormLabel-root {
 	padding-bottom: .3rem;
 }
+
+
+/* Responsive Breakpoints */
+
+/* Mobile devices */
+@media only screen and (max-width: 600px) {
+	.MuiTypography-h1 {
+		font-size: 2rem;
+	}
+}
+
+/* Small devices */
+@media only screen and (min-width: 600px) {
+	.MuiTypography-h1 {
+		font-size: 2rem;
+	}
+}
+ 
+/* Medium devices */
+@media only screen and (min-width: 768px) {
+	.MuiTypography-h1 {
+		font-size: 2.5rem;
+	}
+}
+ 
+/* Large devices */
+@media only screen and (min-width: 900px) {
+
+}
+ 
+/* Extra large devices */
+@media only screen and (min-width: 1200px) {
+	
+} 
