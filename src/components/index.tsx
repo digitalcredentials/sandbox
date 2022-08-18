@@ -4,4 +4,4 @@ export * from "./VerifyForm";
 export * from "./Props";
 export * from "./CopyToClipboardButton";
 export * from "./VerificationResultsCard";
-export * from "./ScrollToTop";
+export * from "./ScrollToHash";

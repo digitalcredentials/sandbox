@@ -1,7 +1,18 @@
 /* TODO: Store colors in consts! */
 @import "./fonts.css";
 
+:root {
+	/* TODO: Remove this from being hard-coded!!! Calculate nav tabs height */
+	--nav-tabs-height: 100px;
+}
+
 /* Typography */
+
+.MuiTypography-root {
+	/* scroll-margin-top: var(--nav-tabs-height); */
+	padding-top: var(--nav-tabs-height);
+	margin-top: calc(-1 * var(--nav-tabs-height));
+}
 
 .MuiTypography-h1 {
 	font-weight: 800;
