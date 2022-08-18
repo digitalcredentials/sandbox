@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { 
   Box,
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
   Grid,
+  IconButton,
   MenuItem,
   Radio,
   RadioGroup,
@@ -13,10 +15,11 @@ import {
   Typography,
  } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import COLORS from "../utils/colors";
 import { getConfig } from "../utils/config" ;
 import {IssueParams} from "../api/local";
 import "../styles/main.css"
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { Link } from 'react-router-dom';
 
 const CONFIG = getConfig();
 
@@ -105,7 +108,13 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >
-          <FormLabel className="formLabel" id="didmethod">Did Method</FormLabel>
+          <Box display="flex" sx={{alignItems: "flex-end"}}>
+            <FormLabel className="formLabel" id="didmethod">Did Method</FormLabel>
+            <IconButton component={Link} to="/about#didmethod">
+              <HelpOutlineIcon color="info"/>
+            </IconButton>
+          </Box>
+
           <Select
             name="didMethod"
             value={formState.didMethod}
@@ -124,11 +133,17 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         }}>
           {/* Radio to choose whether to autogenerate did */}
           <FormControl margin="none">
-            <FormLabel
-              id="didselection"
-            >
-              Sign With
-            </FormLabel>
+            <Box display="flex" sx={{alignItems: "flex-end"}}>
+              <FormLabel
+                id="didselection"
+              >
+                Sign With
+              </FormLabel>
+              <IconButton component={Link} to="/about#didselection">
+                <HelpOutlineIcon color="info"/>
+              </IconButton>
+            </Box>
+
             <RadioGroup
               name="randomDid"
               onChange={handleChange}
@@ -165,12 +180,18 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >
-          <FormLabel
-            className="formLabel"
-            id="keysuite"
-          >
+          <Box display="flex" sx={{alignItems: "flex-end"}}>
+            <FormLabel
+              className="formLabel"
+              id="keysuite"
+            >
               Key Suite
-          </FormLabel>
+            </FormLabel>
+            <IconButton component={Link} to="/about#keysuite">
+              <HelpOutlineIcon color="info"/>
+            </IconButton>
+          </Box>
+
           <Select
             name="keySuite"
             value={formState.keySuite}
@@ -189,12 +210,17 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >  
-          <FormLabel
-            className="formLabel"
-            id="serializationtype"
-          >
-            Serialization Type
-          </FormLabel>
+          <Box display="flex" sx={{alignItems: "flex-end"}}>
+            <FormLabel
+              className="formLabel"
+              id="serializationtype"
+            >
+              Serialization Type
+            </FormLabel>
+            <IconButton component={Link} to="/about#serializationtype">
+              <HelpOutlineIcon color="info"/>
+            </IconButton>
+          </Box>
           <Select
             name="serializationType"
             value={formState.serializationType}
