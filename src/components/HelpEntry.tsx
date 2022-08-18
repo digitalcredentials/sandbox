@@ -10,6 +10,7 @@ import {FC} from 'react';
 import { Link } from 'react-router-dom';
 
 export const HelpEntry: FC<HelpEntryProps> = ({
+  id,
   title,
   body,
   pageLink,
@@ -31,7 +32,7 @@ export const HelpEntry: FC<HelpEntryProps> = ({
       >
         <Typography
           variant="h2"
-          id="anchor"
+          id={id}
         >
           {title}
         </Typography>
