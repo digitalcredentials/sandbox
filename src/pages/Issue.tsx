@@ -201,11 +201,12 @@ export const Issue: FC<SigningProps> = ({
                 sm: "40%",
               },
             }}
+            
             color="primary"
             variant="text"
             endIcon={<SendIcon/>}
             component={Link}
-            to="/verify"
+            to="/verify#anchor"
             size="large"
           >
             Verify this Credential
