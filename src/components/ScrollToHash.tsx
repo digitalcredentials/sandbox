@@ -13,7 +13,7 @@ export default function ScrollToTop() {
       if (el) {    
           el.scrollIntoView()
       }
-  }, [hash]) // Fires every time hash changes
+  }, [pathname, hash]) // Fires every time hash changes
 
   return null;
 }
