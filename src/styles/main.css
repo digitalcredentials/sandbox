@@ -8,7 +8,7 @@
 
 /* Typography */
 
-.MuiTypography-root {
+.MuiTypography-root, .MuiFormLabel-root {
 	/* scroll-margin-top: var(--nav-tabs-height); */
 	padding-top: var(--nav-tabs-height);
 	margin-top: calc(-1 * var(--nav-tabs-height));

@@ -105,7 +105,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >
-          <FormLabel className="formLabel">Did Method</FormLabel>
+          <FormLabel className="formLabel" id="didmethod">Did Method</FormLabel>
           <Select
             name="didMethod"
             value={formState.didMethod}
@@ -124,7 +124,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         }}>
           {/* Radio to choose whether to autogenerate did */}
           <FormControl margin="none">
-            <FormLabel>Sign With</FormLabel>
+            <FormLabel
+              id="didselection"
+            >
+              Sign With
+            </FormLabel>
             <RadioGroup
               name="randomDid"
               onChange={handleChange}
@@ -161,7 +165,12 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >
-          <FormLabel className="formLabel">Key Suite</FormLabel>
+          <FormLabel
+            className="formLabel"
+            id="keysuite"
+          >
+              Key Suite
+          </FormLabel>
           <Select
             name="keySuite"
             value={formState.keySuite}
@@ -180,7 +189,10 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         <FormControl
           sx={{width:"100%"}}
         >  
-          <FormLabel className="formLabel">
+          <FormLabel
+            className="formLabel"
+            id="serializationtype"
+          >
             Serialization Type
           </FormLabel>
           <Select

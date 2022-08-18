@@ -5,3 +5,4 @@ export * from "./Props";
 export * from "./CopyToClipboardButton";
 export * from "./VerificationResultsCard";
 export * from "./ScrollToHash";
+export * from "./HelpEntry";

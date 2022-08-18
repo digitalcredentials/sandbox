@@ -38,6 +38,12 @@ export interface RequestProps extends HTMLAttributes<HTMLDivElement> {
   setDemoCredential: (demoCredential: any) => void;
 }
 
+export interface HelpEntryProps extends HTMLAttributes<HTMLDivElement> {
+  title: string;
+  body: string;
+  pageLink: string
+}
+
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
   size: number;
 }
