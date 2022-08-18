@@ -39,9 +39,10 @@ export interface RequestProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface HelpEntryProps extends HTMLAttributes<HTMLDivElement> {
+  id: string;
   title: string;
   body: string;
-  pageLink: string
+  pageLink: string;
 }
 
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
