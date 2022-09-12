@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { 
   Box,
-  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -12,6 +11,7 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Tooltip,
   Typography,
  } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -39,7 +39,7 @@ const Form = styled.form`
 
 
 export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: PropsType) => {
-
+  
   // Pass any changes to the issue parameters upwards to the parent component state
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
@@ -110,9 +110,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
         >
           <Box display="flex" sx={{alignItems: "flex-end"}}>
             <FormLabel className="formLabel" id="didmethod">Did Method</FormLabel>
-            <IconButton component={Link} to="/about#didmethod">
-              <HelpOutlineIcon color="info"/>
-            </IconButton>
+            <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
+              <IconButton> 
+                <HelpOutlineIcon color="info"/>
+              </IconButton>
+            </Tooltip>
           </Box>
 
           <Select
@@ -139,9 +141,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
               >
                 Sign With
               </FormLabel>
-              <IconButton component={Link} to="/about#didselection">
-                <HelpOutlineIcon color="info"/>
-              </IconButton>
+            <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
+                <IconButton>
+                  <HelpOutlineIcon color="info"/>
+                </IconButton>
+            </Tooltip>
             </Box>
 
             <RadioGroup
@@ -187,9 +191,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
             >
               Key Suite
             </FormLabel>
-            <IconButton component={Link} to="/about#keysuite">
-              <HelpOutlineIcon color="info"/>
-            </IconButton>
+            <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
+              <IconButton> 
+                <HelpOutlineIcon color="info"/>
+              </IconButton>
+            </Tooltip>
           </Box>
 
           <Select
@@ -217,9 +223,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
             >
               Serialization Type
             </FormLabel>
-            <IconButton component={Link} to="/about#serializationtype">
-              <HelpOutlineIcon color="info"/>
-            </IconButton>
+            <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
+              <IconButton> 
+                <HelpOutlineIcon color="info"/>
+              </IconButton>
+            </Tooltip>
           </Box>
           <Select
             name="serializationType"
