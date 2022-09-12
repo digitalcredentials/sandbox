@@ -15,6 +15,7 @@ import {IssueParams} from "../api/local";
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
+import useDocumentTitle from "../utils/useDocumentTitle";
 
 
 export const Issue: FC<SigningProps> = ({
@@ -23,6 +24,11 @@ export const Issue: FC<SigningProps> = ({
   signedDocument,
   setSignedDocument,
 }) => {
+  
+  // Set page title
+  // TODO: make constant?
+  useDocumentTitle('Issuer - Digital Credentials Sandbox')
+
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<IssueParams>(
     {

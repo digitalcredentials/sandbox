@@ -13,6 +13,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import useDocumentTitle from "../utils/useDocumentTitle";
 
 const CONFIG = getConfig();
 
@@ -22,6 +23,10 @@ export const Verify: FC<VerificationProps> = ({
   verificationResult,
   setVerificationResult, 
 }) => {
+  // Set page title
+  // TODO: make constant?
+  useDocumentTitle('Verifier - Digital Credentials Sandbox')
+
   const [loading, setLoading] = useState(false);
   const [verifyingError, setVerifyingError] = useState<Error>();
 
