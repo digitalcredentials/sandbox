@@ -43,14 +43,14 @@ const NavTabs = () => {
         key={1}
         icon={<PublishedWithChangesIcon fontSize="large"/>}
       />
-      <Tab
+      {/* <Tab
         label="About"
         value="/about"
         component={Link}
         to="/about"
         key={2}
         icon={<HelpIcon fontSize="large"/>}
-      />
+      /> */}
     </Tabs>
   );
 };
