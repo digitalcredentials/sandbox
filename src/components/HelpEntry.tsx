@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
   Button,
-  Grid,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 import { HelpEntryProps } from './Props';
 import {FC} from 'react';
 import { Link } from 'react-router-dom';
@@ -14,7 +13,7 @@ export const HelpEntry: FC<HelpEntryProps> = ({
   title,
   body,
   pageLink,
-}) => 
+}) =>
 {
 
   return (

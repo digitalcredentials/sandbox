@@ -1,5 +1,5 @@
 //TODO: Add props for IssueForm
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 
 export interface DocProps extends HTMLAttributes<HTMLDivElement> {
   document: any;

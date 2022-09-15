@@ -1,20 +1,19 @@
-import { VerificationResultsProps } from "../components/Props";
+import { VerificationResultsProps } from '../components/Props';
 import {
 	Alert,
 	AlertTitle,
 	Box,
 	Card,
-	CardActionArea,
 	CardContent,
 	Divider,
 	Grid,
 	Typography,
- } from '@mui/material'
+} from '@mui/material'
 import { useState, FC } from 'react'
 import React from 'react'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { VerificationCheck } from "./VerificationCheck";
+import { VerificationCheck } from './VerificationCheck';
 
 // TODO: Create props type that takes in verification results array of key value pairs
 // TODO: Format 3 sections with checks and errors, divider between first and second section
@@ -23,7 +22,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 	results,
 	error,
 }) => {
-	var verificationSuccess = 
+	var verificationSuccess =
 		!error && (
 			results[0].valid &&
 			results[1].valid &&
@@ -89,7 +88,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 								/>}
 
 								<br/>
-								
+
 								{/* Overall verification message */}
 								{!verificationSuccess && "Verification Failed"}
 								{verificationSuccess && "Verification Success"}
@@ -109,7 +108,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 					>
 						<Divider orientation="vertical"/>
 					</Grid>
-					
+
 					{/* More detailed verification results on right hand side */}
 					<Grid
 						item
@@ -125,7 +124,7 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 								color: "black",
 							}}
 						>
-							
+
 							{/* If an error is thrown display the error */}
 							{error &&
 								<Box>

@@ -6,13 +6,11 @@ export interface IssueParams {
 	keySuite: string;
 }
 
-export function SignCredential(unsignedCredential: object, options: IssueParams)
-{
-	return {hello: "world"};
+export function signCredential (unsignedCredential: object, options: IssueParams) {
+	return { hello: 'world' };
 }
 
-export function VerifyCredential(unVerifiedCredential: object)
-{
+export function verifyCredential (unVerifiedCredential: object) {
 	return [
 		{id: "expiration", valid: Math.random() < 0.5},
 		{id: "valid_signature", valid: Math.random() < 0.5},

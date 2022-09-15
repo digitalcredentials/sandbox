@@ -1,19 +1,12 @@
-import React, { FC, useState } from "react";
-import { HelpEntry } from "../components";
-import { getConfig } from "../utils/config";
-import {
-  Box,
-  Button,
-  Typography,
-} from "@mui/material";
-import { Link } from 'react-router-dom';
+import React, { FC, useState } from 'react';
+import { HelpEntry } from '../components';
+import { getConfig } from '../utils/config';
+import { Box, Typography,} from '@mui/material';
+// import { Link } from 'react-router-dom';
 
 const CONFIG = getConfig();
 
-export const About = ({
-
-}) => {
-
+export const About = ({}) => {
   const helpSections = [
     {
       id: "didmethod",

@@ -1,5 +1,4 @@
 // Component of VerificationResultsCard displaying a single verification check item
-
 import {
 	Grid,
 	Typography,

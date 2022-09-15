@@ -1,15 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import COLORS from "../utils/colors";
-import AceEditor from "react-ace";
+import React from 'react';
+import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import CopyToClipboardButton from './CopyToClipboardButton';
 
-import {
-  Box,
-  Button,
-  Snackbar
-} from "@mui/material";
+import { Box } from '@mui/material';
 
 type PropsType = {
   value: string;

@@ -1,27 +1,18 @@
-import React, { FC, useState } from "react";
-import { VerificationProps } from "../components/Props";
-import { VerifyCredential } from "../api/local";
-import { Credential, VerifyForm } from "../components";
-import { getConfig } from "../utils/config";
-import { VerificationResultsCard } from "../components";
-import {
-  Alert,
-  AlertTitle,
-  Box,
-  Button,
-  CircularProgress,
-  Grid,
-  Typography,
-} from "@mui/material";
-import useDocumentTitle from "../utils/useDocumentTitle";
+import React, { FC, useState } from 'react';
+import { VerificationProps } from '../components/Props';
+import { verifyCredential } from '../api/local';
+import { Credential, VerificationResultsCard } from '../components';
+// import { getConfig } from '../utils/config';
+import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
+import useDocumentTitle from '../utils/useDocumentTitle';
 
-const CONFIG = getConfig();
+// const CONFIG = getConfig();
 
 export const Verify: FC<VerificationProps> = ({
   unverifiedDocument,
   setUnverifiedDocument,
   verificationResult,
-  setVerificationResult, 
+  setVerificationResult,
 }) => {
   // Set page title
   // TODO: make constant?
@@ -37,10 +28,9 @@ export const Verify: FC<VerificationProps> = ({
       setLoading(true);
       // Attempt to convert text to JSON, apply verify function
       const documentJSON = JSON.parse(unverifiedDocument);
-      const response = await VerifyCredential(
+      const result = await verifyCredential(
         documentJSON,
       );
-      const result = response;
       setVerificationResult(result);
       setVerifyingError(undefined);
     } catch (error) {
@@ -51,7 +41,7 @@ export const Verify: FC<VerificationProps> = ({
     }
 
   };
-  
+
   // Update stored credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     setUnverifiedDocument(data);
@@ -82,7 +72,7 @@ return (
       >
         Unverified Credential
       </Typography>
-      
+
       <Typography
         variant="h3"
         sx={{
@@ -105,7 +95,7 @@ return (
       onChange={editorOnChange}
     />
   </Grid>
-  
+
 
   {/* Issue Button */}
   {!loading &&
@@ -147,7 +137,6 @@ return (
       <VerificationResultsCard error={verifyingError} results={verificationResult}/>
     </Grid>
   }
-  
 </Grid>
 );
 };

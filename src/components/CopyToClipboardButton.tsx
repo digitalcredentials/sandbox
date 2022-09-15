@@ -1,7 +1,5 @@
 // Button that copies to clipboard whatever string it is given as a prop
 // Based on https://codesandbox.io/s/react-copy-to-clipboard-button-with-material-ui-c8sly3?from-embed
-
-
 import {
 	Button,
 	Box,
@@ -10,7 +8,6 @@ import {
 import { unstable_getThemeValue } from '@mui/system'
 import { useState } from 'react'
 import React from 'react'
-
 
 type PropsType = {
 	value: string;
