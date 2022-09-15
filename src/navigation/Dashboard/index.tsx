@@ -65,7 +65,7 @@ export const Dashboard = () => {
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
     <Box>
-      <Router basename="/playground">
+      <Router basename="/sandbox">
         <ScrollToHash/>
         <TopNavPanel/>
         <NavTabs/>
@@ -73,7 +73,7 @@ export const Dashboard = () => {
           sx={{
             //TODO: change these margins to a const reference!!!
             mt: {
-              xs:"-10px", 
+              xs:"-10px",
               sm:"15px",
             },
             mx: "6%",

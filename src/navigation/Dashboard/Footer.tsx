@@ -74,7 +74,7 @@ const Footer = () => {
         </Link>
         {" • "}
         <Link
-          href="https://github.com/digitalcredentials/playground"
+          href="https://github.com/digitalcredentials/sandbox"
           target="_blank"
           rel="noreferrer"
         >
