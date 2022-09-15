@@ -1,6 +1,6 @@
 {
-  "name": "playground",
-  "homepage": "https://digitalcredentials.github.io/playground",
+  "name": "DCC Sandbox",
+  "homepage": "https://digitalcredentials.github.io/sandbox/",
   "version": "4.0.0",
   "private": true,
   "dependencies": {
