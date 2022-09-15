@@ -1,34 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { getConfig } from "../utils/config";
+import { getConfig } from '../utils/config';
 
 const CONFIG = getConfig()
 
 const instance = axios.create({
   baseURL: CONFIG.signAndVerifyApiUrl,
   headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
 });
 
 export const SignedDocumentRequest = (source: string) => {
   return instance.post(`issue/credentials`, {
-    credential: source, 
+    credential: source,
     options: { 'verificationMethod': CONFIG.signingKeyId }
   });
 };
 
 export const VerifyDocumentRequest = (source: string) => {
   return instance.post(`verify/credentials`, {
-    verifiableCredential: source, 
+    verifiableCredential: source,
     options: { 'verificationMethod': CONFIG.signingKeyId }
   });
 };
 
 export const ProvePresentationRequest = (source: any) => {
   return instance.post(`/prove/presentations`, {
-    presentation: source, 
+    presentation: source,
     options: { 'verificationMethod': CONFIG.signingKeyId, 'challenge': CONFIG.provePresentationChallenge }
   });
 };

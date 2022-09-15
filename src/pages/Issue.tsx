@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
-import { SigningProps } from "../components/Props";
-import { SignCredential } from "../api/local";
-import { Credential, IssueForm } from "../components";
+import React, { FC, useState } from 'react';
+import { SigningProps } from '../components/Props';
+import { signCredential } from '../api/local';
+import { Credential, IssueForm } from '../components';
 import {
   Alert,
   AlertTitle,
@@ -10,12 +10,12 @@ import {
   CircularProgress,
   Grid,
   Typography,
-} from "@mui/material";
-import {IssueParams} from "../api/local";
+} from '@mui/material';
+import { IssueParams } from '../api/local';
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
-import useDocumentTitle from "../utils/useDocumentTitle";
+import useDocumentTitle from '../utils/useDocumentTitle';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -24,7 +24,7 @@ export const Issue: FC<SigningProps> = ({
   signedDocument,
   setSignedDocument,
 }) => {
-  
+
   // Set page title
   // TODO: make constant?
   useDocumentTitle('Issuer - Digital Credentials Sandbox')
@@ -47,7 +47,7 @@ export const Issue: FC<SigningProps> = ({
     setLoading(true);
     try {
       const documentJSON = JSON.parse(document);
-      const signedDocument = await SignCredential(documentJSON, options);
+      const signedDocument = await signCredential(documentJSON, options);
       //TODO: remove fake delay (just aesthetic to see loading spinner)
       await new Promise(resolve => setTimeout(resolve, 300));
       setSignedDocument(signedDocument);
@@ -86,7 +86,7 @@ export const Issue: FC<SigningProps> = ({
           <Typography variant="h2">
             Unsigned Credential
           </Typography>
-          
+
           <Typography
             variant="h3"
             sx={{
@@ -112,7 +112,7 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
       </Grid>
-      
+
       {/* Signing Parameters */}
       <Grid item xs={12} lg={4}>
         <IssueForm
@@ -170,7 +170,7 @@ export const Issue: FC<SigningProps> = ({
           <CircularProgress/>
         </Grid>
       }
-      
+
       {/* Signed Credential Section */}
       {Object.keys(signedDocument).length > 0 &&
         <Grid item xs={12}>
@@ -191,14 +191,14 @@ export const Issue: FC<SigningProps> = ({
             Signed Credential
           </Typography>
           <Credential
-            editing={false}  
+            editing={false}
             value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
           />
         </Grid>
       }
 
       {/* Button to move to verify section */}
-      {Object.keys(signedDocument).length > 0 && 
+      {Object.keys(signedDocument).length > 0 &&
         <Grid item xs={12} sx={{textAlign: "center"}}>
           <Button
             sx={{
@@ -207,7 +207,7 @@ export const Issue: FC<SigningProps> = ({
                 sm: "40%",
               },
             }}
-            
+
             color="primary"
             variant="text"
             endIcon={<SendIcon/>}

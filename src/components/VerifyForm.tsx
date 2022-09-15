@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { 
+import React from 'react';
+import styled from 'styled-components';
+import {
   Radio,
   RadioGroup,
   FormControl,
@@ -9,10 +9,10 @@ import {
   FormGroup,
   Select,
   MenuItem,
- } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import COLORS from "../utils/colors";
-import { getConfig } from "../utils/config";
+ } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import COLORS from '../utils/colors';
+import { getConfig } from '../utils/config';
 
 const CONFIG = getConfig();
 
@@ -60,7 +60,7 @@ export const VerifyForm = ({ loading, handleSubmit, buttonText, subtitleText, in
           <FormControlLabel value="manual" control={<Radio />} label="Existing DID" />
           <TextField id="standard-basic" label="<paste secret key seed or mnemonic>" variant="standard" />
         </RadioGroup>
-        
+
         {/* Serialization Parameters */}
         <FormGroup row={true}>
           <Select

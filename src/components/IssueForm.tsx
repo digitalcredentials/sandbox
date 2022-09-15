@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { 
+import React from 'react';
+import styled from 'styled-components';
+import {
   Box,
   FormControl,
   FormControlLabel,
@@ -13,13 +13,13 @@ import {
   Select,
   Tooltip,
   Typography,
- } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import { getConfig } from "../utils/config" ;
-import {IssueParams} from "../api/local";
-import "../styles/main.css"
+ } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { getConfig } from '../utils/config' ;
+import {IssueParams} from '../api/local';
+import '../styles/main.css'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const CONFIG = getConfig();
 
@@ -39,7 +39,7 @@ const Form = styled.form`
 
 
 export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: PropsType) => {
-  
+
   // Pass any changes to the issue parameters upwards to the parent component state
   const handleChange = (event: any) => {
     const { target: { name, value } } = event;
@@ -111,7 +111,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
           <Box display="flex" sx={{alignItems: "flex-end"}}>
             <FormLabel className="formLabel" id="didmethod">Did Method</FormLabel>
             <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
-              <IconButton> 
+              <IconButton>
                 <HelpOutlineIcon color="info"/>
               </IconButton>
             </Tooltip>
@@ -192,7 +192,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
               Key Suite
             </FormLabel>
             <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
-              <IconButton> 
+              <IconButton>
                 <HelpOutlineIcon color="info"/>
               </IconButton>
             </Tooltip>
@@ -211,11 +211,11 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
             </MenuItem>
           </Select>
         </FormControl>
-          
+
         {/* Serialization Type Selection */}
         <FormControl
           sx={{width:"100%"}}
-        >  
+        >
           <Box display="flex" sx={{alignItems: "flex-end"}}>
             <FormLabel
               className="formLabel"
@@ -224,7 +224,7 @@ export const IssueForm = ({ loading, handleSubmit, formState, setOptions}: Props
               Serialization Type
             </FormLabel>
             <Tooltip arrow title="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.">
-              <IconButton> 
+              <IconButton>
                 <HelpOutlineIcon color="info"/>
               </IconButton>
             </Tooltip>
