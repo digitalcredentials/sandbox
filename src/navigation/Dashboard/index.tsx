@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Box, ThemeProvider} from "@mui/material";
 import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
-import { Issue, Verify, About } from "../../pages";
+import { Issue, Verify, About, Privacy, Terms } from "../../pages";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
@@ -91,6 +91,12 @@ export const Dashboard = () => {
           <Route path="/about">
             <About
             />
+          </Route>
+          <Route path="/privacy">
+            <Privacy />
+          </Route>
+          <Route path="/terms">
+            <Terms />
           </Route>
           <Route path="/">
             <Issue
