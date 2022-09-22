@@ -38,6 +38,11 @@
 	color: #424242;
 }
 
+/* TODO: Change color to const reference */
+a {
+	color: #3D77D2;
+}
+
 
 /* Misc Elements */
 .MuiTab-root {
