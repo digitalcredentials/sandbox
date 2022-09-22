@@ -6,7 +6,13 @@ export const Terms = ({}) => {
         <Box>
           {/* DCC Developer Sandbox Privacy Policy content*/}
               <Box>
-                <Typography variant="h1">TERMS AND CONDITIONS OF USE</Typography> 
+                <Typography
+                  variant="h1"
+                  align="center"
+                  sx={{my: 2}}
+                >
+                  TERMS AND CONDITIONS OF USE
+                </Typography> 
                 <Typography variant="body1">Welcome to the DCC Developer Sandbox Site (the “Site”). The Site is an open source mobile wallet developed by the Digital Credentials Consortium, a network of leading international universities designing an open infrastructure for academic credentials. By accessing this Site, users agree to be bound by the following terms and conditions which may be revised at any time. Users are encouraged to visit this page periodically to review the current terms and conditions, as your continued use of this Site signifies your agreement to these term and conditions. If you do not understand or do not agree to be bound by these terms and conditions, please exit this Site immediately.</Typography>
                 <List>
                   <ListItem>1. The Site does not collect or retain any personally identifiable information about you.</ListItem>
