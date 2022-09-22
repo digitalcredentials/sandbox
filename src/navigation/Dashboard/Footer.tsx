@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Divider,
@@ -50,20 +51,18 @@ const Footer = () => {
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
         {/* TODO: Add link */}
-        <Link
-          target="_blank"
-          rel="noreferrer"
+        <RouterLink
+          to="/terms"
         >
           Terms and Conditions of Use
-        </Link>
+        </RouterLink>
         {" • "}
         {/* TODO: Add link */}
-        <Link
-          target="_blank"
-          rel="noreferrer"
+        <RouterLink
+          to="/privacy"
         >
           Privacy Policy
-        </Link>
+        </RouterLink>
         {" • "}
         <Link
           href="https://accessibility.mit.edu/"
