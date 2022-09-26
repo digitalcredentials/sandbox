@@ -17,6 +17,14 @@ const Footer = () => {
         gap: "7px",
         mt: "5px",
         mb: "30px",
+        width: {
+          md: "70%",
+          lg: "50%",
+        },
+        ml: {
+          md: "15%",
+          lg: "25%",
+        },
       }}
     >
       {/* Horizontal line to break content before footer */}
@@ -48,16 +56,13 @@ const Footer = () => {
         >
           MIT Open Learning
         </a>
-      </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {/* TODO: Add link */}
+        {" • "}
         <RouterLink
           to="/terms"
         >
           Terms and Conditions of Use
         </RouterLink>
         {" • "}
-        {/* TODO: Add link */}
         <RouterLink
           to="/privacy"
         >
