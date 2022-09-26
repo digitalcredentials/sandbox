@@ -2,17 +2,17 @@ import { createTheme } from '@mui/material/styles';
 import COLORS from "./colors";
 
 const theme = createTheme({
-  // palette: {
-  //   primary: {
-  //     main: COLORS.PRIMARY_BLUE,
-  //   },
-  //   secondary: {
-  //     main: COLORS.SECONDARY_RED,
-  //   },
-  //   info: {
-  //     main: COLORS.GREY,
-  //   }
-  // },
+  palette: {
+    primary: {
+      main: COLORS.PRIMARY,
+    },
+    secondary: {
+      main: COLORS.SECONDARY,
+    },
+    info: {
+      main: COLORS.GREY,
+    }
+  },
   breakpoints: {
     values: {
       xs: 0,
