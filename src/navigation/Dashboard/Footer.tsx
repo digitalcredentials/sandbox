@@ -33,21 +33,21 @@ const Footer = () => {
         {" Massachusetts Institute of Technology"}
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link
+        <a
           target="_blank"
           rel="noreferrer"
           href="https://digitalcredentials.mit.edu/"
         >
           Digital Credentials Consortium
-        </Link>
+        </a>
         {" • "}
-        <Link
+        <a
           href="https://openlearning.mit.edu/"
           target="_blank"
           rel="noreferrer"
         >
           MIT Open Learning
-        </Link>
+        </a>
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
         {/* TODO: Add link */}
@@ -64,21 +64,21 @@ const Footer = () => {
           Privacy Policy
         </RouterLink>
         {" • "}
-        <Link
+        <a
           href="https://accessibility.mit.edu/"
           target="_blank"
           rel="noreferrer"
         >
           Accessibility
-        </Link>
+        </a>
         {" • "}
-        <Link
+        <a
           href="https://github.com/digitalcredentials/sandbox"
           target="_blank"
           rel="noreferrer"
         >
           View on Github
-        </Link>
+        </a>
       </Typography>
     </Box>
   );
