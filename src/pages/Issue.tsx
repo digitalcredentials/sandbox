@@ -149,12 +149,13 @@ export const Issue: FC<SigningProps> = ({
                 xs:"80%",
                 sm:"50%",
               },
+              color: "white",
             }}
             onClick={handleSubmit}
             variant="contained"
             size="large"
             disabled={Object.keys(signedDocument).length > 0}
-            color="primary"
+            color="secondary"
           >
             Sign Credential
           </Button>
@@ -208,7 +209,7 @@ export const Issue: FC<SigningProps> = ({
               },
             }}
 
-            color="primary"
+            color="secondary"
             variant="text"
             endIcon={<SendIcon/>}
             component={Link}

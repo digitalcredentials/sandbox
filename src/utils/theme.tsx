@@ -10,7 +10,7 @@ const theme = createTheme({
       main: COLORS.SECONDARY,
     },
     info: {
-      main: COLORS.GREY,
+      main: COLORS.INFO,
     }
   },
   breakpoints: {
