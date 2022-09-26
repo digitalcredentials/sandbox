@@ -29,12 +29,12 @@ const NavTabs = () => {
     >
       <Tab
         label={<div>
-            <HistoryEduIcon fontSize="large"
+            <HistoryEduIcon
             style = {{
               verticalAlign : 'middle',
               marginRight: "15px",
             }}/>
-            Verify
+            Issue
           </div>}
         value="/"
         component={Link}
@@ -43,7 +43,7 @@ const NavTabs = () => {
       />
       <Tab
         label={<div>
-              <PublishedWithChangesIcon fontSize="large"
+              <PublishedWithChangesIcon
               style = {{
                 verticalAlign : 'middle',
                 marginRight: "15px",

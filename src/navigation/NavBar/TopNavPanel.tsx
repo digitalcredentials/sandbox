@@ -14,7 +14,7 @@ const TopNavPanel = () => {
     <AppBar
       position="static"
       sx={{
-        pt: "0rem",
+        pt: "-30px",
         pb: "0rem",
       }}
     >
