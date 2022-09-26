@@ -19,12 +19,10 @@
 }
 
 .MuiTypography-h2 {
-	font-size: 1.7rem;
 	font-weight: 400;
 }
 
 .MuiTypography-h3 {
-	font-size: 1.25rem;
 	color: #424242;
 }
 
@@ -70,21 +68,39 @@ a {
 /* Mobile devices */
 @media only screen and (max-width: 600px) {
 	.MuiTypography-h1 {
-		font-size: 2rem;
+		font-size: 1.35rem;
+	}
+	.MuiTypography-h2 {
+		font-size: 1.3rem;
+	}
+	.MuiTypography-h3 {
+		font-size: 1rem;
 	}
 }
 
 /* Small devices */
 @media only screen and (min-width: 600px) {
 	.MuiTypography-h1 {
-		font-size: 2rem;
+		font-size: 1.8rem;
+	}
+	.MuiTypography-h2 {
+		font-size: 1.4rem;
+	}
+	.MuiTypography-h3 {
+		font-size: 1.1rem;
 	}
 }
  
 /* Medium devices */
 @media only screen and (min-width: 768px) {
 	.MuiTypography-h1 {
-		font-size: 2.5rem;
+		font-size: 2rem;
+	}
+	.MuiTypography-h2 {
+		font-size: 1.6rem;
+	}
+	.MuiTypography-h3 {
+		font-size: 1.2rem;
 	}
 }
  

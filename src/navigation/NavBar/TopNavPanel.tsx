@@ -14,8 +14,8 @@ const TopNavPanel = () => {
     <AppBar
       position="static"
       sx={{
-        pt: "1rem",
-        pb: "1rem",
+        pt: "0rem",
+        pb: "0rem",
       }}
     >
       <Toolbar>
@@ -25,11 +25,12 @@ const TopNavPanel = () => {
         component="img"
         sx={{
           height: {
-            sm: "45px",
-            md: "60px",
+            xs: "30px",
+            sm: "30px",
+            md: "45px",
           },
           display: {
-            xs: "none",
+            xxs: "none",
             sm: "block",
           },
         }} 
