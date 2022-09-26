@@ -109,11 +109,12 @@ return (
             xs:"80%",
             sm:"50%",
           },
+          color: "white",
         }}
         onClick={handleSubmit}
         variant="contained"
         size="large"
-        color="primary"
+        color="secondary"
         disabled={Object.keys(verificationResult).length > 0}
       >
         Verify Credential

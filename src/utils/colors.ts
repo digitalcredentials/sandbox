@@ -10,8 +10,8 @@ MELROSE: "#9999FF",       // lavender drawer background
 const COLORS = {
   WHITE: "#FFFFFF",
   PRIMARY: "#343434", //primary color
-  SECONDARY: "#bc1900", //secondary color
-  GREY: "#424242",
+  SECONDARY: "#42A5F5", //secondary color
+  INFO: "#424242",
 
   ATLANTIS: "#99CC33",      // yellow-green; primary contrast
   METEORITE: "#33207E",     // primary purple
