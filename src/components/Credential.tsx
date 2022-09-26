@@ -19,7 +19,7 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
     return <Box
     sx={{
       borderRadius: "10px",
-      border: "2px solid gray",
+      border: "1px solid gray",
       overflow: "hidden",
     }}>
       <AceEditor
@@ -37,7 +37,7 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
   return <Box
   sx={{
     borderRadius: "10px",
-    border: "3px solid green",
+    border: "1px solid green",
     overflow: "hidden",
     mt: ".5rem",
     alignContent: "flex-end"
