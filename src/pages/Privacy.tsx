@@ -14,7 +14,7 @@ export const Privacy = ({}) => {
                   DCC Developer Sandbox Privacy Policy
                 </Typography> 
                 <Typography variant="h2" sx={{my: 2}}>Introduction</Typography> 
-                <Typography variant="body1" sx={{my: 2}}>DCC Developer Sandbox is an open source mobile wallet developed by the <a href="https://digitalcredentials.mit.edu">Digital Credentials Consortium</a>, a network of leading international universities designing an open infrastructure for academic credentials.
+                <Typography variant="body1" sx={{my: 2}}>DCC Developer Sandbox is an open source set of verifiable credential tools developed by the <a href="https://digitalcredentials.mit.edu">Digital Credentials Consortium</a>, a network of leading international universities designing an open infrastructure for academic credentials.
                 This Privacy Policy explains how DCC Developer Sandbox collects, uses, and processes personal information about our learners.</Typography> 
                 <Typography variant="h2" sx={{my: 2}}>What Personal Information We Collect</Typography> 
                 <Typography variant="body1" sx={{my: 2}}>We do not collect any personal information.</Typography> 
