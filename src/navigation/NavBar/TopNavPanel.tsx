@@ -21,21 +21,26 @@ const TopNavPanel = () => {
       <Toolbar>
       
       {/* DCC Icon, white on transparent */}
-      <Box
-        component="img"
-        sx={{
-          height: {
-            xs: "30px",
-            sm: "30px",
-            md: "45px",
-          },
-          display: {
-            xxs: "none",
-            sm: "block",
-          },
-        }} 
-        src={logo}
-      />
+      <a
+        href="https://digitalcredentials.mit.edu/"
+        target="_blank"
+      >
+        <Box
+          component="img"
+          sx={{
+            height: {
+              xs: "30px",
+              sm: "30px",
+              md: "45px",
+            },
+            display: {
+              xxs: "none",
+              sm: "block",
+            },
+          }} 
+          src={logo}
+        />
+      </a>
 
       {/* Site title */}
       <Typography
