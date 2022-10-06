@@ -177,6 +177,7 @@ export const Issue: FC<SigningProps> = ({
         <Grid item xs={12}>
           <Typography
             variant="h2"
+            id="signedcredential"
             sx={{
               pl: "0.5rem",
               textAlign: "center"}}
