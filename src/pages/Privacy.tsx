@@ -1,7 +1,10 @@
 import React from 'react';
 import { Box, Typography,} from '@mui/material';
+import useDocumentTitle from '../utils/useDocumentTitle';
 
 export const Privacy = ({}) => {
+    useDocumentTitle('Privacy Policy - Digital Credentials Sandbox')
+
     return (
         <Box>
           {/* DCC Developer Sandbox Privacy Policy content*/}

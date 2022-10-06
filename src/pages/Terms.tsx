@@ -1,7 +1,10 @@
 import React from 'react';
 import { Box, Typography, List, ListItem} from '@mui/material';
+import useDocumentTitle from '../utils/useDocumentTitle';
 
 export const Terms = ({}) => {
+    useDocumentTitle('Terms and Conditions - Digital Credentials Sandbox')
+
     return (
         <Box>
           {/* DCC Developer Sandbox Privacy Policy content*/}
