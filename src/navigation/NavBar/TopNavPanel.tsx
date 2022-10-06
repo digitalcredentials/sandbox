@@ -55,7 +55,7 @@ const TopNavPanel = () => {
           },
         }}
       >
-        DCC Developer Sandbox
+        Developer Sandbox
       </Typography>
       
       </Toolbar>
