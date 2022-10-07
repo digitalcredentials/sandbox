@@ -26,18 +26,25 @@ export const Verify: FC<VerificationProps> = ({
     event.preventDefault();
     try {
       setLoading(true);
+      // For some reason this delay allows the results to render before page scroll
+      await new Promise(resolve => setTimeout(resolve, 1));
       // Attempt to convert text to JSON, apply verify function
       const documentJSON = JSON.parse(unverifiedDocument);
       const result = await verifyCredential(
         documentJSON,
       );
+      // If no errors in verifying, set results
       setVerificationResult(result);
       setVerifyingError(undefined);
     } catch (error) {
-      console.log(error);
+      // Store error if caight
       setVerifyingError(error);
     } finally {
+      // Remove loading bar
       setLoading(false);
+      // Scroll down to verification results box
+      const element = document.getElementById("results");
+      element.scrollIntoView();
     }
 
   };
@@ -133,8 +140,8 @@ return (
   }
 
   {/* If there are signs verification has been run, show results card */}
-  {(verificationResult.length > 0 || verifyingError) &&
-    <Grid item xs={12}>
+  {((verificationResult.length > 0 || verifyingError) && !loading) &&
+    <Grid item xs={12} id="results">
       <VerificationResultsCard error={verifyingError} results={verificationResult}/>
     </Grid>
   }

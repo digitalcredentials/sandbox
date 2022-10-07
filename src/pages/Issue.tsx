@@ -19,7 +19,7 @@ import useDocumentTitle from '../utils/useDocumentTitle';
 
 
 export const Issue: FC<SigningProps> = ({
-  document,
+  unsignedDocument,
   setDocument,
   signedDocument,
   setSignedDocument,
@@ -46,15 +46,22 @@ export const Issue: FC<SigningProps> = ({
     event.preventDefault();
     setLoading(true);
     try {
-      const documentJSON = JSON.parse(document);
+      const documentJSON = JSON.parse(unsignedDocument);
       const signedDocument = await signCredential(documentJSON, options);
-      //TODO: remove fake delay (just aesthetic to see loading spinner)
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // For some reason this delay allows the results to render before page scroll
+      await new Promise(resolve => setTimeout(resolve, 1));
+      // If no errors are thrown, store signed credential
       setSignedDocument(signedDocument);
       setSigningError(undefined);
+      setLoading(false);
+      // Scroll down to signed credential box
+      const element = document.getElementById("signedcredential");
+      element.scrollIntoView();
     } catch (error) {
+      // Store any errors
       setSigningError(error);
     } finally {
+      // Remove loading bar
       setLoading(false);
     }
   };
@@ -107,7 +114,7 @@ export const Issue: FC<SigningProps> = ({
 
         {/* Credential Editor Box */}
         <Credential
-          value={document}
+          value={unsignedDocument}
           editing={true}
           onChange={editorOnChange}
         />
