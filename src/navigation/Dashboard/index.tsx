@@ -100,7 +100,7 @@ export const Dashboard = () => {
           </Route>
           <Route path="/">
             <Issue
-              document={document}
+              unsignedDocument={document}
               setDocument={doSetDocument}
               signedDocument={signedDocument}
               setSignedDocument={doSetSignedDocument}

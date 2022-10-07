@@ -36,7 +36,6 @@ export const VerificationResultsCard: FC<VerificationResultsProps> = ({
 				mt: "0.25rem",
 				boxShadow: "0px 0px 5px -1px grey",
 			}}
-			id="results"
 		>
 			<CardContent>
 				<Grid
