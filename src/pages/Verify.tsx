@@ -37,7 +37,7 @@ export const Verify: FC<VerificationProps> = ({
       setVerificationResult(result);
       setVerifyingError(undefined);
     } catch (error) {
-      // Store error if caight
+      // Store error if caught
       setVerifyingError(error);
     } finally {
       // Remove loading bar
