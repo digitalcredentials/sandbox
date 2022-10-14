@@ -16,6 +16,7 @@ import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
+import {DropzoneArea} from 'mui-file-dropzone';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -117,6 +118,14 @@ export const Issue: FC<SigningProps> = ({
           value={unsignedDocument}
           editing={true}
           onChange={editorOnChange}
+        />
+
+        <DropzoneArea
+          acceptedFiles={[".json"]}
+          filesLimit={1}
+          onChange={(files) => console.log('Files:', files)}
+          showFileNames={true}
+          showPreviewsInDropzone={false}
         />
       </Grid>
 

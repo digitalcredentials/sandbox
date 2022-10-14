@@ -17,6 +17,7 @@
     "axios": "^0.20.0",
     "dcc-context": "digitalcredentials/dcc#rc-1.0.1",
     "ed25519-signature-2020-context": "^1.1.0",
+    "mui-file-dropzone": "^4.0.2",
     "qrcode.react": "^1.0.0",
     "react": "^17.0.0",
     "react-ace": "^10.1.0",
