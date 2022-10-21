@@ -5,6 +5,7 @@ import { Credential, VerificationResultsCard } from '../components';
 // import { getConfig } from '../utils/config';
 import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import useDocumentTitle from '../utils/useDocumentTitle';
+import {DropzoneArea} from 'mui-file-dropzone';
 
 // const CONFIG = getConfig();
 
@@ -54,6 +55,22 @@ export const Verify: FC<VerificationProps> = ({
     setUnverifiedDocument(data);
     setVerifyingError(undefined);
   };
+  
+  // Load in JSON file from dropzone into the credential editor
+  const setCredentialFromFile = async (file: File) => {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      // this will then display a text file
+      if (typeof reader.result === 'string') {
+        setUnverifiedDocument(reader.result);
+      }
+    }, false);
+
+    if (file) {
+      reader.readAsText(file);
+    }
+  }
 
 return (
   <Grid
@@ -101,6 +118,14 @@ return (
       editing={true}
       onChange={editorOnChange}
     />
+    <DropzoneArea
+          acceptedFiles={[".json"]}
+          filesLimit={1}
+          onChange={(files) => setCredentialFromFile(files[0])}
+          showFileNames={true}
+          showPreviewsInDropzone={false}
+          fileObjects={[]}
+        />
   </Grid>
 
 
