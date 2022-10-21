@@ -17,6 +17,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea} from 'mui-file-dropzone';
+import { EditAttributesRounded } from '@mui/icons-material';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -64,6 +65,23 @@ export const Issue: FC<SigningProps> = ({
   const editorOnChange = async (data: string, event?: any) => {
     setDocument(data);
   };
+
+
+  // Load in JSON file from dropzone into the credential editor
+  const setCredentialFromFile = async (file: File) => {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      // this will then display a text file
+      if (typeof reader.result === 'string') {
+        setDocument(reader.result);
+      }
+    }, false);
+
+    if (file) {
+      reader.readAsText(file);
+    }
+  }
 
   return (
     <Grid
@@ -116,9 +134,10 @@ export const Issue: FC<SigningProps> = ({
         <DropzoneArea
           acceptedFiles={[".json"]}
           filesLimit={1}
-          onChange={(files) => console.log('Files:', files)}
+          onChange={(files) => setCredentialFromFile(files[0])}
           showFileNames={true}
           showPreviewsInDropzone={false}
+          fileObjects={[]}
         />
       </Grid>
 
