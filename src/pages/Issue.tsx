@@ -16,7 +16,7 @@ import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
-import {DropzoneArea} from 'mui-file-dropzone';
+import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
 import { EditAttributesRounded } from '@mui/icons-material';
 
 
@@ -105,6 +105,7 @@ export const Issue: FC<SigningProps> = ({
           <Typography variant="h2">
             Unsigned Credential
           </Typography>
+          
 
           <Typography
             variant="h3"
@@ -131,7 +132,9 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
 
+        {/* File upload section */}
         <DropzoneArea
+          dropzoneText="Drag and drop a json file here or click to upload"
           acceptedFiles={[".json"]}
           filesLimit={1}
           onChange={(files) => setCredentialFromFile(files[0])}

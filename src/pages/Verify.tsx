@@ -111,14 +111,17 @@ return (
       editing={true}
       onChange={editorOnChange}
     />
+
+    {/* File upload section */}
     <DropzoneArea
-          acceptedFiles={[".json"]}
-          filesLimit={1}
-          onChange={(files) => setCredentialFromFile(files[0])}
-          showFileNames={true}
-          showPreviewsInDropzone={false}
-          fileObjects={[]}
-        />
+      dropzoneText="Drag and drop a json file here or click to upload"
+      acceptedFiles={[".json"]}
+      filesLimit={1}
+      onChange={(files) => setCredentialFromFile(files[0])}
+      showFileNames={true}
+      showPreviewsInDropzone={false}
+      fileObjects={[]}
+    />
   </Grid>
 
 

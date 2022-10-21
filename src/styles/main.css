@@ -10,8 +10,8 @@
 
 .MuiTypography-root, .MuiFormLabel-root{
 	/* scroll-margin-top: var(--nav-tabs-height); */
-	padding-top: var(--nav-tabs-height);
-	margin-top: calc(-1 * var(--nav-tabs-height));
+	/* padding-top: var(--nav-tabs-height); */
+	/* margin-top: calc(-1 * var(--nav-tabs-height)); */
 }
 
 .MuiTypography-h1 {
@@ -43,6 +43,16 @@ a {
 
 
 /* Misc Elements */
+
+
+/* Mui-Dropzone elements */
+
+/* Mui-Dropzone main box */
+.css-1agvk75, .css-12vgb7g {
+	min-height: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
 
 /* Input elements */
