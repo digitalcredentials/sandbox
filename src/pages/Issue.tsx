@@ -49,7 +49,7 @@ export const Issue: FC<SigningProps> = ({
     setLoading(true);
     try {
       const documentJSON = JSON.parse(unsignedDocument);
-      const signedDocument = await signCredential(documentJSON, options);
+      const signedDocument = await signCredential({credential: documentJSON, ...options});
       // For some reason this delay allows the results to render before page scroll
       await new Promise(resolve => setTimeout(resolve, 1));
       // If no errors are thrown, store signed credential
@@ -112,7 +112,7 @@ export const Issue: FC<SigningProps> = ({
           <Typography variant="h2">
             Unsigned Credential
           </Typography>
-          
+
 
           <Typography
             variant="h3"
