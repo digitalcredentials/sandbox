@@ -1,9 +1,17 @@
 import React, { FC, useState } from 'react';
 import { VerificationProps } from '../components/Props';
+import { ScanModal } from '../components/ScanModal';
 import { verifyCredential } from '../api/local';
 import { Credential, VerificationResultsCard } from '../components';
 // import { getConfig } from '../utils/config';
-import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
+import { 
+  Box,
+  Button, 
+  CircularProgress, 
+  Grid, 
+  Modal, 
+  Typography
+ } from '@mui/material';
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea} from 'mui-file-dropzone';
 
@@ -129,6 +137,9 @@ return (
       showPreviewsInDropzone={false}
       fileObjects={[]}
     />
+
+    {/* Component with QR scan modal and button to open it */}
+    <ScanModal onScan={setUnverifiedDocument} setErrorMessage={() =>void 0} />
   </Grid>
 
 
