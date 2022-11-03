@@ -1,7 +1,11 @@
 import React, { FC, useState } from 'react';
 import { SigningProps } from '../components/Props';
 import { signCredential } from '../api/local';
-import { Credential, IssueForm } from '../components';
+import { 
+  Credential, 
+  IssueForm, 
+  ScanModal
+ } from '../components';
 import {
   Alert,
   AlertTitle,
@@ -149,6 +153,9 @@ export const Issue: FC<SigningProps> = ({
           showPreviewsInDropzone={false}
           fileObjects={[]}
         />
+
+        {/* Component with modal and button to open it */}
+        <ScanModal onScan={setDocument} setErrorMessage={() =>void 0} />
       </Grid>
 
       {/* Signing Parameters */}
