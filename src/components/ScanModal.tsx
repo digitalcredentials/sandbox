@@ -36,6 +36,19 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '40%',
+    bgcolor: 'background.paper',
+    borderRadius: '10px',
+    boxShadow: 24,
+    p: 4,
+    zIndex: 9999,
+  };
+
   return (
     <Box>
       <Button onClick={handleOpen}>Scan a QR code</Button>
@@ -45,7 +58,7 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box>
+        <Box sx={style}>
           <QrReader 
             onResult={(result, error) => handleScan(result, error)}
             constraints={{facingMode: "environment"}}
