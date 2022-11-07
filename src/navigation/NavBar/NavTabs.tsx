@@ -22,7 +22,7 @@ const NavTabs = () => {
         position: "sticky",
         top: "0px",
         backgroundColor: "white",
-        zIndex: 9999,
+        zIndex: 999,
         boxShadow: "0px 5px 10px -10px black",
         pt: "5px",
       }}

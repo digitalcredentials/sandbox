@@ -23,7 +23,7 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 	return (
 		<Box sx={{
 				position: "absolute",
-				zIndex: 999,
+				zIndex: 99,
 				//TODO: Reference constants in margin!!!
 				right: "-2px",
 				alignSelf: "flex-end",
