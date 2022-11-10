@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 
 type PropsType = {
   onScan: (result: string) => void;
@@ -58,7 +59,18 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
     <Box>
 
       {/* This is the button to open the modal */}
-      <Button onClick={handleOpen}>Scan a QR code</Button>
+      <Button
+        onClick={handleOpen}
+        variant="contained"
+        startIcon={<QrCodeScannerIcon/>}
+        size="large"
+        sx={{
+          width: "100%",
+          height: "60px",
+        }}
+      >
+        Scan a QR code
+      </Button>
       
       {/* The modal window itself */}
       <Modal
