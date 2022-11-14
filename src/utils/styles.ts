@@ -9,7 +9,7 @@ font-size: 1.3em;
 export const SubTitle = styled.div`
 font-size: 0.9em;
 margin-bottom: 20px;
-color: ${COLORS.GREY};
+color: grey;
 `;
 
 export const Content = styled.div`

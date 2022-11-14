@@ -13,6 +13,8 @@ import {
   Button,
   CircularProgress,
   Grid,
+  Tabs,
+  Tab,
   Typography,
 } from '@mui/material';
 import { IssueParams } from '../api/local';
@@ -21,7 +23,12 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
-import { EditAttributesRounded } from '@mui/icons-material';
+import { EditAttributesRounded, SystemSecurityUpdate } from '@mui/icons-material';
+import { securityLoader } from '@digitalcredentials/security-document-loader'
+import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
+import { ProvePresentationRequest } from "../api/index";
+import { encodeToRawQrCodeUrl } from '../api/encodeRawQr';
+import { QROutput } from '../components/QROutput';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -29,6 +36,8 @@ export const Issue: FC<SigningProps> = ({
   setDocument,
   signedDocument,
   setSignedDocument,
+  qrCodeUrls,
+  setQrCodeUrls,
 }) => {
 
   // Set page title
@@ -45,7 +54,36 @@ export const Issue: FC<SigningProps> = ({
       keySuite: "Ed25519Signature2020",
     }
   );
+  const [rawQrCodeUrl, setRawQrCodeUrl] = useState('');
+  const [qrError, setQrError] = useState(false);
   const [signingError, setSigningError] = useState<Error>();
+    
+  // Update stored unsigned credential upon edit
+  const editorOnChange = async (data: string, event?: any) => {
+    setDocument(data);
+  };
+
+  // Generate QR codes and handle any errors thrown
+  const generateQrCodes = async (vpUnsigned: any) => {
+    var compressedQrCode = "";
+    var rawQrCode = "";
+    setQrCodeUrls(["", ""])
+
+    try {
+      // Encode the unsigned VP into QR codes
+      compressedQrCode = await encodeToQrCodeUrl(vpUnsigned);
+      rawQrCode = await encodeToRawQrCodeUrl(vpUnsigned);
+      setQrError(false);
+    } catch (error) {
+    }
+
+    setQrCodeUrls([rawQrCode, compressedQrCode]);
+
+    // If there are no QR codes to display, store this info
+    if (rawQrCode == "" && compressedQrCode == "") {
+      setQrError(true);
+    }
+  }
 
   // Call local signing function on submit
   const handleSubmit = async (event: any) => {
@@ -56,13 +94,22 @@ export const Issue: FC<SigningProps> = ({
       const signedDocument = await signCredential(documentJSON, options);
       // For some reason this delay allows the results to render before page scroll
       await new Promise(resolve => setTimeout(resolve, 1));
+      // Encode the signed VC into an unsigned VP
+      const vpUnsigned = encodeToVpUnsigned(signedDocument);
+      // const vpSigned = (await ProvePresentationRequest(vpUnsigned)).data;
       // If no errors are thrown, store signed credential
       setSignedDocument(signedDocument);
       setSigningError(undefined);
       setLoading(false);
       // Scroll down to signed credential box
       const element = document.getElementById("signedcredential");
-      element.scrollIntoView();
+      if (element) {
+        if (element) {
+        element.scrollIntoView();
+      }
+      }
+      // Generate QR codes
+      generateQrCodes(vpUnsigned);
     } catch (error) {
       // Store any errors
       setSigningError(error);
@@ -71,12 +118,6 @@ export const Issue: FC<SigningProps> = ({
       setLoading(false);
     }
   };
-
-  // Update stored unsigned credential upon edit
-  const editorOnChange = async (data: string, event?: any) => {
-    setDocument(data);
-  };
-
 
   // Load in JSON file from dropzone into the credential editor
   const setCredentialFromFile = async (file: File) => {
@@ -134,7 +175,7 @@ export const Issue: FC<SigningProps> = ({
             Enter your credential below
           </Typography>
         </Box>
-
+        
         <Grid
           container
           spacing={4}
@@ -170,7 +211,6 @@ export const Issue: FC<SigningProps> = ({
           </Grid>
         </Grid>
 
-
         {/* Credential Editor Box */}
         <Credential
           value={unsignedDocument}
@@ -191,7 +231,7 @@ export const Issue: FC<SigningProps> = ({
         />
       </Grid>
 
-      {/* Error message */}
+      {/* Signing error message */}
       {signingError &&
         <Grid item
           xs={8}
@@ -243,7 +283,8 @@ export const Issue: FC<SigningProps> = ({
 
       {/* Signed Credential Section */}
       {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12}>
+        <Grid item xs={12} md={11} lg={10} xl={qrError ? 8 : 7}>
+          {/* Signed credential header */}
           <Typography
             variant="h2"
             id="signedcredential"
@@ -265,9 +306,45 @@ export const Issue: FC<SigningProps> = ({
             editing={false}
             value={signedDocument ? JSON.stringify(signedDocument, null, 2) : "{}"}
           />
+        
         </Grid>
       }
 
+      {/* Signed Credential QR Code output */}
+      {Object.keys(signedDocument).length > 0 &&
+        <Grid item xs={12} lg={4}>
+          {/* QR Output header */}
+          <Typography
+            variant="h2"
+            id="signedcredential"
+            sx={{
+              pl: "0.5rem",
+              textAlign: "center"}}
+          >
+            QR Code
+          </Typography>
+
+          {/* QR code display panel */}
+          <QROutput
+            rawQrCodeUrl={qrCodeUrls[0]}
+            compressedQrCodeUrl={qrCodeUrls[1]}
+          />
+        </Grid>
+      }
+
+      {/* QR code error message */}
+      {Object.keys(signedDocument).length > 0 &&
+      qrError &&
+        <Grid item
+          xs={12} sm={10} md={8} lg={6} xl={4}
+        >
+          <Alert
+            severity="warning"
+          >
+            {"The signed credential is too large to encode into a QR code."}
+          </Alert>
+        </Grid>
+      }
       {/* Button to move to verify section */}
       {Object.keys(signedDocument).length > 0 &&
         <Grid item xs={12} sx={{textAlign: "center"}}>

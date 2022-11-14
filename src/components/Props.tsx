@@ -11,6 +11,8 @@ export interface SigningProps extends HTMLAttributes<HTMLDivElement> {
   setDocument: (document: string) => void;
   signedDocument: any;
   setSignedDocument: (signedDocument: any) => void;
+  qrCodeUrls: string[];
+  setQrCodeUrls: (document: string[]) => void;
 }
 
 export interface VerificationProps extends HTMLAttributes<HTMLDivElement> {
