@@ -31,6 +31,11 @@
 	line-height: 22px;
 }
 
+.MuiTypography-h5 {
+	font-size: 1.3rem;
+	line-height: 22px;
+}
+
 .MuiTypography-body2 {
 	font-size: 1rem;
 	color: #424242;
@@ -47,11 +52,24 @@ a {
 
 /* Mui-Dropzone elements */
 
-/* Mui-Dropzone main box */
+/* Mui-Dropzone main Box */
 .css-1agvk75, .css-12vgb7g {
 	min-height: 0px;
+	/* height: 100px; */
 	margin-top: 20px;
 	margin-bottom: 20px;
+	align-items: center;
+}
+
+/* Mui-Dropzone hint icon */
+.css-f682gy-MuiSvgIcon-root {
+	display: none;
+}
+
+/* Mui-Dropzone text Box */
+.css-xi606m {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 
