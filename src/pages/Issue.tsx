@@ -135,6 +135,32 @@ export const Issue: FC<SigningProps> = ({
           </Typography>
         </Box>
 
+        <Grid
+          container
+          spacing={4}
+          justifyContent="center"
+          alignItems="center"
+        >
+
+          {/* File upload section */}
+          <Grid item xs={12} lg={6}>
+            <DropzoneArea
+              dropzoneText="Drag and drop a json file here or click to upload."
+              acceptedFiles={[".json"]}
+              filesLimit={1}
+              onChange={(files) => setCredentialFromFile(files[0])}
+              showFileNames={true}
+              showPreviewsInDropzone={false}
+              fileObjects={[]}
+            />
+          </Grid>
+
+          {/* Component with QR scan modal and button to open it */}
+          <Grid item xs={12} lg={6}>
+            <ScanModal onScan={setDocument} setErrorMessage={() =>void 0} />
+          </Grid>
+        </Grid>
+
 
         {/* Credential Editor Box */}
         <Credential
@@ -143,19 +169,7 @@ export const Issue: FC<SigningProps> = ({
           onChange={editorOnChange}
         />
 
-        {/* File upload section */}
-        <DropzoneArea
-          dropzoneText="Drag and drop a json file here or click to upload"
-          acceptedFiles={[".json"]}
-          filesLimit={1}
-          onChange={(files) => setCredentialFromFile(files[0])}
-          showFileNames={true}
-          showPreviewsInDropzone={false}
-          fileObjects={[]}
-        />
 
-        {/* Component with modal and button to open it */}
-        <ScanModal onScan={setDocument} setErrorMessage={() =>void 0} />
       </Grid>
 
       {/* Signing Parameters */}

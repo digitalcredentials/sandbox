@@ -66,10 +66,19 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
         size="large"
         sx={{
           width: "100%",
-          height: "60px",
+          height: "70px",
+          marginTop: {
+            xs: "-30px",
+            lg: "20px",
+          },
+          marginBottom: {
+            xs: "15px",
+            lg: "20px",
+          },
+          fontSize: "15px",
         }}
       >
-        Scan a QR code
+        Scan a QR code to upload
       </Button>
       
       {/* The modal window itself */}
