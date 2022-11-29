@@ -25,14 +25,14 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 				position: "absolute",
 				zIndex: 999,
 				//TODO: Reference constants in margin!!!
-				right: "8%",
+				right: "-2px",
 				alignSelf: "flex-end",
-				backgroundColor: "white",
 			}}>
 			<Button
 				onClick={handleClick}
 				variant="outlined"
-				sx={{mr: "5px", mt: "3px"}}
+				sx={{mr: "5px", mt: "3px", backgroundColor: "white",}}
+				
 			>Copy to Clipboard</Button>
 			<Snackbar
 				open={open}
@@ -44,3 +44,4 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 	)
 }
 export default CopyToClipboardButton
+Footer
