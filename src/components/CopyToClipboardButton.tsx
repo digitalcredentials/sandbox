@@ -27,6 +27,7 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 				//TODO: Reference constants in margin!!!
 				right: "-2px",
 				alignSelf: "flex-end",
+				backgroundColor: "white",
 			}}>
 			<Button
 				onClick={handleClick}
