@@ -41,6 +41,7 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
     border: "1px solid green",
     overflow: "hidden",
     mt: ".5rem",
+    position: "relative",
     alignContent: "flex-end"
   }}>
     <CopyToClipboardButton value={value}/>
