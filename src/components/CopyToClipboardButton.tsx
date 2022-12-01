@@ -44,4 +44,3 @@ const CopyToClipboardButton = ({value}: PropsType) => {
 	)
 }
 export default CopyToClipboardButton
-Footer
