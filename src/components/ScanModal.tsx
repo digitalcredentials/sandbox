@@ -67,14 +67,6 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
         sx={{
           width: "100%",
           height: "70px",
-          marginTop: {
-            xs: "-30px",
-            lg: "20px",
-          },
-          marginBottom: {
-            xs: "15px",
-            lg: "20px",
-          },
           fontSize: "15px",
         }}
       >
