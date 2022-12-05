@@ -143,7 +143,7 @@ export const Issue: FC<SigningProps> = ({
         >
 
           {/* File upload section */}
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12}>
             <DropzoneArea
               dropzoneText="Drag and drop a json file here or click to upload."
               acceptedFiles={[".json"]}
@@ -156,7 +156,16 @@ export const Issue: FC<SigningProps> = ({
           </Grid>
 
           {/* Component with QR scan modal and button to open it */}
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12}
+          sx={{
+            marginTop: {
+              xs: "-35px",
+            },
+            marginBottom: {
+              xs: "15px",
+              lg: "20px",
+            },
+          }}>
             <ScanModal onScan={setDocument} setErrorMessage={() =>void 0} />
           </Grid>
         </Grid>
@@ -208,6 +217,7 @@ export const Issue: FC<SigningProps> = ({
                 xs:"80%",
                 sm:"50%",
               },
+              height: "50px",
               color: "white",
             }}
             onClick={handleSubmit}

@@ -121,25 +121,49 @@ return (
         Enter your signed credential below
       </Typography>
     </Box>
+
+    <Grid
+      container
+      spacing={4}
+      justifyContent="center"
+      alignItems="center"
+    >
+
+      <Grid item xs={12} lg={6}>
+        {/* File upload section */}
+        <DropzoneArea
+          dropzoneText="Drag and drop a json file here or click to upload"
+          acceptedFiles={[".json"]}
+          filesLimit={1}
+          onChange={(files) => setCredentialFromFile(files[0])}
+          showFileNames={true}
+          showPreviewsInDropzone={false}
+          fileObjects={[]}
+        />
+      </Grid>
+
+      <Grid item xs={12} lg={6}
+        sx={{
+          marginTop: {
+            xs: "-35px",
+            lg: "10px",
+          },
+          marginBottom: {
+            xs: "15px",
+            lg: "20px",
+          },
+        }}
+      >
+        {/* Component with QR scan modal and button to open it */}
+        <ScanModal onScan={setUnverifiedDocument} setErrorMessage={() =>void 0} />
+      </Grid>
+    </Grid>
+    
     <Credential
       value={unverifiedDocument}
       editing={true}
       onChange={editorOnChange}
     />
-
-    {/* File upload section */}
-    <DropzoneArea
-      dropzoneText="Drag and drop a json file here or click to upload"
-      acceptedFiles={[".json"]}
-      filesLimit={1}
-      onChange={(files) => setCredentialFromFile(files[0])}
-      showFileNames={true}
-      showPreviewsInDropzone={false}
-      fileObjects={[]}
-    />
-
-    {/* Component with QR scan modal and button to open it */}
-    <ScanModal onScan={setUnverifiedDocument} setErrorMessage={() =>void 0} />
   </Grid>
 
 
