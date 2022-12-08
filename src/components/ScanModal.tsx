@@ -20,7 +20,7 @@ type PropsType = {
 
 export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
   
-  const handleScan = (newData?: Result | null, error?: Error | null) => {
+  const handleScan = (newData?: any | null, error?: Error | null) => {
     if (newData){
       onScan(newData.getText());
       closeModal();
