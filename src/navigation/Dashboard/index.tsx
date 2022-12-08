@@ -29,6 +29,7 @@ export const Dashboard = () => {
   const [signedDocument, setSignedDocument] = useState({});
   const [unverifiedDocument, setUnverifiedDocument] = useState("");
   const [verificationResult, setVerificationResult] = useState([]);
+  const [qrCodeUrls, setQrCodeUrls] = useState(["", ""]);
   const [demoCredential, setDemoCredential] = useState({});
   const [subjectDid, setSubjectDid] = useState('did:example:1234');
 
@@ -104,6 +105,8 @@ export const Dashboard = () => {
               setDocument={doSetDocument}
               signedDocument={signedDocument}
               setSignedDocument={doSetSignedDocument}
+              qrCodeUrls={qrCodeUrls}
+              setQrCodeUrls={setQrCodeUrls}
             />
           </Route>
         </Switch>
