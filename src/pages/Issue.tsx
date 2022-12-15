@@ -312,7 +312,7 @@ export const Issue: FC<SigningProps> = ({
 
       {/* Signed Credential QR Code output */}
       {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} xl={4}>
           {/* QR Output header */}
           <Typography
             variant="h2"
