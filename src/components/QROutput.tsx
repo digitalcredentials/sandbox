@@ -51,7 +51,7 @@ export const QROutput = ({rawQrCodeUrl, compressedQrCodeUrl}: PropsType) => {
         maxWidth: 400,
         width: "100%",
         marginTop: {
-          xl: "25px",
+          xl: "5px",
           sm: "10px",
         }
       }}
@@ -108,6 +108,7 @@ export const QROutput = ({rawQrCodeUrl, compressedQrCodeUrl}: PropsType) => {
       {rawQrCodeUrl == "" &&
         <Grid item
         xs={12} sm={8} lg={12} xl={11}
+        sx={{mt: "15px"}}
         >
         <Alert
           severity="warning"

@@ -332,7 +332,7 @@ export const Issue: FC<SigningProps> = ({
       {Object.keys(signedDocument).length > 0 &&
       qrError &&
         <Grid item
-          xs={12} sm={10} md={8} lg={6} xl={4}
+          xs={12} sm={11} md={9} lg={7} xl={6}
         >
           <Alert
             severity="warning"
