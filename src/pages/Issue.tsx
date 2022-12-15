@@ -54,7 +54,6 @@ export const Issue: FC<SigningProps> = ({
       keySuite: "Ed25519Signature2020",
     }
   );
-  const [rawQrCodeUrl, setRawQrCodeUrl] = useState('');
   const [qrError, setQrError] = useState(false);
   const [signingError, setSigningError] = useState<Error>();
     
@@ -73,16 +72,13 @@ export const Issue: FC<SigningProps> = ({
       // Encode the unsigned VP into QR codes
       compressedQrCode = await encodeToQrCodeUrl(vpUnsigned);
       rawQrCode = await encodeToRawQrCodeUrl(vpUnsigned);
-      setQrError(false);
     } catch (error) {
     }
 
     setQrCodeUrls([rawQrCode, compressedQrCode]);
 
-    // If there are no QR codes to display, store this info
-    if (rawQrCode == "" && compressedQrCode == "") {
-      setQrError(true);
-    }
+    // Flag error if neither raw nor compressed are available
+    setQrError(rawQrCode == "" && compressedQrCode == "")
   }
 
   // Call local signing function on submit
@@ -283,7 +279,7 @@ export const Issue: FC<SigningProps> = ({
 
       {/* Signed Credential Section */}
       {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} md={11} lg={10} xl={qrError ? 8 : 7}>
+        <Grid item xs={12} md={11} lg={10} xl={qrError ? 10 : 7}>
           {/* Signed credential header */}
           <Typography
             variant="h2"
@@ -311,7 +307,7 @@ export const Issue: FC<SigningProps> = ({
       }
 
       {/* Signed Credential QR Code output */}
-      {Object.keys(signedDocument).length > 0 &&
+      {Object.keys(signedDocument).length > 0 && !qrError &&
         <Grid item xs={12} xl={4}>
           {/* QR Output header */}
           <Typography
