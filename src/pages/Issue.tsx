@@ -245,16 +245,24 @@ export const Issue: FC<SigningProps> = ({
       {/* Issue Button */}
       {!loading &&
         <Grid item
-          xs={12}
-          sx={{textAlign: "center"}}
+          xs={Object.keys(signedDocument).length > 0 ? 6 : 12}
+          sx={{textAlign: Object.keys(signedDocument).length > 0 ? "right": "center"}}
         >
           <Button
             sx={{
-              width: {
+              width: Object.keys(signedDocument).length > 0 ?
+              {
+                sm:"100%",
+                lg:"60%"
+              }
+              : {
                 xs:"80%",
                 sm:"50%",
               },
-              height: "50px",
+              height: {
+                xs:"75px",
+                sm:"50px",
+              },
               color: "white",
             }}
             onClick={handleSubmit}
@@ -265,6 +273,34 @@ export const Issue: FC<SigningProps> = ({
             startIcon={<HistoryEduIcon/>}
           >
             Sign Credential
+          </Button>
+        </Grid>
+      }
+      {/* Button to move to verify section */}
+      {Object.keys(signedDocument).length > 0 &&
+        <Grid item xs={6}>
+          <Button
+            sx={{
+              width: {
+                sm: "100%",
+                lg: "60%",
+              },
+              height: {
+                xs:"75px",
+                sm:"50px",
+              },
+              textAlign: "center",
+              color: "white",
+            }}
+
+            color="secondary"
+            variant="contained"
+            endIcon={<SendIcon/>}
+            component={Link}
+            to="/verify#anchor"
+            size="large"
+          >
+            Check Verification
           </Button>
         </Grid>
       }
@@ -341,28 +377,6 @@ export const Issue: FC<SigningProps> = ({
           >
             {"The signed credential is too large to encode into a QR code."}
           </Alert>
-        </Grid>
-      }
-      {/* Button to move to verify section */}
-      {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} sx={{textAlign: "center"}}>
-          <Button
-            sx={{
-              width: {
-                xs: "80%",
-                sm: "40%",
-              },
-            }}
-
-            color="secondary"
-            variant="text"
-            endIcon={<SendIcon/>}
-            component={Link}
-            to="/verify#anchor"
-            size="large"
-          >
-            Verify this Credential
-          </Button>
         </Grid>
       }
     </Grid>
