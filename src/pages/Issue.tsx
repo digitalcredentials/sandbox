@@ -18,8 +18,9 @@ import {
   Typography,
 } from '@mui/material';
 import { IssueParams } from '../api/local';
-import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
@@ -261,6 +262,7 @@ export const Issue: FC<SigningProps> = ({
             size="large"
             disabled={Object.keys(signedDocument).length > 0}
             color="secondary"
+            startIcon={<HistoryEduIcon/>}
           >
             Sign Credential
           </Button>

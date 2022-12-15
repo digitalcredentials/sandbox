@@ -14,6 +14,7 @@ import {
  } from '@mui/material';
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea} from 'mui-file-dropzone';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 
 // const CONFIG = getConfig();
 
@@ -169,7 +170,7 @@ return (
   </Grid>
 
 
-  {/* Issue Button */}
+  {/* Verify Button */}
   {!loading &&
     <Grid item
       xs={12}
@@ -188,6 +189,7 @@ return (
         size="large"
         color="secondary"
         disabled={Object.keys(verificationResult).length > 0}
+        startIcon={<PublishedWithChangesIcon/>}
       >
         Verify Credential
       </Button>
