@@ -39,6 +39,7 @@ export const Issue: FC<SigningProps> = ({
   setSignedDocument,
   qrCodeUrls,
   setQrCodeUrls,
+  doVerification,
 }) => {
 
   // Set page title
@@ -299,8 +300,9 @@ export const Issue: FC<SigningProps> = ({
             component={Link}
             to="/verify#anchor"
             size="large"
+            onClick={doVerification}
           >
-            Check Verification
+            Verify Credential
           </Button>
         </Grid>
       }

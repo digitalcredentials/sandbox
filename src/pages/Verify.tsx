@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react';
 import { VerificationProps } from '../components/Props';
 import { ScanModal } from '../components/ScanModal';
-import { verifyCredential } from '../api/local';
 import { Credential, VerificationResultsCard } from '../components';
 // import { getConfig } from '../utils/config';
 import { 
@@ -22,49 +21,32 @@ export const Verify: FC<VerificationProps> = ({
   unverifiedDocument,
   setUnverifiedDocument,
   verificationResult,
-  setVerificationResult,
+  verifyingError,
+  doVerification,
 }) => {
   // Set page title
   // TODO: make constant?
   useDocumentTitle('Verifier - Digital Credentials Sandbox')
 
   const [loading, setLoading] = useState(false);
-  const [verifyingError, setVerifyingError] = useState<Error>();
 
   // On verify button
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    try {
-      setLoading(true);
-      // For some reason this delay allows the results to render before page scroll
-      await new Promise(resolve => setTimeout(resolve, 1));
-      // Attempt to convert text to JSON, apply verify function
-      const documentJSON = JSON.parse(unverifiedDocument);
-      const result = await verifyCredential(
-        documentJSON,
-      );
-      // If no errors in verifying, set results
-      setVerificationResult(result);
-      setVerifyingError(undefined);
-    } catch (error) {
-      // Store error if caught
-      setVerifyingError(error);
-    } finally {
-      // Remove loading bar
-      setLoading(false);
-      // Scroll down to verification results box
-      const element = document.getElementById("results");
-      if (element){
-        element.scrollIntoView();
-      }
+    setLoading(true);
+    doVerification();
+    // Remove loading bar
+    setLoading(false);
+    // Scroll down to verification results box
+    const element = document.getElementById("results");
+    if (element){
+      element.scrollIntoView();
     }
-
   };
 
   // Update stored credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     setUnverifiedDocument(data);
-    setVerifyingError(undefined);
   };
   
   // Load in JSON file from dropzone into the credential editor

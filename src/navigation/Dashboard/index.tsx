@@ -12,6 +12,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import TopNavPanel from "../NavBar/TopNavPanel";
 import NavTabs from "../NavBar/NavTabs";
 import { VerificationResultsProps } from "../../components/Props";
+import { verifyCredential } from '../../api/local';
 
 import theme from "../../utils/theme";
 import ScrollToHash from "../../components/ScrollToHash";
@@ -32,6 +33,7 @@ export const Dashboard = () => {
   const [qrCodeUrls, setQrCodeUrls] = useState(["", ""]);
   const [demoCredential, setDemoCredential] = useState({});
   const [subjectDid, setSubjectDid] = useState('did:example:1234');
+  const [verifyingError, setVerifyingError] = useState<Error>();
 
   const doSetDocument = (doc: string) => {
     setDocument(doc);
@@ -47,12 +49,24 @@ export const Dashboard = () => {
   const doSetUnverifiedDocument = (signedDoc: string) => {
     setUnverifiedDocument(signedDoc);
     setVerificationResult([]);
+    setVerifyingError(undefined);
   }
 
-  //TODO: make stricter typing for verification results
-  const doSetVerificationResult = (verificationRes: any) => {
-    setVerificationResult(verificationRes);
-  };
+  const doVerification = () => {
+    try {
+      // Attempt to convert text to JSON, apply verify function
+      const documentJSON = JSON.parse(unverifiedDocument);
+      const result: any = verifyCredential(
+        documentJSON,
+      );
+      // If no errors in verifying, set results
+      setVerificationResult(result);
+      setVerifyingError(undefined);
+    } catch (error) {
+      // Store error if caught
+      setVerifyingError(error);
+    }
+  }
 
   const doSetDemoCredential = (demoCredential: any) => {
     setDemoCredential(demoCredential);
@@ -86,7 +100,8 @@ export const Dashboard = () => {
               unverifiedDocument={unverifiedDocument}
               setUnverifiedDocument={doSetUnverifiedDocument}
               verificationResult={verificationResult}
-              setVerificationResult={doSetVerificationResult}
+              verifyingError={verifyingError}
+              doVerification={doVerification}
             />
           </Route>
           <Route path="/about">
@@ -107,6 +122,7 @@ export const Dashboard = () => {
               setSignedDocument={doSetSignedDocument}
               qrCodeUrls={qrCodeUrls}
               setQrCodeUrls={setQrCodeUrls}
+              doVerification={doVerification}
             />
           </Route>
         </Switch>

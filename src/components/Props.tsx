@@ -13,13 +13,15 @@ export interface SigningProps extends HTMLAttributes<HTMLDivElement> {
   setSignedDocument: (signedDocument: any) => void;
   qrCodeUrls: string[];
   setQrCodeUrls: (document: string[]) => void;
+  doVerification: () => void;
 }
 
 export interface VerificationProps extends HTMLAttributes<HTMLDivElement> {
   unverifiedDocument: string;
   setUnverifiedDocument: (signedDocument: string) => void;
   verificationResult: any;
-  setVerificationResult: (verificationResult: any) => void;
+  verifyingError: Error | undefined;
+  doVerification: () => void;
 }
 
 //TODO: make props type for verification results more strict
