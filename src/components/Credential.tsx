@@ -46,11 +46,11 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
         showPrintMargin={false}
         onFocus={() => {
           changeCommandBinding("indent", {
-            win: 'Alt-Tab',
+            win: 'Ctrl-Tab',
             mac: 'Option-Tab',
           })
           changeCommandBinding("outdent", {
-            win: 'Alt-Shift-Tab',
+            win: 'Ctrl-Shift-Tab',
             mac: 'Option-Shift-Tab',
           })
         }}
