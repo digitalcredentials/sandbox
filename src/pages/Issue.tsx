@@ -30,6 +30,7 @@ import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
 import { encodeToRawQrCodeUrl } from '../api/encodeRawQr';
 import { QROutput } from '../components/QROutput';
+import { display } from '@mui/system';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -56,12 +57,14 @@ export const Issue: FC<SigningProps> = ({
       keySuite: "Ed25519Signature2020",
     }
   );
+  const [displayQrOutput, setDisplayQrOutput] = useState(false);
   const [qrError, setQrError] = useState(false);
   const [signingError, setSigningError] = useState<Error>();
     
   // Update stored unsigned credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     setDocument(data);
+    setDisplayQrOutput(false);
   };
 
   // Generate QR codes and handle any errors thrown
@@ -78,9 +81,12 @@ export const Issue: FC<SigningProps> = ({
     }
 
     setQrCodeUrls([rawQrCode, compressedQrCode]);
+    // console.log(qrCodeUrls);
 
     // Flag error if neither raw nor compressed are available
     setQrError(rawQrCode == "" && compressedQrCode == "")
+    // Turn on QR display
+    if (!qrError) setDisplayQrOutput(true);
   }
 
   // Call local signing function on submit
@@ -347,7 +353,7 @@ export const Issue: FC<SigningProps> = ({
       }
 
       {/* Signed Credential QR Code output */}
-      {Object.keys(signedDocument).length > 0 && !qrError &&
+      {displayQrOutput &&
         <Grid item xs={12} xl={4}>
           {/* QR Output header */}
           <Typography
