@@ -11,9 +11,22 @@ type PropsType = {
   onChange?: (value: string, event?: any) => void;
 };
 
-
 // Editor window for editing, viewing credentials
 export const Credential = ({ value, editing, onChange }: PropsType) => {
+  const aceEditor = React.createRef<AceEditor>();
+
+  // Copied from https://github.com/ajaxorg/ace/issues/3149#issuecomment-444570508
+  const changeCommandBinding = (name: string, newBindKey: any) => {
+    if (aceEditor.current)
+    {
+      const editor = aceEditor.current.editor;
+      const command = editor.commands.byName[name];
+      command.bindKey = newBindKey;
+      editor.commands.addCommand(command);
+      console.log("!")
+    }
+  }
+
   // Editor version
   if (editing) {
     return <Box
@@ -23,6 +36,7 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       overflow: "hidden",
     }}>
       <AceEditor
+        ref={aceEditor}
         value={value}
         onChange={onChange}
         width="100%"
@@ -30,6 +44,16 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
         mode="json"
         wrapEnabled={true}
         showPrintMargin={false}
+        onFocus={() => {
+          changeCommandBinding("indent", {
+            win: 'Ctrl-Tab',
+            mac: 'Option-Tab',
+          })
+          changeCommandBinding("outdent", {
+            win: 'Ctrl-Shift-Tab',
+            mac: 'Option-Shift-Tab',
+          })
+        }}
       />
     </Box>
   }

@@ -55,6 +55,16 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
     zIndex: 9999,
   };
 
+  const readerStyle = {
+    width: '100%',
+    height: 'auto',
+    background: 'var(--black) 0% 0% no-repeat padding-box',
+    borderRadius: '5px',
+    opacity: '1',
+    marginTop: '24px',
+    marginBottom: '24px',
+  };
+
   return (
     <Box>
 
@@ -102,11 +112,13 @@ export const ScanModal = ({ onScan, setErrorMessage }: PropsType) => {
 
           </Box>
 
+        <Box sx={readerStyle}>
           {/* QR code scanner */}
           <QrReader 
             onResult={(result, error) => handleScan(result, error)}
             constraints={{facingMode: "environment"}}
           />
+          </Box>
         </Box>
       </Modal>
 

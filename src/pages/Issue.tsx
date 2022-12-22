@@ -18,8 +18,9 @@ import {
   Typography,
 } from '@mui/material';
 import { IssueParams } from '../api/local';
-import SendIcon from '@mui/icons-material/Send';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom'
 import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
@@ -29,6 +30,7 @@ import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
 import { encodeToRawQrCodeUrl } from '../api/encodeRawQr';
 import { QROutput } from '../components/QROutput';
+import { display } from '@mui/system';
 
 
 export const Issue: FC<SigningProps> = ({
@@ -38,6 +40,7 @@ export const Issue: FC<SigningProps> = ({
   setSignedDocument,
   qrCodeUrls,
   setQrCodeUrls,
+  doVerification,
 }) => {
 
   // Set page title
@@ -54,13 +57,14 @@ export const Issue: FC<SigningProps> = ({
       keySuite: "Ed25519Signature2020",
     }
   );
-  const [rawQrCodeUrl, setRawQrCodeUrl] = useState('');
+  const [displayQrOutput, setDisplayQrOutput] = useState(false);
   const [qrError, setQrError] = useState(false);
   const [signingError, setSigningError] = useState<Error>();
     
   // Update stored unsigned credential upon edit
   const editorOnChange = async (data: string, event?: any) => {
     setDocument(data);
+    setDisplayQrOutput(false);
   };
 
   // Generate QR codes and handle any errors thrown
@@ -73,16 +77,16 @@ export const Issue: FC<SigningProps> = ({
       // Encode the unsigned VP into QR codes
       compressedQrCode = await encodeToQrCodeUrl(vpUnsigned);
       rawQrCode = await encodeToRawQrCodeUrl(vpUnsigned);
-      setQrError(false);
     } catch (error) {
     }
 
     setQrCodeUrls([rawQrCode, compressedQrCode]);
+    // console.log(qrCodeUrls);
 
-    // If there are no QR codes to display, store this info
-    if (rawQrCode == "" && compressedQrCode == "") {
-      setQrError(true);
-    }
+    // Flag error if neither raw nor compressed are available
+    setQrError(rawQrCode == "" && compressedQrCode == "")
+    // Turn on QR display
+    if (!qrError) setDisplayQrOutput(true);
   }
 
   // Call local signing function on submit
@@ -248,16 +252,24 @@ export const Issue: FC<SigningProps> = ({
       {/* Issue Button */}
       {!loading &&
         <Grid item
-          xs={12}
-          sx={{textAlign: "center"}}
+          xs={Object.keys(signedDocument).length > 0 ? 6 : 12}
+          sx={{textAlign: Object.keys(signedDocument).length > 0 ? "right": "center"}}
         >
           <Button
             sx={{
-              width: {
+              width: Object.keys(signedDocument).length > 0 ?
+              {
+                sm:"100%",
+                lg:"60%"
+              }
+              : {
                 xs:"80%",
                 sm:"50%",
               },
-              height: "50px",
+              height: {
+                xs:"75px",
+                sm:"50px",
+              },
               color: "white",
             }}
             onClick={handleSubmit}
@@ -265,8 +277,38 @@ export const Issue: FC<SigningProps> = ({
             size="large"
             disabled={Object.keys(signedDocument).length > 0}
             color="secondary"
+            startIcon={<HistoryEduIcon/>}
           >
             Sign Credential
+          </Button>
+        </Grid>
+      }
+      {/* Button to move to verify section */}
+      {Object.keys(signedDocument).length > 0 &&
+        <Grid item xs={6}>
+          <Button
+            sx={{
+              width: {
+                sm: "100%",
+                lg: "60%",
+              },
+              height: {
+                xs:"75px",
+                sm:"50px",
+              },
+              textAlign: "center",
+              color: "white",
+            }}
+
+            color="secondary"
+            variant="contained"
+            endIcon={<SendIcon/>}
+            component={Link}
+            to="/verify#anchor"
+            size="large"
+            onClick={doVerification}
+          >
+            Verify Credential
           </Button>
         </Grid>
       }
@@ -283,7 +325,7 @@ export const Issue: FC<SigningProps> = ({
 
       {/* Signed Credential Section */}
       {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} md={11} lg={10} xl={qrError ? 8 : 7}>
+        <Grid item xs={12} md={11} lg={10} xl={qrError ? 10 : 7}>
           {/* Signed credential header */}
           <Typography
             variant="h2"
@@ -311,8 +353,8 @@ export const Issue: FC<SigningProps> = ({
       }
 
       {/* Signed Credential QR Code output */}
-      {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} lg={4}>
+      {displayQrOutput &&
+        <Grid item xs={12} xl={4}>
           {/* QR Output header */}
           <Typography
             variant="h2"
@@ -336,35 +378,13 @@ export const Issue: FC<SigningProps> = ({
       {Object.keys(signedDocument).length > 0 &&
       qrError &&
         <Grid item
-          xs={12} sm={10} md={8} lg={6} xl={4}
+          xs={12} sm={11} md={9} lg={7} xl={6}
         >
           <Alert
             severity="warning"
           >
             {"The signed credential is too large to encode into a QR code."}
           </Alert>
-        </Grid>
-      }
-      {/* Button to move to verify section */}
-      {Object.keys(signedDocument).length > 0 &&
-        <Grid item xs={12} sx={{textAlign: "center"}}>
-          <Button
-            sx={{
-              width: {
-                xs: "80%",
-                sm: "40%",
-              },
-            }}
-
-            color="secondary"
-            variant="text"
-            endIcon={<SendIcon/>}
-            component={Link}
-            to="/verify#anchor"
-            size="large"
-          >
-            Verify this Credential
-          </Button>
         </Grid>
       }
     </Grid>
