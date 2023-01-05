@@ -80,6 +80,7 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       wrapEnabled={true}
       highlightActiveLine={false}
       showPrintMargin={false}
+      mode="json"
       setOptions={{
         useWorker: false
       }}
