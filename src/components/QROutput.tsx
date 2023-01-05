@@ -26,8 +26,6 @@ type PropsType = {
 
 export const QROutput = ({rawQrCodeUrl, compressedQrCodeUrl}: PropsType) => {
   const [qrTab, setQrTab] = useState(rawQrCodeUrl == "" ? 1 : 0)
-  console.log(rawQrCodeUrl)
-  console.log(compressedQrCodeUrl)
   
   const rawQrMsg = new Blob([rawQrCodeUrl]).size.toString() + " bytes raw JSON";
   const compressedQrMsg = new Blob([compressedQrCodeUrl]).size.toString() + " bytes compressed JSON";

@@ -23,7 +23,6 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       const command = editor.commands.byName[name];
       command.bindKey = newBindKey;
       editor.commands.addCommand(command);
-      console.log("!")
     }
   }
 
