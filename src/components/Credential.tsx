@@ -54,6 +54,9 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
             mac: 'Option-Shift-Tab',
           })
         }}
+        setOptions={{
+          useWorker: false
+        }}
       />
     </Box>
   }
@@ -77,6 +80,9 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       wrapEnabled={true}
       highlightActiveLine={false}
       showPrintMargin={false}
+      setOptions={{
+        useWorker: false
+      }}
     />
   </Box>
 };
