@@ -1,6 +1,7 @@
 import React from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/webpack-resolver';
 import CopyToClipboardButton from './CopyToClipboardButton';
 
 import { Box } from '@mui/material';
@@ -23,7 +24,6 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       const command = editor.commands.byName[name];
       command.bindKey = newBindKey;
       editor.commands.addCommand(command);
-      console.log("!")
     }
   }
 
@@ -54,6 +54,9 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
             mac: 'Option-Shift-Tab',
           })
         }}
+        setOptions={{
+          useWorker: false
+        }}
       />
     </Box>
   }
@@ -77,6 +80,10 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
       wrapEnabled={true}
       highlightActiveLine={false}
       showPrintMargin={false}
+      mode="json"
+      setOptions={{
+        useWorker: false
+      }}
     />
   </Box>
 };
