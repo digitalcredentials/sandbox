@@ -3,8 +3,12 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/webpack-resolver';
 import CopyToClipboardButton from './CopyToClipboardButton';
+import DownloadButton from './DownloadButton';
 
-import { Box } from '@mui/material';
+import {
+  Box,
+  Grid,
+} from '@mui/material';
 
 type PropsType = {
   value: string;
@@ -71,7 +75,27 @@ export const Credential = ({ value, editing, onChange }: PropsType) => {
     position: "relative",
     alignContent: "flex-end"
   }}>
-    <CopyToClipboardButton value={value}/>
+    <Grid
+      container
+      spacing={2}
+      sx={{
+        position: "absolute",
+        zIndex: 99,
+        //TODO: Reference constants in margin!!!
+        right: "0px",
+        alignSelf: "flex-end",
+        width: "300px",
+        mr: "20px",
+      }}
+    >
+      <Grid item xs={6}>
+        <CopyToClipboardButton value={value}/>
+      </Grid>
+      <Grid item xs={6}>
+        <DownloadButton value={value}/>
+      </Grid>
+    </Grid>
+
     <AceEditor
       value={value}
       width="100%"
