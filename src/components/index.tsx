@@ -8,3 +8,4 @@ export * from './ScrollToHash';
 export * from './HelpEntry';
 export * from './ScanModal';
 export * from './QROutput';
+export * from './DownloadButton';

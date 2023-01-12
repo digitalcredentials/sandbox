@@ -8,36 +8,40 @@ import {
 import { unstable_getThemeValue } from '@mui/system'
 import { useState } from 'react'
 import React from 'react'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DownloadIcon from '@mui/icons-material/Download';
 
 type PropsType = {
   value: string;
 };
 
-const CopyToClipboardButton = ({value}: PropsType) => {
+const DownloadButton = ({value}: PropsType) => {
   const [open, setOpen] = useState(false)
-  const handleClick = () => {
-    setOpen(true)
-    // TODO: Make sure that this works on safari once site is published with https!!
-    navigator.clipboard.writeText(value)
+  const downloadFile = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = "credential.json";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+    setOpen(true);
   }
   return (
     <Box sx={{
       }}>
       <Button
-        onClick={handleClick}
+        onClick={downloadFile}
         variant="outlined"
-        startIcon={<ContentCopyIcon/>}
         sx={{mt: "12px", backgroundColor: "white",}}
+        startIcon={<DownloadIcon/>}
         
-      >Copy to Clipboard</Button>
+      >Download JSON</Button>
       <Snackbar
         open={open}
         onClose={() => setOpen(false)}
         autoHideDuration={2000}
-        message="Copied to clipboard"
+        message="File download complete"
       />
     </Box>
   )
 }
-export default CopyToClipboardButton
+export default DownloadButton
