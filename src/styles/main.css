@@ -42,9 +42,10 @@ a {
 	color: #3D77D2;
 }
 
-
 /* Misc Elements */
-
+.MuiButton-outlined:hover {
+	background-color: #F8F8F6;
+}
 
 /* Mui-Dropzone elements */
 
