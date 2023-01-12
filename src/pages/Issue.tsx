@@ -190,7 +190,7 @@ export const Issue: FC<SigningProps> = ({
           {/* File upload section */}
           <Grid item xs={12}>
             <DropzoneArea
-              dropzoneText="Drag and drop a json file here or click to upload."
+              dropzoneText="Drag and drop or click here to upload a .json file."
               acceptedFiles={[".json"]}
               filesLimit={1}
               onChange={(files) => setCredentialFromFile(files[0])}
