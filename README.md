@@ -4,6 +4,12 @@ The DCC Sandbox project was bootstrapped with [Create React App](https://github.
 
 This is a tool intended for developer experimentation and not for production use.
 
+## Installation
+
+```
+npm install --legacy-peer-deps
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
