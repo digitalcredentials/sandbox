@@ -2,6 +2,7 @@
 // declare module '@digitalcredentials/did-io';
 // declare module '@digitalcredentials/did-method-key';
 declare module '@digitalcredentials/bnid';
+declare module '@digitalcredentials/did-method-key';
 declare module '@digitalcredentials/ed25519-signature-2020';
 declare module '@digitalcredentials/security-document-loader';
 declare module '@digitalcredentials/vc';
