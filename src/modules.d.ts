@@ -6,6 +6,7 @@ declare module '@digitalcredentials/did-method-key';
 declare module '@digitalcredentials/ed25519-signature-2020';
 declare module '@digitalcredentials/security-document-loader';
 declare module '@digitalcredentials/vc';
+declare module '@digitalbazaar/did-method-key'
 // declare module '@digitalcredentials/vc-status-list';
 // declare module '@digitalbazaar/vc-status-list-context';
 // declare module '@digitalcredentials/vpqr';

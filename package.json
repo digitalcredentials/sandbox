@@ -8,7 +8,7 @@
     "@digitalcredentials/did-io": "^1.0.2",
     "@digitalcredentials/did-method-key": "^2.0.3",
     "@digitalcredentials/ed25519-signature-2020": "^3.0.2",
-    "@digitalcredentials/ed25519-verification-key-2020": "^3.2.2",
+    "@digitalcredentials/ed25519-verification-key-2020": "^5.0.0-beta.1",
     "@digitalcredentials/security-document-loader": "^1.0.0",
     "@digitalcredentials/vc": "^5.0.0",
     "@digitalcredentials/x25519-key-agreement-key-2020": "^3.0.0",
@@ -58,7 +58,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@material-ui/icons": "^4.9.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",

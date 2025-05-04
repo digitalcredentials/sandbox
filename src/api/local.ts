@@ -2,10 +2,13 @@
 // import { securityLoader } from '@digitalcredentials/security-document-loader';
 // import vc from '@digitalcredentials/vc';
 // import * as didKey from '@digitalcredentials/did-method-key';
-// import {decodeSecretKeySeed} from '@digitalcredentials/bnid';
+// import { generateId } from '@digitalcredentials/bnid'
 //
-// const driver = didKey.driver()
+
 // const documentLoader = securityLoader().build()
+// import { Ed25519Signer } from '@did.coop/did-key-ed25519'
+
+import { Ed25519VerificationKey2020 } from '@digitalcredentials/ed25519-verification-key-2020'
 
 export interface IssueParams {
   credential: any;
@@ -19,7 +22,13 @@ export interface IssueParams {
 export async function signCredential ({
   credential, randomDid, didSeed, didMethod, serializationType, keySuite
 }: IssueParams) {
-  // const secretKeySeedBytes = didSeed ? decodeSecretKeySeed({secretKeySeed: didSeed}) : null
+
+  const edKeyPair = await Ed25519VerificationKey2020.generate()
+  console.log(edKeyPair)
+
+  // const driver = didKey.driver()
+
+  // const secretKeySeedBytes = await generateId();
   //
   // const {didDocument, methodFor} = await driver.generate({
   //   seed: secretKeySeedBytes
@@ -30,6 +39,8 @@ export async function signCredential ({
   //
   // const suite = new Ed25519Signature2020({key: signingKeyPair});
   // return vc.issue({ credential, suite, documentLoader });
+  // const signer = await Ed25519Signer.generate()
+  // console.log(signer)
 }
 
 export function verifyCredential (unVerifiedCredential: object) {

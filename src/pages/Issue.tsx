@@ -26,7 +26,7 @@ import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
 import { EditAttributesRounded, SystemSecurityUpdate } from '@mui/icons-material';
 import { securityLoader } from '@digitalcredentials/security-document-loader'
-import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
+// import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
 import { encodeToRawQrCodeUrl } from '../api/encodeRawQr';
 import { QROutput } from '../components/QROutput';
@@ -93,6 +93,7 @@ export const Issue: FC<SigningProps> = ({
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
+
     try {
       const documentJSON = JSON.parse(unsignedDocument);
       const signedDocument = await signCredential({credential: documentJSON, ...options});
