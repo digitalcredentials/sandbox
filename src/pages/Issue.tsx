@@ -26,7 +26,7 @@ import useDocumentTitle from '../utils/useDocumentTitle';
 import {DropzoneArea, DropzoneDialog} from 'mui-file-dropzone';
 import { EditAttributesRounded, SystemSecurityUpdate } from '@mui/icons-material';
 import { securityLoader } from '@digitalcredentials/security-document-loader'
-import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
+// import { encodeToQrCodeUrl, encodeToVpUnsigned } from "../utils/codecs";
 import { ProvePresentationRequest } from "../api/index";
 import { encodeToRawQrCodeUrl } from '../api/encodeRawQr';
 import { QROutput } from '../components/QROutput';
@@ -93,9 +93,10 @@ export const Issue: FC<SigningProps> = ({
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
+
     try {
       const documentJSON = JSON.parse(unsignedDocument);
-      const signedDocument = await signCredential(documentJSON, options);
+      const signedDocument = await signCredential({credential: documentJSON, ...options});
       // For some reason this delay allows the results to render before page scroll
       await new Promise(resolve => setTimeout(resolve, 1));
       // Encode the signed VC into an unsigned VP
@@ -161,7 +162,7 @@ export const Issue: FC<SigningProps> = ({
           <Typography variant="h2">
             Unsigned Credential
           </Typography>
-          
+
 
           <Typography
             variant="h3"
