@@ -1,7 +1,8 @@
 import React from 'react';
-import AceEditor from 'react-ace';
+import * as ReactAce from 'react-ace';
+const AceEditor: any = (ReactAce as any).default || (ReactAce as any);
 import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/webpack-resolver';
+import 'ace-builds/src-noconflict/theme-textmate';
 import CopyToClipboardButton from './CopyToClipboardButton';
 import DownloadButton from './DownloadButton';
 
@@ -18,7 +19,7 @@ type PropsType = {
 
 // Editor window for editing, viewing credentials
 export const Credential = ({ value, editing, onChange }: PropsType) => {
-  const aceEditor = React.createRef<AceEditor>();
+  const aceEditor = React.createRef<typeof AceEditor>();
 
   // Copied from https://github.com/ajaxorg/ace/issues/3149#issuecomment-444570508
   const changeCommandBinding = (name: string, newBindKey: any) => {
