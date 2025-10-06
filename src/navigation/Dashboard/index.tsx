@@ -4,7 +4,7 @@ import { smallList } from "../../utils/fixtures";
 import { NavBar } from "../NavBar";
 import { Issue, Verify, About, Privacy, Terms } from "../../pages";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { NAV_SIZE } from "../../utils/constants";
 import Footer from "./Footer";
@@ -62,7 +62,7 @@ export const Dashboard = () => {
       // If no errors in verifying, set results
       setVerificationResult(result);
       setVerifyingError(undefined);
-    } catch (error) {
+    } catch (error: any) {
       // Store error if caught
       setVerifyingError(error);
     }
@@ -80,7 +80,7 @@ export const Dashboard = () => {
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
     <Box>
-      <Router basename="/sandbox">
+      <BrowserRouter basename="/sandbox">
         <ScrollToHash/>
         <TopNavPanel/>
         <NavTabs/>
@@ -94,8 +94,8 @@ export const Dashboard = () => {
             mx: "6%",
           }}
         >
-        <Switch>
-          <Route path="/verify">
+        <Routes>
+          <Route path="/verify" element={
             <Verify
               unverifiedDocument={unverifiedDocument}
               setUnverifiedDocument={doSetUnverifiedDocument}
@@ -103,18 +103,11 @@ export const Dashboard = () => {
               verifyingError={verifyingError}
               doVerification={doVerification}
             />
-          </Route>
-          <Route path="/about">
-            <About
-            />
-          </Route>
-          <Route path="/privacy">
-            <Privacy />
-          </Route>
-          <Route path="/terms">
-            <Terms />
-          </Route>
-          <Route path="/">
+          }/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/privacy" element={<Privacy />}/>
+          <Route path="/terms" element={<Terms />}/>
+          <Route path="/" element={
             <Issue
               unsignedDocument={document}
               setDocument={doSetDocument}
@@ -124,13 +117,13 @@ export const Dashboard = () => {
               setQrCodeUrls={setQrCodeUrls}
               doVerification={doVerification}
             />
-          </Route>
-        </Switch>
+          }/>
+        </Routes>
         <Box pt={4}>
           <Footer />
         </Box>
         </Box>
-      </Router>
+      </BrowserRouter>
     </Box>
     </ThemeProvider>
     </StyledEngineProvider>

@@ -1,13 +1,15 @@
 import "./styles/main.css";
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Dashboard } from "./navigation";
 
-ReactDOM.render(
-  <>
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element #root not found");
+const root = createRoot(rootElement);
+root.render(
+  <React.StrictMode>
     <CssBaseline />
     <Dashboard />
-  </>,
-  document.querySelector("#root")
+  </React.StrictMode>
 );
