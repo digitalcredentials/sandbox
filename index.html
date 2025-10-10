@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <script type="text/javascript">
       // SPA deep-link support for GitHub Pages.
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search
+      (function(locationRef) {
+        if (locationRef.search[1] === '/') {
+          var decoded = locationRef.search
             .slice(1)
             .split('&')
             .map(function(s) { return s.replace(/~and~/g, '&'); })
